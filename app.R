@@ -82,8 +82,10 @@ server <- function(input, output) {
             geom_point() + 
             ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3) + #, segment.linetype = 5 
             scale_y_log10(
-                breaks = scales::trans_breaks("log10", function(x) 10^x),
-                labels = scales::trans_format("log10", scales::math_format(10^.x))) + 
+                labels = function(x) format(x, big.mark = ",", scientific = FALSE)
+                # breaks = scales::trans_breaks("log10", function(x) 10^x),
+                # labels = scales::trans_format("log10", scales::math_format(10^.x))
+                ) + 
             scale_x_continuous(breaks = seq(0, max(final_df()$value), 2)) +
             labs(
                 title = "Confirmed cases after first 100 cases",
