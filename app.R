@@ -1,3 +1,6 @@
+
+# Libraries ---------------------------------------------------------------
+
 library(shiny)
 library(shinythemes)
 library(dplyr)
@@ -17,6 +20,14 @@ V1_alternatives = dta %>%
     filter(value > 100) %>% 
     distinct(country) %>% pull(country)
 
+# Time last commit of source file
+curl::curl_download('https://api.github.com/repos/CSSEGISandData/COVID-19/commits?path=csse_covid_19_data%2Fcsse_covid_19_time_series%2Ftime_series_19-covid-Confirmed.csv&page=1&per_page=1', destfile = "temp.html")
+last_commit = jsonlite::read_json("temp.html") 
+date_last_commit_raw = last_commit[[1]]$commit$author$date
+last_commit_time = strptime(date_last_commit_raw, "%FT%T", tz = "GMT")
+
+
+# UI ----------------------------------------------------------------------
 
 ui <- fluidPage(
 
@@ -38,8 +49,7 @@ ui <- fluidPage(
                 
         # SHOW PLOT
         mainPanel(
-            # h3("2020 - CORONAVIRUS"),
-            p("Last update: ", format(Sys.time(), paste0("%d", " de ", "%B", " de ", "%Y"))),
+            p("Data last update: ", as.character(last_commit_time), "GMT"),
             HTML(paste0("Using code from ",  
                         a(" @JonMinton", href="https://github.com/JonMinton/COVID-19"), " and ", 
                         a(" @christoph_sax", href="https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b"), 
@@ -52,7 +62,9 @@ ui <- fluidPage(
     )
 )
 
-# Define server logic required to draw a histogram
+
+# Server ------------------------------------------------------------------
+
 server <- function(input, output) {
 
     final_df = reactive({ 
