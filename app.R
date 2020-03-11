@@ -20,7 +20,7 @@ V1_alternatives = dta %>%
 
 ui <- fluidPage(
 
-    titlePanel("2020 - CORONAVIRUS"),
+    titlePanel("2020 - Coronavirus"),
     theme = shinytheme("flatly"),
     
     sidebarLayout(
@@ -39,7 +39,15 @@ ui <- fluidPage(
         # SHOW PLOT
         mainPanel(
             # h3("2020 - CORONAVIRUS"),
-           plotOutput("distPlot")
+            p("Last update: ", format(Sys.time(), paste0("%d", " de ", "%B", " de ", "%Y"))),
+            HTML(paste0("Using code from ",  
+                        a(" @JonMinton", href="https://github.com/JonMinton/COVID-19"), " and ", 
+                        a(" @christoph_sax", href="https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b"), 
+                        " this repo shows a simple visualization using the ", 
+                        a(" @JHUSystems Coronavirus data", href="https://github.com/CSSEGISandData/COVID-19"), ".",
+                        "<BR>See Github repo: ", a(" github.com/gorkang/2020-corona ", href="https://github.com/gorkang/2020-corona"))),
+            hr(),
+           plotOutput("distPlot", height = "700px", width = "100%")
         )
     )
 )
@@ -72,7 +80,7 @@ server <- function(input, output) {
                 y = "Confirmed cases (log scale)", 
                 caption = "Source: Johns Hopkins CSSE"
             ) +
-            theme_minimal() +
+            theme_minimal(base_size = 14) +
             theme(legend.position = "none")
         
     })
@@ -81,10 +89,7 @@ server <- function(input, output) {
     output$distPlot <- renderPlot({
             PLOT()
     })
-    
-    output$tableSHOW <- renderTable({
-        final_df()
-    })
+
         
 }
 
