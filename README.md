@@ -11,4 +11,5 @@ Changing the value of the "selection" variable you can change the plotted figs.
 
 ## Example plot:  
 
-![]("outputs/days_since_100.png")
+![](outputs/days_since_100.png)
+

@@ -1,6 +1,6 @@
 # USING CODE FROM: 
-  # https://github.com/JonMinton/COVID-19
-  # https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b
+  # https://github.com/JonMinton/COVID-19 # @JonMinton
+  # https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b # @christoph_sax
 
 
 # Libraries ---------------------------------------------------------------
@@ -91,4 +91,5 @@ plot1 = DF_plot %>%
   theme(legend.position = "none")
 
 plot1
-# ggsave("outputs/days_since_100.png", plot1, height = 20, width = 20, units = "cm", dpi = 300)
+
+ggsave("outputs/days_since_100.png", plot1, height = 20, width = 20, units = "cm", dpi = 300)
