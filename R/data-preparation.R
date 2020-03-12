@@ -13,27 +13,50 @@ library(tidyr)
 library(scales)
 
 
+# Parameters ---------------------------------------------------------------
+
+data_source = "JH" #"JH" # OWID
+
+
+
 # Data prep ---------------------------------------------------------------
 
-# Data Repo Johns Hopkins CSSE (https://github.com/CSSEGISandData/COVID-19)
-url <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
-dta_raw <- read_csv(url, col_types = cols()) %>% select(-Lat, -Long)
+if (data_source == "JH") {
 
-selection <- c("Italy", "Iran", "Spain", "South Korea", "France", "Germany", "US", "Japan", "Mainland China")
+  # Data Repo Johns Hopkins CSSE (https://github.com/CSSEGISandData/COVID-19)
+  url <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
+  dta_raw <- read_csv(url, col_types = cols()) %>% 
+    select(-Lat, -Long, -`Province/State`) %>% 
+    rename(
+      # province = `Province/State`, 
+      country = `Country/Region`) %>% 
+    # tidy data
+    pivot_longer(c(-country), "time") %>%
+    mutate(time = as.Date(time, "%m/%d/%y"))
+  
+  
+} else if (data_source == "OWID") {
+  
+  # NOT SO UPDATED? 
+  
+  url = "http://cowid.netlify.com/data/full_data.csv"
+  dta_raw <- read_csv(url, col_types = cols()) %>% 
+    rename(country = location, 
+           value = total_cases,
+           time = date) %>% 
+    select(country, time, value)
+  
+}
+
+
 
 dta <<- dta_raw %>%
-  
-  # tidy data
-  rename(province = `Province/State`, country = `Country/Region`) %>%
-  pivot_longer(c(-province, -country), "time") %>%
-  mutate(time = as.Date(time, "%m/%d/%y")) %>%
   
   # rename some countries
   mutate(
     country = case_when(
-      country == "Iran (Islamic Republic of)" ~ "Iran",
-      country == "Hong Kong SAR"  ~ "Hong Kong",
-      country == "Republic of Korea" ~ "South Korea",
+      # country == "Iran (Islamic Republic of)" ~ "Iran",
+      country == "Korea, South" ~ "South Korea",
       TRUE ~ country
     )) %>% 
   
@@ -62,6 +85,3 @@ dta <<- dta_raw %>%
       case_when(
         value == max(value) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
         TRUE ~ "")) 
-
-
-
