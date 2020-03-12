@@ -9,6 +9,7 @@ library(ggrepel)
 library(readr)
 library(tidyr)
 library(scales)
+library(shinyWidgets)
 
 
 
@@ -43,19 +44,25 @@ ui <- fluidPage(
                 label = 'country',
                 choices = V1_alternatives,
                 multiple = TRUE, selectize = TRUE, width = 200, 
-                selected =  c("Italy", "Iran", "Spain", "South Korea", "France", "Germany", "US", "Japan", "Mainland China"))
+                selected =  c("China", "Denmark", "France", "Germany", "Italy", "Iran", "Japan", "South Korea", "Spain", "US")),
+    
+    shinyWidgets::switchInput(inputId = "log_scale", label = "Log scale", value = TRUE, size = "mini", width = '100%'),
+    
+    hr(),
+    
+    HTML(paste0("Using code from ",  
+                a(" @JonMinton", href="https://github.com/JonMinton/COVID-19"), " and ", 
+                a(" @christoph_sax", href="https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b"), 
+                " this repo shows a simple visualization using the ", 
+                a(" @JHUSystems Coronavirus data", href="https://github.com/CSSEGISandData/COVID-19"), "."))
+         
     ), 
 
                 
         # SHOW PLOT
         mainPanel(
-            p("Data last update: ", as.character(last_commit_time), "GMT"),
-            HTML(paste0("Using code from ",  
-                        a(" @JonMinton", href="https://github.com/JonMinton/COVID-19"), " and ", 
-                        a(" @christoph_sax", href="https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b"), 
-                        " this repo shows a simple visualization using the ", 
-                        a(" @JHUSystems Coronavirus data", href="https://github.com/CSSEGISandData/COVID-19"), ".",
-                        "<BR>See Github repo: ", a(" github.com/gorkang/2020-corona ", href="https://github.com/gorkang/2020-corona"))),
+            p(HTML(paste0(a("Data", href="https://github.com/CSSEGISandData/COVID-19"), " last update: ", as.character(last_commit_time), "GMT"))),
+            HTML(paste0("Github repo: ", a(" github.com/gorkang/2020-corona ", href="https://github.com/gorkang/2020-corona"))),
             hr(),
            plotOutput("distPlot", height = "700px", width = "100%")
         )
@@ -77,15 +84,10 @@ server <- function(input, output) {
     
     PLOT = reactive({
         
-        ggplot(data = final_df(), aes(x = days_after_100, y = value, color = country)) +
+        p_temp = ggplot(data = final_df(), aes(x = days_after_100, y = value, color = country)) +
             geom_line() + 
             geom_point() + 
             ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3) + #, segment.linetype = 5 
-            scale_y_log10(
-                labels = function(x) format(x, big.mark = ",", scientific = FALSE)
-                # breaks = scales::trans_breaks("log10", function(x) 10^x),
-                # labels = scales::trans_format("log10", scales::math_format(10^.x))
-                ) + 
             scale_x_continuous(breaks = seq(0, max(final_df()$value), 2)) +
             labs(
                 title = "Confirmed cases after first 100 cases",
@@ -96,6 +98,16 @@ server <- function(input, output) {
             ) +
             theme_minimal(base_size = 14) +
             theme(legend.position = "none")
+        
+        if (input$log_scale == TRUE) {
+            p_temp + 
+                scale_y_log10(labels = function(x) format(x, big.mark = ",", scientific = FALSE))
+        } else {
+            p_temp +
+                scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
+                labs(y = "Confirmed cases")
+        }
+            
         
     })
     
