@@ -83,5 +83,6 @@ dta <<- dta_raw %>%
   mutate(
     name_end = 
       case_when(
-        value == max(value) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
+        days_after_100 == max(days_after_100) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
         TRUE ~ "")) 
+

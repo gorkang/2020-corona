@@ -1,14 +1,15 @@
 
 # Libraries ---------------------------------------------------------------
 
-library(shiny)
-library(shinythemes)
+library(curl)
 library(dplyr)
 library(ggplot2)
 library(ggrepel)
 library(readr)
 library(tidyr)
 library(scales)
+library(shiny)
+library(shinythemes)
 library(shinyWidgets)
 
 
@@ -21,11 +22,19 @@ V1_alternatives = dta %>%
     filter(value > 100) %>% 
     distinct(country) %>% pull(country)
 
+top_countries = dta %>%
+    group_by(country) %>% 
+    filter(value == max(value), 
+           country != "Cruise Ship") %>% 
+    distinct(country, value) %>% 
+    ungroup() %>%
+    top_n(n = 10, wt = value) %>% 
+    pull(country)
+
+
 # Time last commit of source file
-curl::curl_download('https://api.github.com/repos/CSSEGISandData/COVID-19/commits?path=csse_covid_19_data%2Fcsse_covid_19_time_series%2Ftime_series_19-covid-Confirmed.csv&page=1&per_page=1', destfile = "temp.html")
-last_commit = jsonlite::read_json("temp.html") 
-date_last_commit_raw = last_commit[[1]]$commit$author$date
-last_commit_time = strptime(date_last_commit_raw, "%FT%T", tz = "GMT")
+source(here::here("R/fetch_last_update_data.R"))
+last_commit_time = fetch_last_update_data()$result
 
 
 # UI ----------------------------------------------------------------------
@@ -44,7 +53,9 @@ ui <- fluidPage(
                 label = 'country',
                 choices = V1_alternatives,
                 multiple = TRUE, selectize = TRUE, width = 200, 
-                selected =  c("China", "Denmark", "France", "Germany", "Italy", "Iran", "Japan", "South Korea", "Spain", "US")),
+                selected = c(top_countries, "United Kingdom", "Denmark") 
+                    # c("China", "Denmark", "France", "Germany", "Italy", "Iran", "Japan", "South Korea", "Spain", "US", "United Kingdom")
+                ),
     
     shinyWidgets::switchInput(inputId = "log_scale", label = "Log scale", value = TRUE, size = "mini", width = '100%'),
     
@@ -61,7 +72,8 @@ ui <- fluidPage(
                 
         # SHOW PLOT
         mainPanel(
-            p(HTML(paste0(a("Data", href="https://github.com/CSSEGISandData/COVID-19"), " last update: ", as.character(last_commit_time), "GMT"))),
+            p(HTML(paste0(a("Data", href="https://github.com/CSSEGISandData/COVID-19"), " updated on: ", as.character(last_commit_time), "GMT"))),
+            # p(HTML(paste0(a("Data", href="https://github.com/CSSEGISandData/COVID-19")))),
             HTML(paste0("Github repo: ", a(" github.com/gorkang/2020-corona ", href="https://github.com/gorkang/2020-corona"))),
             hr(),
            plotOutput("distPlot", height = "700px", width = "100%")
