@@ -17,6 +17,32 @@ library(shinyWidgets)
 # Data preparation --------------------------------------------------------
 
 source(here::here("R/data-preparation.R"))
+source(here::here("R/join_worldometers.R"))
+
+dta =  dta %>% mutate(source = "JHU") %>% 
+    bind_rows(table_countries %>% 
+                  mutate(source = "worldometers")) %>% 
+    arrange(time) %>%
+    group_by(country) %>%
+    mutate(days_after_100 = 
+               case_when(
+                   is.na(days_after_100) ~ as.integer(lag(days_after_100) + 1),
+                   TRUE ~ days_after_100),
+           diff = value - lag(value),
+           name_end = 
+               case_when(
+                   is.na(name_end) ~ "",
+                   TRUE ~ name_end)) %>% 
+    ungroup() %>%   # Create labels for last instance for each country
+    group_by(country) %>% 
+    mutate(
+        name_end = 
+            case_when(
+                days_after_100 == max(days_after_100) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
+                TRUE ~ "")) 
+
+
+
 
 V1_alternatives = dta %>%
     filter(value > 100) %>% 
@@ -29,6 +55,7 @@ top_countries = dta %>%
     distinct(country, value) %>% 
     ungroup() %>%
     top_n(n = 10, wt = value) %>% 
+    filter(!country %in% c("Total:", "China")) %>% 
     pull(country)
 
 
@@ -72,7 +99,9 @@ ui <- fluidPage(
                 
         # SHOW PLOT
         mainPanel(
-            p(HTML(paste0(a("Data", href="https://github.com/CSSEGISandData/COVID-19"), " updated on: ", as.character(last_commit_time), "GMT"))),
+            p(HTML(paste0(
+                a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19"), " updated on: ", as.character(last_commit_time), " GMT",
+                "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries"), ": ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT")), "GMT")),
             # p(HTML(paste0(a("Data", href="https://github.com/CSSEGISandData/COVID-19")))),
             HTML(paste0("Github repo: ", a(" github.com/gorkang/2020-corona ", href="https://github.com/gorkang/2020-corona"))),
             hr(),
@@ -98,7 +127,7 @@ server <- function(input, output) {
         
         p_temp = ggplot(data = final_df(), aes(x = days_after_100, y = value, color = country)) +
             geom_line() + 
-            geom_point() + 
+            geom_point(aes(size = source)) + 
             ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3) + #, segment.linetype = 5 
             scale_x_continuous(breaks = seq(0, max(final_df()$value), 2)) +
             labs(
@@ -106,7 +135,7 @@ server <- function(input, output) {
                 subtitle = "Arranged by number of days since 100 or more cases",
                 x = "Days after 100 confirmed cases",
                 y = "Confirmed cases (log scale)", 
-                caption = "Source: Johns Hopkins CSSE"
+                caption = paste0("Source: Johns Hopkins CSSE\nFinal big point: worldometers.info ")
             ) +
             theme_minimal(base_size = 14) +
             theme(legend.position = "none")
