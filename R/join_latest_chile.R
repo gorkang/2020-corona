@@ -6,7 +6,7 @@ filename_minsal = paste0(Sys.Date(), "-Casos-confirmados.pdf")
 url_minsal = paste0("https://www.minsal.cl/wp-content/uploads/", format(Sys.Date(), "%Y"), "/", format(Sys.Date(), "%m"), "/", filename_minsal)
 
 # Download only if we don't already have the file
-if (!filename_minsal %in% list.files(pattern = ".pdf")) download_html(url = url_minsal, file = filename)
+if (!filename_minsal %in% list.files(pattern = ".pdf")) download_html(url = url_minsal, file = filename_minsal)
 
 # Extract Total from table
 latest_chile = tabulizer::extract_tables(filename_minsal)[[1]] %>% tibble::as_tibble() %>% filter(V1 == "Total") %>% pull(V2) %>% as.numeric(.)

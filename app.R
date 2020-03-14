@@ -12,6 +12,7 @@ library(scales)
 library(shiny)
 library(shinythemes)
 library(shinyWidgets)
+library(tabulizer)
 
 
 
