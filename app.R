@@ -122,7 +122,8 @@ server <- function(input, output) {
             
             # If repeated values the same day, keep higher
             group_by(country, time) %>% 
-            top_n(n = 1, wt = value) %>% 
+            distinct(KEY = paste0(country, time, value), .keep_all = TRUE) %>% 
+            # top_n(n = 1, wt = value) %>% 
             ungroup() %>% 
         
             # re-adjust after filtering
