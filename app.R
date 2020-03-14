@@ -84,6 +84,10 @@ ui <- fluidPage(
                     # c("China", "Denmark", "France", "Germany", "Italy", "Iran", "Japan", "South Korea", "Spain", "US", "United Kingdom")
                 ),
     
+    sliderInput("growth", "Daily growth (%):",
+                min = 0, max = 100, value = 30
+    ),
+    
     shinyWidgets::switchInput(inputId = "log_scale", label = "Log scale", value = TRUE, size = "mini", width = '100%'),
     
     hr(),
@@ -91,8 +95,9 @@ ui <- fluidPage(
     HTML(paste0("Using code from ",  
                 a(" @JonMinton", href="https://github.com/JonMinton/COVID-19"), " and ", 
                 a(" @christoph_sax", href="https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b"), 
-                " this repo shows a simple visualization using the ", 
-                a(" @JHUSystems Coronavirus data", href="https://github.com/CSSEGISandData/COVID-19"), "."))
+                ", this repo shows a simple visualization using the ", 
+                a(" @JHUSystems Coronavirus data", href="https://github.com/CSSEGISandData/COVID-19"), ".",
+                "<BR>Growth line idea from" , a(" @nicebread303", href="https://github.com/nicebread/corona")))
          
     ), 
 
@@ -122,6 +127,11 @@ server <- function(input, output) {
             filter(country %in% !! input$countries_plot)
     })
     
+    growth_line = reactive({
+        
+        tibble(value = cumprod(c(100, rep(paste0(1, ".", sprintf("%02d", as.numeric(input$growth))), max(final_df()$days_after_100)))),
+               days_after_100 = 0:max(final_df()$days_after_100))
+    })
     
     PLOT = reactive({
         
@@ -141,14 +151,25 @@ server <- function(input, output) {
             theme(legend.position = "none")
         
         if (input$log_scale == TRUE) {
-            p_temp + 
-                scale_y_log10(labels = function(x) format(x, big.mark = ",", scientific = FALSE))
+            p_temp2 = p_temp +
+                scale_y_log10(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) 
+                
         } else {
-            p_temp +
+            p_temp2 = p_temp +
                 scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
                 labs(y = "Confirmed cases")
         }
             
+        p_temp2 + 
+            geom_line(data = growth_line(),
+                      aes(days_after_100, value),
+                      linetype = "dotted", inherit.aes = FALSE) +
+            annotate(geom = "text",
+                     x = max(final_df()$days_after_100) - 1, 
+                     y = max(growth_line()$value), 
+                     vjust = 1, 
+                     hjust = 1, 
+                     label = paste0(input$growth, "% growth"))
         
     })
     
