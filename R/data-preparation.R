@@ -2,6 +2,7 @@
 # https://github.com/JonMinton/COVID-19 # @JonMinton
 # https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b # @christoph_sax
 
+# min_n = 100
 
 # Libraries ---------------------------------------------------------------
 
@@ -74,11 +75,36 @@ dta <<- dta_raw %>%
   filter(!is.na(diff)) %>%
   arrange(country, time) %>% 
   
-  filter(value >= 100) %>%
-  group_by(country) %>% 
-  mutate(days_after_100 = 0:(length(country)-1)) %>% 
-  
+  # filter(value >= min_n) %>%
+  group_by(country) %>%
+  mutate(days_after_100 = 0:(length(country)-1)) %>%
+
   # Create labels for last instance for each country
+  group_by(country) %>%
+  mutate(
+    name_end =
+      case_when(
+        days_after_100 == max(days_after_100) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
+        TRUE ~ ""))
+
+
+source(here::here("R/join_worldometers.R"))
+
+dta =  dta %>% mutate(source = "JHU") %>% 
+  bind_rows(table_countries %>% 
+              mutate(source = "worldometers")) %>% 
+  arrange(time) %>%
+  group_by(country) %>%
+  mutate(days_after_100 = 
+           case_when(
+             is.na(days_after_100) ~ as.integer(lag(days_after_100) + 1),
+             TRUE ~ days_after_100),
+         diff = value - lag(value),
+         name_end = 
+           case_when(
+             is.na(name_end) ~ "",
+             TRUE ~ name_end)) %>% 
+  ungroup() %>%   # Create labels for last instance for each country
   group_by(country) %>% 
   mutate(
     name_end = 
@@ -86,3 +112,19 @@ dta <<- dta_raw %>%
         days_after_100 == max(days_after_100) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
         TRUE ~ "")) 
 
+
+
+
+V1_alternatives = dta %>%
+  filter(value > 10) %>% 
+  distinct(country) %>% pull(country)
+
+top_countries = dta %>%
+  group_by(country) %>% 
+  filter(value == max(value), 
+         country != "Cruise Ship") %>% 
+  distinct(country, value) %>% 
+  ungroup() %>%
+  top_n(n = 10, wt = value) %>% 
+  filter(!country %in% c("Total:", "China")) %>% 
+  pull(country)

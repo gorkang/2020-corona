@@ -16,47 +16,9 @@ library(shinyWidgets)
 
 # Data preparation --------------------------------------------------------
 
+# min_n = 100
+
 source(here::here("R/data-preparation.R"))
-source(here::here("R/join_worldometers.R"))
-
-dta =  dta %>% mutate(source = "JHU") %>% 
-    bind_rows(table_countries %>% 
-                  mutate(source = "worldometers")) %>% 
-    arrange(time) %>%
-    group_by(country) %>%
-    mutate(days_after_100 = 
-               case_when(
-                   is.na(days_after_100) ~ as.integer(lag(days_after_100) + 1),
-                   TRUE ~ days_after_100),
-           diff = value - lag(value),
-           name_end = 
-               case_when(
-                   is.na(name_end) ~ "",
-                   TRUE ~ name_end)) %>% 
-    ungroup() %>%   # Create labels for last instance for each country
-    group_by(country) %>% 
-    mutate(
-        name_end = 
-            case_when(
-                days_after_100 == max(days_after_100) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
-                TRUE ~ "")) 
-
-
-
-
-V1_alternatives = dta %>%
-    filter(value > 100) %>% 
-    distinct(country) %>% pull(country)
-
-top_countries = dta %>%
-    group_by(country) %>% 
-    filter(value == max(value), 
-           country != "Cruise Ship") %>% 
-    distinct(country, value) %>% 
-    ungroup() %>%
-    top_n(n = 10, wt = value) %>% 
-    filter(!country %in% c("Total:", "China")) %>% 
-    pull(country)
 
 
 # Time last commit of source file
@@ -84,6 +46,10 @@ ui <- fluidPage(
                     # c("China", "Denmark", "France", "Germany", "Italy", "Iran", "Japan", "South Korea", "Spain", "US", "United Kingdom")
                 ),
     
+    sliderInput("min_n", "Min number of cases:",
+                min = 10, max = 200, value = 100
+    ),
+    
     sliderInput("growth", "Daily growth (%):",
                 min = 0, max = 100, value = 30
     ),
@@ -97,7 +63,7 @@ ui <- fluidPage(
                 a(" @christoph_sax", href="https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b"), 
                 ", this repo shows a simple visualization using the ", 
                 a(" @JHUSystems Coronavirus data", href="https://github.com/CSSEGISandData/COVID-19"), ".",
-                "<BR>Growth line idea from" , a(" @nicebread303", href="https://github.com/nicebread/corona")))
+                "<BR>Growth line and Min number of cases ideas from" , a(" @nicebread303", href="https://github.com/nicebread/corona")))
          
     ), 
 
@@ -124,12 +90,26 @@ server <- function(input, output) {
         
         dta %>%
             # selection
-            filter(country %in% !! input$countries_plot)
+            filter(country %in% !! input$countries_plot) %>% 
+            # filter
+            filter(value >= input$min_n) %>% 
+            # re-adjust after filtering
+            group_by(country) %>%
+            mutate(days_after_100 = 0:(length(country) - 1)) %>% 
+            group_by(country) %>%
+            mutate(
+                name_end =
+                    case_when(
+                        days_after_100 == max(days_after_100) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
+                        TRUE ~ ""))
+
+            
     })
     
     growth_line = reactive({
         
-        tibble(value = cumprod(c(100, rep(paste0(1, ".", sprintf("%02d", as.numeric(input$growth))), max(final_df()$days_after_100)))),
+        # tibble(value = cumprod(c(input$min_n, rep(paste0(1, ".", sprintf("%02d", as.numeric(input$growth))), max(final_df()$days_after_100)))),
+        tibble(value = cumprod(c(input$min_n, rep((100 + input$growth)/100, max(final_df()$days_after_100)))),
                days_after_100 = 0:max(final_df()$days_after_100))
     })
     
@@ -141,9 +121,9 @@ server <- function(input, output) {
             ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3) + #, segment.linetype = 5 
             scale_x_continuous(breaks = seq(0, max(final_df()$value), 2)) +
             labs(
-                title = "Confirmed cases after first 100 cases",
-                subtitle = "Arranged by number of days since 100 or more cases",
-                x = "Days after 100 confirmed cases",
+                title = paste0("Confirmed cases after first ",  input$min_n ," cases"),
+                subtitle = paste0("Arranged by number of days since ",  input$min_n ," or more cases"),
+                x = paste0("Days after ",  input$min_n ," confirmed cases"),
                 y = "Confirmed cases (log scale)", 
                 caption = paste0("Source: Johns Hopkins CSSE\nFinal big point: worldometers.info ")
             ) +
