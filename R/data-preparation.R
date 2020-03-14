@@ -127,4 +127,5 @@ top_countries = dta %>%
   ungroup() %>%
   top_n(n = 10, wt = value) %>% 
   filter(!country %in% c("Total:", "China")) %>% 
+  arrange(country) %>% 
   pull(country)
