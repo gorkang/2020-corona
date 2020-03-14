@@ -1,10 +1,11 @@
 
 # Libraries ---------------------------------------------------------------
 
-library(curl)
+# library(curl)
 library(dplyr)
 library(ggplot2)
 library(ggrepel)
+library(httr)
 library(readr)
 library(tidyr)
 library(scales)
@@ -19,6 +20,7 @@ library(shinyWidgets)
 # min_n = 100
 
 source(here::here("R/data-preparation.R"))
+source(here::here("R/join_latest_chile.R"))
 
 
 # Time last commit of source file
@@ -28,7 +30,9 @@ last_commit_time = fetch_last_update_data()$result
 
 # UI ----------------------------------------------------------------------
 
-ui <- fluidPage(
+ui <- 
+    function(request) {
+        fluidPage(
 
     titlePanel("2020 - Coronavirus"),
     theme = shinytheme("flatly"),
@@ -37,24 +41,20 @@ ui <- fluidPage(
         sidebarPanel(
             width = 2,
 
-    # Sidebar with a slider input for number of bins 
     selectInput(inputId = 'countries_plot', 
                 label = 'country',
                 choices = V1_alternatives,
                 multiple = TRUE, selectize = TRUE, width = 200, 
-                selected = c(top_countries, "United Kingdom", "Denmark") 
-                    # c("China", "Denmark", "France", "Germany", "Italy", "Iran", "Japan", "South Korea", "Spain", "US", "United Kingdom")
-                ),
+                selected = c(top_countries, "United Kingdom", "Denmark", "Australia")),
     
     sliderInput("min_n", "Min number of cases:",
-                min = 10, max = 200, value = 100
-    ),
+                min = 10, max = 200, value = 100),
     
     sliderInput("growth", "Daily growth (%):",
-                min = 0, max = 100, value = 30
-    ),
+                min = 0, max = 100, value = 30),
     
-    shinyWidgets::switchInput(inputId = "log_scale", label = "Log scale", value = TRUE, size = "mini", width = '100%'),
+    shinyWidgets::switchInput(inputId = "log_scale", label = "Log scale", 
+                              value = TRUE, size = "mini", width = '100%'),
     
     hr(),
     
@@ -63,8 +63,11 @@ ui <- fluidPage(
                 a(" @christoph_sax", href="https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b"), 
                 ", this repo shows a simple visualization using the ", 
                 a(" @JHUSystems Coronavirus data", href="https://github.com/CSSEGISandData/COVID-19"), ".",
-                "<BR>Growth line and Min number of cases ideas from" , a(" @nicebread303", href="https://github.com/nicebread/corona")))
-         
+                "<BR>Growth line and Min number of cases ideas from" , a(" @nicebread303", href="https://github.com/nicebread/corona"))),
+    
+    HTML("<BR><BR>"),
+    bookmarkButton(label = "Get URL")
+    
     ), 
 
                 
@@ -72,15 +75,37 @@ ui <- fluidPage(
         mainPanel(
             p(HTML(paste0(
                 a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19"), " updated on: ", as.character(last_commit_time), " GMT",
-                "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries"), ": ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT")), "GMT")),
+                "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries"), ": ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT",
+                "<BR>Chilean latest data: ", a("minsal.cl", href="https://www.minsal.cl/nuevo-coronavirus-2019-ncov/casos-confirmados-en-chile-covid-19/"), ": ", gsub("-Casos-confirmados.pdf", "", filename_minsal) ))),
             # p(HTML(paste0(a("Data", href="https://github.com/CSSEGISandData/COVID-19")))),
             HTML(paste0("Github repo: ", a(" github.com/gorkang/2020-corona ", href="https://github.com/gorkang/2020-corona"))),
             hr(),
-           plotOutput("distPlot", height = "700px", width = "100%")
+           plotOutput("distPlot", height = "700px", width = "100%"),
+           
+           hr(),
+           
+           HTML(
+               paste(
+                   h3("Data shown in plot"),
+                   
+                   a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19"), 
+                        " updated on: ", as.character(last_commit_time), " GMT",
+                   "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries"), ": ", 
+                        as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT",
+                   "<BR>Chilean latest data: ", a("minsal.cl", href="https://www.minsal.cl/nuevo-coronavirus-2019-ncov/casos-confirmados-en-chile-covid-19/")
+                   )
+           ),
+           hr(),
+           
+           div(
+               DT::dataTableOutput("mytable", width = "100%"), 
+               align = "center"
+           )
+           
         )
     )
 )
-
+}
 
 # Server ------------------------------------------------------------------
 
@@ -93,6 +118,12 @@ server <- function(input, output) {
             filter(country %in% !! input$countries_plot) %>% 
             # filter
             filter(value >= input$min_n) %>% 
+            
+            # If repeated values the same day, keep higher
+            group_by(country, time) %>% 
+            top_n(n = 1, wt = value) %>% 
+            ungroup() %>% 
+        
             # re-adjust after filtering
             group_by(country) %>%
             mutate(days_after_100 = 0:(length(country) - 1)) %>% 
@@ -125,7 +156,7 @@ server <- function(input, output) {
                 subtitle = paste0("Arranged by number of days since ",  input$min_n ," or more cases"),
                 x = paste0("Days after ",  input$min_n ," confirmed cases"),
                 y = "Confirmed cases (log scale)", 
-                caption = paste0("Source: Johns Hopkins CSSE\nFinal big point: worldometers.info ")
+                caption = paste0("Source: Johns Hopkins CSSE\nFinal big point: worldometers.info\nChilean latest: minsal.cl ")
             ) +
             theme_minimal(base_size = 14) +
             theme(legend.position = "none")
@@ -159,7 +190,18 @@ server <- function(input, output) {
     })
 
         
+    # Show table
+    output$mytable = DT::renderDataTable({
+        DT::datatable(final_df() %>%
+                          arrange(country, desc(time)) %>% 
+                          select(-name_end) %>% 
+                          rename_(.dots=setNames("days_after_100", paste0("days_after_", input$min_n))), 
+                      filter = 'top', rownames = FALSE, 
+                      options = list(pageLength = 10, 
+                                     dom = 'ltipr',
+                                     autoWidth = FALSE))
+    })
 }
 
 # Run the application 
-shinyApp(ui = ui, server = server)
+shinyApp(ui = ui, server = server, enableBookmarking = "url")
