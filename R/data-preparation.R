@@ -1,4 +1,5 @@
-
+data_preparation <- function(data_source = "JH", cases_deaths = "cases") {
+  
 # Libraries ---------------------------------------------------------------
 
 library(dplyr)
@@ -11,9 +12,8 @@ library(scales)
 
 # Parameters ---------------------------------------------------------------
 
-data_source = "JH" #"JH" # OWID
+# data_source = "JH" #"JH" # OWID
 
-cases_deaths = "cases" #cases deaths
 
 # Data prep ---------------------------------------------------------------
 
@@ -85,9 +85,9 @@ dta <<- dta_raw %>%
         TRUE ~ ""))
 
 
-source(here::here("R/join_worldometers.R"))
+source(here::here("R/join_worldometers.R"), local = TRUE)
 
-dta =  dta %>% mutate(source = "JHU") %>% 
+dta <<-  dta %>% mutate(source = "JHU") %>% 
   bind_rows(table_countries %>% 
               mutate(source = "worldometers")) %>% 
   arrange(time) %>%
@@ -112,11 +112,11 @@ dta =  dta %>% mutate(source = "JHU") %>%
 
 
 
-V1_alternatives = dta %>%
+V1_alternatives <<- dta %>%
   filter(value > 10) %>% 
   distinct(country) %>% pull(country)
 
-top_countries = dta %>%
+top_countries <<- dta %>%
   group_by(country) %>% 
   filter(value == max(value), 
          country != "Cruise Ship") %>% 
@@ -126,3 +126,5 @@ top_countries = dta %>%
   filter(!country %in% c("Total:", "China")) %>% 
   arrange(country) %>% 
   pull(country)
+
+}

@@ -18,11 +18,15 @@ library(tabulizer)
 
 # Data preparation --------------------------------------------------------
 
+cases_deaths = "cases" #cases deaths
+
+source(here::here("R/fetch_last_update_data.R"))
 source(here::here("R/data-preparation.R"))
-source(here::here("R/join_latest_chile.R"))
+# source(here::here("R/join_latest_chile.R"))
+
+data_preparation()
 
 # Time last commit of source file
-source(here::here("R/fetch_last_update_data.R"))
 last_commit_time = fetch_last_update_data()$result
 
 
@@ -45,7 +49,12 @@ ui <-
                 multiple = TRUE, selectize = TRUE, width = 200, 
                 selected = c(top_countries, "United Kingdom", "Denmark", "Australia")),
     
-    sliderInput("min_n", "Min number of cases:",
+    selectInput(
+        inputId = "cases_deaths", label = "Cases or deaths", selected = "cases", 
+        choices = c("cases", "deaths")),
+    
+    
+    sliderInput("min_n", paste0("Minimum cases/deaths:"),
                 min = 10, max = 200, value = 100),
     
     sliderInput("growth", "Daily growth (%):",
@@ -74,9 +83,10 @@ ui <-
             p(HTML(
                 paste0(
                     a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19"), " updated on: ", as.character(last_commit_time), " GMT",
-                    "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries"), ": ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT",
-                    "<BR>Chilean latest data: ", a("minsal.cl", href="https://www.minsal.cl/nuevo-coronavirus-2019-ncov/casos-confirmados-en-chile-covid-19/"), ": ", gsub("-Casos-confirmados.pdf", "", filename_minsal) 
-                ))),
+                    "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries"), ": ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT")
+                # "<BR>Chilean latest data: ", a("minsal.cl", href="https://www.minsal.cl/nuevo-coronavirus-2019-ncov/casos-confirmados-en-chile-covid-19/"), ": ", gsub("-Casos-confirmados.pdf", "", "filename_minsal")
+                )
+              ),
             HTML(paste0("Github repo: ", a(" github.com/gorkang/2020-corona ", href="https://github.com/gorkang/2020-corona"))),
             hr(),
            plotOutput("distPlot", height = "700px", width = "100%"),
@@ -90,8 +100,8 @@ ui <-
                    a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19"), 
                         " updated on: ", as.character(last_commit_time), " GMT",
                    "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries"), ": ", 
-                        as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT",
-                   "<BR>Chilean latest data: ", a("minsal.cl", href="https://www.minsal.cl/nuevo-coronavirus-2019-ncov/casos-confirmados-en-chile-covid-19/")
+                        as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT"
+                   # "<BR>Chilean latest data: ", a("minsal.cl", href="https://www.minsal.cl/nuevo-coronavirus-2019-ncov/casos-confirmados-en-chile-covid-19/")
                    )
            ),
            hr(),
@@ -111,6 +121,16 @@ ui <-
 server <- function(input, output) {
 
     final_df = reactive({ 
+
+        # Run data preparation foe either cases or deaths
+        if (input$cases_deaths == "deaths") {
+            message(input$cases_deaths)
+            data_preparation(cases_deaths = input$cases_deaths)
+        } else if (input$cases_deaths == "cases") {
+            message(input$cases_deaths)
+            data_preparation(cases_deaths = input$cases_deaths)
+        }
+        
         
         dta %>%
             # selection
@@ -153,10 +173,10 @@ server <- function(input, output) {
             ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3) + #, segment.linetype = 5 
             scale_x_continuous(breaks = seq(0, max(final_df()$value), 2)) +
             labs(
-                title = paste0("Confirmed cases after first ",  input$min_n ," cases"),
-                subtitle = paste0("Arranged by number of days since ",  input$min_n ," or more cases"),
-                x = paste0("Days after ",  input$min_n ," confirmed cases"),
-                y = "Confirmed cases (log scale)", 
+                title = paste0("Confirmed ", input$cases_deaths ,""),
+                subtitle = paste0("Arranged by number of days since ",  input$min_n ," or more ", input$cases_deaths),
+                x = paste0("Days after ",  input$min_n ," confirmed ", input$cases_deaths),
+                y = paste0("Confirmed ", input$cases_deaths, " (log scale)"), 
                 caption = paste0("Source: Johns Hopkins CSSE\nFinal big point: worldometers.info\nChilean latest: minsal.cl ")
             ) +
             theme_minimal(base_size = 14) +
@@ -169,7 +189,7 @@ server <- function(input, output) {
         } else {
             p_temp2 = p_temp +
                 scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
-                labs(y = "Confirmed cases")
+                labs(y = paste0("Confirmed ", input$cases_deaths))
         }
             
         p_temp2 + 

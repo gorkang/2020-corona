@@ -4,7 +4,7 @@ url = "https://www.worldometers.info/coronavirus/#countries"
 raw_web = read_html(url)  
 table_countries_raw = html_table(raw_web)[[1]]
 
-time_worldometer = stringr::str_extract(string = html_text(raw_web),
+time_worldometer <<- stringr::str_extract(string = html_text(raw_web),
                                         pattern = '\\w+\\s\\d+(st)?(nd)?(rd)?(th)?,\\s+\\d+, \\d+:\\d+ GMT')
 
 # Select variable to use
