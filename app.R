@@ -206,4 +206,4 @@ server <- function(input, output) {
 }
 
 # Run the application 
-shinyApp(ui = ui, server = server, enableBookmarking = "server")
+shinyApp(ui = ui, server = server, enableBookmarking = "url") # Not woking yet in shinyapps.io :( Error bookmarking state: This server is not configured for saving sessions to disk.

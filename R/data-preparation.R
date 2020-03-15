@@ -1,8 +1,3 @@
-# USING CODE FROM: 
-# https://github.com/JonMinton/COVID-19 # @JonMinton
-# https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b # @christoph_sax
-
-# min_n = 100
 
 # Libraries ---------------------------------------------------------------
 
@@ -18,7 +13,7 @@ library(scales)
 
 data_source = "JH" #"JH" # OWID
 
-
+cases_deaths = "cases" #cases deaths
 
 # Data prep ---------------------------------------------------------------
 
@@ -26,6 +21,8 @@ if (data_source == "JH") {
 
   # Data Repo Johns Hopkins CSSE (https://github.com/CSSEGISandData/COVID-19)
   url <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
+  if (cases_deaths == "deaths") url = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv"
+  
   dta_raw <- read_csv(url, col_types = cols()) %>% 
     select(-Lat, -Long, -`Province/State`) %>% 
     rename(
