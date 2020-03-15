@@ -20,7 +20,7 @@ url_minsal = paste0("https://www.minsal.cl/wp-content/uploads/", format(Sys.Date
 if (!filename_minsal %in% list.files(pattern = ".pdf")) minsal_downloaded = download_html_safely(url = url_minsal, file = filename_minsal)
 
 # If a download was succesful, process file and integrate in main df
-if (!is.null(minsal_downloaded$result) ) {
+if (filename_minsal %in% list.files(pattern = ".pdf") | !is.null(minsal_downloaded$result) ) {
 
   # Extract Total from table
   latest_chile = tabulizer::extract_tables(filename_minsal)[[1]] %>% tibble::as_tibble() %>% filter(V1 == "Total") %>% pull(V2) %>% as.numeric(.)
