@@ -18,11 +18,8 @@ library(tabulizer)
 
 # Data preparation --------------------------------------------------------
 
-# min_n = 100
-
 source(here::here("R/data-preparation.R"))
 source(here::here("R/join_latest_chile.R"))
-
 
 # Time last commit of source file
 source(here::here("R/fetch_last_update_data.R"))
@@ -74,11 +71,12 @@ ui <-
                 
         # SHOW PLOT
         mainPanel(
-            p(HTML(paste0(
-                a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19"), " updated on: ", as.character(last_commit_time), " GMT",
-                "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries"), ": ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT",
-                "<BR>Chilean latest data: ", a("minsal.cl", href="https://www.minsal.cl/nuevo-coronavirus-2019-ncov/casos-confirmados-en-chile-covid-19/"), ": ", gsub("-Casos-confirmados.pdf", "", filename_minsal) ))),
-            # p(HTML(paste0(a("Data", href="https://github.com/CSSEGISandData/COVID-19")))),
+            p(HTML(
+                paste0(
+                    a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19"), " updated on: ", as.character(last_commit_time), " GMT",
+                    "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries"), ": ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT",
+                    "<BR>Chilean latest data: ", a("minsal.cl", href="https://www.minsal.cl/nuevo-coronavirus-2019-ncov/casos-confirmados-en-chile-covid-19/"), ": ", gsub("-Casos-confirmados.pdf", "", filename_minsal) 
+                ))),
             HTML(paste0("Github repo: ", a(" github.com/gorkang/2020-corona ", href="https://github.com/gorkang/2020-corona"))),
             hr(),
            plotOutput("distPlot", height = "700px", width = "100%"),
@@ -123,6 +121,7 @@ server <- function(input, output) {
             # If repeated values the same day, keep higher
             group_by(country, time) %>% 
             distinct(KEY = paste0(country, time, value), .keep_all = TRUE) %>% 
+            select(-KEY) %>% 
             # top_n(n = 1, wt = value) %>% 
             ungroup() %>% 
         
@@ -195,10 +194,11 @@ server <- function(input, output) {
     # Show table
     output$mytable = DT::renderDataTable({
         DT::datatable(final_df() %>%
-                          arrange(country, desc(time)) %>% 
+                          arrange(desc(time), country) %>% 
                           select(-name_end) %>% 
                           rename_(.dots=setNames("days_after_100", paste0("days_after_", input$min_n))), 
-                      filter = 'top', rownames = FALSE, 
+                      filter = 'top',
+                      rownames = FALSE, 
                       options = list(pageLength = 10, 
                                      dom = 'ltipr',
                                      autoWidth = FALSE))
@@ -206,4 +206,4 @@ server <- function(input, output) {
 }
 
 # Run the application 
-shinyApp(ui = ui, server = server, enableBookmarking = "url")
+shinyApp(ui = ui, server = server, enableBookmarking = "server")
