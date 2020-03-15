@@ -73,7 +73,10 @@ ui <-
                 "<BR>Growth line and Min number of cases ideas from" , a(" @nicebread303", href="https://github.com/nicebread/corona"))),
     
     HTML("<BR><BR>"),
-    bookmarkButton(label = "Get URL")
+    bookmarkButton(label = "Get URL"),
+    hr(),
+    
+    HTML(paste0("By ", a(" @gorkang", href="https://twitter.com/gorkang", target = "_blank")))
     
     ), 
 
