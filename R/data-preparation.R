@@ -2,7 +2,7 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
 
   # Data preparation --------------------------------------------------------
   
-  dta_raw = read_csv("raw_data.csv", 
+  dta_raw = read_csv(here::here("outputs/raw_data.csv"), 
                      col_types = 
                        cols(
                          country = col_character(),
@@ -15,10 +15,10 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
                        ))
   
   dta <<- dta_raw %>%
+    # rename
+    rename(value = paste0(cases_deaths, "_sum")) %>% 
+    rename(diff = paste0(cases_deaths, "_diff")) %>% 
     
-    rename_(.dots = setNames(paste0(cases_deaths, "_sum"), "value")) %>% 
-    rename_(.dots = setNames(paste0(cases_deaths, "_diff"), "diff")) %>% 
-    # filter(value >= min_n) %>%
     group_by(country) %>%
     mutate(days_after_100 = 0:(length(country)-1)) %>%
 

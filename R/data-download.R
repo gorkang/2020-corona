@@ -1,15 +1,32 @@
 data_download <- function(cases_deaths = "cases") {
 
+  # DEBUG
+  # source(here::here("R/fetch_worldometers_safely.R"), local = TRUE)
+  
+  
   # Data preparation --------------------------------------------------------
 
   # Download worldometers
-  source(here::here("R/join_worldometers.R"), local = TRUE)
-
+  fetch_worldometers_safely()
+  
+  table_countries = read_csv(here::here("outputs/raw_data_worldometers.csv"), 
+           col_types = 
+               cols(
+                 country = col_character(),
+                 time = col_date(format = ""),
+                 cases_sum = col_double(),
+                 deaths_sum = col_double()
+               ))
+    
   # Data Repo Johns Hopkins CSSE (https://github.com/CSSEGISandData/COVID-19)
   url_cases <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
-  url_deaths = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv"
+  download_or_load("outputs/url_cases.csv", URL = url_cases)
   
-  dta_raw_cases <- read_csv(url_cases, col_types = cols()) %>% 
+  url_deaths = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv"
+  download_or_load("outputs/url_deaths.csv", URL = url_deaths)
+  
+  
+  dta_raw_cases <- read_csv("outputs/url_cases.csv", col_types = cols()) %>% 
     select(-Lat, -Long, -`Province/State`) %>% 
     rename(country = `Country/Region`) %>% 
     # tidy data
@@ -21,7 +38,7 @@ data_download <- function(cases_deaths = "cases") {
     summarize(cases_sum = sum(cases)) %>%
     ungroup() 
 
-  dta_raw_deaths <- read_csv(url_deaths, col_types = cols()) %>% 
+  dta_raw_deaths <- read_csv("outputs/url_deaths.csv", col_types = cols()) %>% 
     select(-Lat, -Long, -`Province/State`) %>% 
     rename(country = `Country/Region`) %>% 
     # tidy data
@@ -46,8 +63,6 @@ data_download <- function(cases_deaths = "cases") {
         TRUE ~ country
       )) %>% 
     
-
-    
     # calculate new infections
     arrange(time) %>%
     group_by(country) %>%
@@ -64,6 +79,6 @@ data_download <- function(cases_deaths = "cases") {
     # replace_na(0)
     
     # write_data
-    write_csv("raw_data.csv")
+    write_csv("outputs/raw_data.csv")
 
 }
