@@ -2,7 +2,7 @@
 
 Repo with code for a shiny app to be able to interactively compare countries, etc. using the @JHUSystems + worldometers.info Coronavirus data.
 
-![](outputs/Peek 2020-03-15 18-23.gif)
+![](intro.gif)
 
 
 
