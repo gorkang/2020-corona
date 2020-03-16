@@ -43,10 +43,8 @@ ui <-
     function(request) {
         fluidPage(
 
-    titlePanel(
-        a("2020 - Coronavirus", href="https://gorkang.shinyapps.io/2020-corona/")
-        
-    ),
+    titlePanel(windowTitle = "Coronavirus tracker",
+               title = HTML("<a href=\"https://gorkang.shinyapps.io/2020-corona/\">Coronavirus tracker</a>")),
     theme = shinytheme("flatly"),
     
     sidebarLayout(
