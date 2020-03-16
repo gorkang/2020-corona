@@ -7,6 +7,7 @@ library(ggplot2)
 library(ggrepel)
 library(httr)
 library(readr)
+library(rvest)
 library(tidyr)
 library(scales)
 library(shiny)
@@ -21,9 +22,12 @@ library(tabulizer)
 cases_deaths = "cases" #cases deaths
 
 source(here::here("R/fetch_last_update_data.R"))
+
+source(here::here("R/data-download.R"))
 source(here::here("R/data-preparation.R"))
 # source(here::here("R/join_latest_chile.R"))
 
+data_download()
 data_preparation()
 
 # Time last commit of source file
@@ -150,7 +154,12 @@ server <- function(input, output) {
         
             # re-adjust after filtering
             group_by(country) %>%
-            mutate(days_after_100 = 0:(length(country) - 1)) %>% 
+            mutate(days_after_100 = as.numeric(0:(length(country) - 1)),
+                   days_after_100 = 
+                       case_when(
+                           source == "worldometers" ~ lag(days_after_100) + .1,
+                           TRUE ~ days_after_100
+                       )) %>% 
             group_by(country) %>%
             mutate(
                 name_end =
@@ -163,7 +172,6 @@ server <- function(input, output) {
     
     growth_line = reactive({
         
-        # tibble(value = cumprod(c(input$min_n, rep(paste0(1, ".", sprintf("%02d", as.numeric(input$growth))), max(final_df()$days_after_100)))),
         tibble(value = cumprod(c(input$min_n, rep((100 + input$growth)/100, max(final_df()$days_after_100)))),
                days_after_100 = 0:max(final_df()$days_after_100))
     })
