@@ -67,8 +67,11 @@ ui <-
         choices = c("cases", "deaths")),
     
     
-    sliderInput("min_n", paste0("Minimum cases/deaths:"),
-                min = 1, max = 200, value = 100),
+    # sliderInput("min_n", paste0("Minimum cases/deaths:"),
+    #             min = 1, max = 200, value = 100),
+    
+    uiOutput('min_n2'),
+    
     
     sliderInput("growth", "Daily growth (%):",
                 min = 0, max = 100, value = 30),
@@ -153,6 +156,19 @@ server <- function(input, output) {
         selectInput('highlight', 'highlight country', choices = outVar(),
                     selected = "None")
     })
+    
+    
+    output$min_n2 = renderUI({
+        
+        if (input$cases_deaths == "cases") {
+            sliderInput('min_n', paste0("Minimum cases/deaths:"),
+                    min = 1, max = 200, value = 100)
+        } else {
+            sliderInput('min_n', paste0("Minimum cases/deaths:"),
+                        min = 1, max = 200, value = 10)
+        }
+    })
+
     
     final_df = reactive({ 
 
