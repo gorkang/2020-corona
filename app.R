@@ -66,10 +66,7 @@ ui <-
         inputId = "cases_deaths", label = "Cases or deaths", selected = "cases", 
         choices = c("cases", "deaths")),
     
-    
-    # sliderInput("min_n", paste0("Minimum cases/deaths:"),
-    #             min = 1, max = 200, value = 100),
-    
+    # Dynamically change with cases_deaths
     uiOutput('min_n2'),
     
     
@@ -80,7 +77,6 @@ ui <-
                               value = TRUE, size = "mini", width = '100%'),
     
     hr(),
-    # HTML("<BR>"),
     bookmarkButton(label = "Get URL"),
     hr(),
     
@@ -105,7 +101,6 @@ ui <-
                 paste0(
                     a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19", target = "_blank"), " updated on: ", as.character(last_commit_time), " GMT",
                     "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), ": ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT")
-                # "<BR>Chilean latest data: ", a("minsal.cl", href="https://www.minsal.cl/nuevo-coronavirus-2019-ncov/casos-confirmados-en-chile-covid-19/"), ": ", gsub("-Casos-confirmados.pdf", "", "filename_minsal")
                 )
               ),
             HTML(paste0("Github repo: ", a(" github.com/gorkang/2020-corona ", href="https://github.com/gorkang/2020-corona", target = "_blank"))),
@@ -122,7 +117,6 @@ ui <-
                         " updated on: ", as.character(last_commit_time), " GMT",
                    "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries"), ": ", 
                         as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT"
-                   # "<BR>Chilean latest data: ", a("minsal.cl", href="https://www.minsal.cl/nuevo-coronavirus-2019-ncov/casos-confirmados-en-chile-covid-19/")
                    )
            ),
            hr(),
@@ -161,10 +155,10 @@ server <- function(input, output) {
     output$min_n2 = renderUI({
         
         if (input$cases_deaths == "cases") {
-            sliderInput('min_n', paste0("Minimum cases/deaths:"),
+            sliderInput('min_n', paste0("Minimum cases:"),
                     min = 1, max = 200, value = 100)
         } else {
-            sliderInput('min_n', paste0("Minimum cases/deaths:"),
+            sliderInput('min_n', paste0("Minimum deaths:"),
                         min = 1, max = 200, value = 10)
         }
     })
