@@ -284,7 +284,7 @@ server <- function(input, output) {
     output$mytable = DT::renderDataTable({
         DT::datatable(final_df() %>%
                           arrange(desc(time), country) %>% 
-                          select(-name_end) %>% 
+                          select(-name_end, -highlight) %>% 
                           rename_(.dots=setNames("days_after_100", paste0("days_after_", input$min_n))),
                           filter = 'top',
                       rownames = FALSE, 
