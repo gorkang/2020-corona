@@ -77,6 +77,9 @@ ui <-
                               value = TRUE, size = "mini", width = '100%'),
     
     hr(),
+    # HTML("<BR>"),
+    bookmarkButton(label = "Get URL"),
+    hr(),
     
     HTML(paste0("Simple visualization using the ", a(" @JHUSystems Coronavirus", href="https://github.com/CSSEGISandData/COVID-19", target = "_blank"), 
                 " and ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), " data.",
@@ -86,10 +89,8 @@ ui <-
                 a(" @nicebread303", href="https://github.com/nicebread/corona", target = "_blank"), ", ",
                 a("@jburnmurdoch", href="https://twitter.com/jburnmurdoch", target = "_blank"), " and ", a(" @sdbernard", href="https://twitter.com/sdbernard", target = "_blank"))),
     
+
     HTML("<BR><BR>"),
-    bookmarkButton(label = "Get URL"),
-    hr(),
-    
     HTML(paste0("By ", a(" @gorkang", href="https://twitter.com/gorkang", target = "_blank")))
     
     ), 
@@ -141,7 +142,7 @@ server <- function(input, output) {
         c('mytable_rows_current',
           'mytable_rows_all',
           'mytable_state',
-          'mytable_search_column',
+          'mytable_search_columns',
           'mytable_search',
           'mytable_cell_clicked',
           'mytable_rows_selected'))
