@@ -137,6 +137,15 @@ ui <-
 
 server <- function(input, output) {
 
+    setBookmarkExclude(
+        c('mytable_rows_current',
+          'mytable_rows_all',
+          'mytable_state',
+          'mytable_search_column',
+          'mytable_search',
+          'mytable_cell_clicked',
+          'mytable_rows_selected'))
+    
     # Dinamically set highlight choices bases on input$countries_plot
     outVar = reactive({ c(input$countries_plot, "None") })
     output$highlight2 = renderUI({
