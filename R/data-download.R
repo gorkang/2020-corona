@@ -60,6 +60,7 @@ data_download <- function(cases_deaths = "cases") {
     mutate(
       country = case_when(
         country == "Korea, South" ~ "South Korea",
+        country == "Taiwan*" ~ "Taiwan",
         TRUE ~ country
       )) %>% 
     
