@@ -58,7 +58,9 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
   V1_alternatives <<- dta %>%
     filter(value > 10) %>% 
     filter(!country %in% c("Total:")) %>% 
-    distinct(country) %>% pull(country)
+    arrange(desc(value)) %>% 
+    distinct(country) %>% 
+    pull(country)
   
   top_countries <<- dta %>%
     group_by(country) %>% 
@@ -68,7 +70,7 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
     ungroup() %>%
     top_n(n = 10, wt = value) %>% 
     filter(!country %in% c("Total:", "China")) %>% 
-    arrange(country) %>% 
+    arrange(desc(value)) %>% 
     pull(country)
 
 }
