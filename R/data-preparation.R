@@ -48,7 +48,8 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
       name_end = 
         case_when(
           days_after_100 == max(days_after_100) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
-          TRUE ~ "")) 
+          TRUE ~ "")) %>% 
+    mutate(highlight = country)
   
   
 
@@ -56,6 +57,7 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
   
   V1_alternatives <<- dta %>%
     filter(value > 10) %>% 
+    filter(!country %in% c("Total:")) %>% 
     distinct(country) %>% pull(country)
   
   top_countries <<- dta %>%

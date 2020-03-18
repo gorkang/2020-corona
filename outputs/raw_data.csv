@@ -52,6 +52,8 @@ Afghanistan,2020-03-12,7,0,0,0,JHU
 Afghanistan,2020-03-13,7,0,0,0,JHU
 Afghanistan,2020-03-14,11,0,4,0,JHU
 Afghanistan,2020-03-15,16,0,5,0,JHU
+Afghanistan,2020-03-16,21,0,5,0,JHU
+Afghanistan,2020-03-17,22,0,1,0,JHU
 Albania,2020-01-23,0,0,0,0,JHU
 Albania,2020-01-24,0,0,0,0,JHU
 Albania,2020-01-25,0,0,0,0,JHU
@@ -105,6 +107,8 @@ Albania,2020-03-12,23,1,11,0,JHU
 Albania,2020-03-13,33,1,10,0,JHU
 Albania,2020-03-14,38,1,5,0,JHU
 Albania,2020-03-15,42,1,4,0,JHU
+Albania,2020-03-16,51,1,9,0,JHU
+Albania,2020-03-17,55,1,4,0,JHU
 Algeria,2020-01-23,0,0,0,0,JHU
 Algeria,2020-01-24,0,0,0,0,JHU
 Algeria,2020-01-25,0,0,0,0,JHU
@@ -158,6 +162,8 @@ Algeria,2020-03-12,24,1,4,1,JHU
 Algeria,2020-03-13,26,2,2,1,JHU
 Algeria,2020-03-14,37,3,11,1,JHU
 Algeria,2020-03-15,48,4,11,1,JHU
+Algeria,2020-03-16,54,4,6,0,JHU
+Algeria,2020-03-17,60,4,6,0,JHU
 Andorra,2020-01-23,0,0,0,0,JHU
 Andorra,2020-01-24,0,0,0,0,JHU
 Andorra,2020-01-25,0,0,0,0,JHU
@@ -211,6 +217,8 @@ Andorra,2020-03-12,1,0,0,0,JHU
 Andorra,2020-03-13,1,0,0,0,JHU
 Andorra,2020-03-14,1,0,0,0,JHU
 Andorra,2020-03-15,1,0,0,0,JHU
+Andorra,2020-03-16,2,0,1,0,JHU
+Andorra,2020-03-17,39,0,37,0,JHU
 Antigua and Barbuda,2020-01-23,0,0,0,0,JHU
 Antigua and Barbuda,2020-01-24,0,0,0,0,JHU
 Antigua and Barbuda,2020-01-25,0,0,0,0,JHU
@@ -264,6 +272,8 @@ Antigua and Barbuda,2020-03-12,0,0,0,0,JHU
 Antigua and Barbuda,2020-03-13,1,0,1,0,JHU
 Antigua and Barbuda,2020-03-14,1,0,0,0,JHU
 Antigua and Barbuda,2020-03-15,1,0,0,0,JHU
+Antigua and Barbuda,2020-03-16,1,0,0,0,JHU
+Antigua and Barbuda,2020-03-17,1,0,0,0,JHU
 Argentina,2020-01-23,0,0,0,0,JHU
 Argentina,2020-01-24,0,0,0,0,JHU
 Argentina,2020-01-25,0,0,0,0,JHU
@@ -317,6 +327,8 @@ Argentina,2020-03-12,19,1,0,0,JHU
 Argentina,2020-03-13,31,2,12,1,JHU
 Argentina,2020-03-14,34,2,3,0,JHU
 Argentina,2020-03-15,45,2,11,0,JHU
+Argentina,2020-03-16,56,2,11,0,JHU
+Argentina,2020-03-17,68,2,12,0,JHU
 Armenia,2020-01-23,0,0,0,0,JHU
 Armenia,2020-01-24,0,0,0,0,JHU
 Armenia,2020-01-25,0,0,0,0,JHU
@@ -370,6 +382,8 @@ Armenia,2020-03-12,4,0,3,0,JHU
 Armenia,2020-03-13,8,0,4,0,JHU
 Armenia,2020-03-14,18,0,10,0,JHU
 Armenia,2020-03-15,26,0,8,0,JHU
+Armenia,2020-03-16,52,0,26,0,JHU
+Armenia,2020-03-17,78,0,26,0,JHU
 Aruba,2020-01-23,0,0,0,0,JHU
 Aruba,2020-01-24,0,0,0,0,JHU
 Aruba,2020-01-25,0,0,0,0,JHU
@@ -423,6 +437,8 @@ Aruba,2020-03-12,0,0,0,0,JHU
 Aruba,2020-03-13,2,0,2,0,JHU
 Aruba,2020-03-14,2,0,0,0,JHU
 Aruba,2020-03-15,2,0,0,0,JHU
+Aruba,2020-03-16,2,0,0,0,JHU
+Aruba,2020-03-17,3,0,1,0,JHU
 Australia,2020-01-23,0,0,0,0,JHU
 Australia,2020-01-24,0,0,0,0,JHU
 Australia,2020-01-25,0,0,0,0,JHU
@@ -476,6 +492,8 @@ Australia,2020-03-12,128,3,0,0,JHU
 Australia,2020-03-13,200,3,72,0,JHU
 Australia,2020-03-14,250,3,50,0,JHU
 Australia,2020-03-15,297,3,47,0,JHU
+Australia,2020-03-16,377,3,80,0,JHU
+Australia,2020-03-17,452,5,75,2,JHU
 Austria,2020-01-23,0,0,0,0,JHU
 Austria,2020-01-24,0,0,0,0,JHU
 Austria,2020-01-25,0,0,0,0,JHU
@@ -529,6 +547,8 @@ Austria,2020-03-12,302,1,56,1,JHU
 Austria,2020-03-13,504,1,202,0,JHU
 Austria,2020-03-14,655,1,151,0,JHU
 Austria,2020-03-15,860,1,205,0,JHU
+Austria,2020-03-16,1018,3,158,2,JHU
+Austria,2020-03-17,1332,3,314,0,JHU
 Azerbaijan,2020-01-23,0,0,0,0,JHU
 Azerbaijan,2020-01-24,0,0,0,0,JHU
 Azerbaijan,2020-01-25,0,0,0,0,JHU
@@ -582,6 +602,8 @@ Azerbaijan,2020-03-12,11,0,0,0,JHU
 Azerbaijan,2020-03-13,15,1,4,1,JHU
 Azerbaijan,2020-03-14,15,1,0,0,JHU
 Azerbaijan,2020-03-15,23,1,8,0,JHU
+Azerbaijan,2020-03-16,15,1,-8,0,JHU
+Azerbaijan,2020-03-17,28,1,13,0,JHU
 Bahrain,2020-01-23,0,0,0,0,JHU
 Bahrain,2020-01-24,0,0,0,0,JHU
 Bahrain,2020-01-25,0,0,0,0,JHU
@@ -635,6 +657,8 @@ Bahrain,2020-03-12,195,0,0,0,JHU
 Bahrain,2020-03-13,189,0,-6,0,JHU
 Bahrain,2020-03-14,210,0,21,0,JHU
 Bahrain,2020-03-15,214,0,4,0,JHU
+Bahrain,2020-03-16,214,1,0,1,JHU
+Bahrain,2020-03-17,228,1,14,0,JHU
 Bangladesh,2020-01-23,0,0,0,0,JHU
 Bangladesh,2020-01-24,0,0,0,0,JHU
 Bangladesh,2020-01-25,0,0,0,0,JHU
@@ -688,6 +712,63 @@ Bangladesh,2020-03-12,3,0,0,0,JHU
 Bangladesh,2020-03-13,3,0,0,0,JHU
 Bangladesh,2020-03-14,3,0,0,0,JHU
 Bangladesh,2020-03-15,5,0,2,0,JHU
+Bangladesh,2020-03-16,8,0,3,0,JHU
+Bangladesh,2020-03-17,10,0,2,0,JHU
+Barbados,2020-01-23,0,0,0,0,JHU
+Barbados,2020-01-24,0,0,0,0,JHU
+Barbados,2020-01-25,0,0,0,0,JHU
+Barbados,2020-01-26,0,0,0,0,JHU
+Barbados,2020-01-27,0,0,0,0,JHU
+Barbados,2020-01-28,0,0,0,0,JHU
+Barbados,2020-01-29,0,0,0,0,JHU
+Barbados,2020-01-30,0,0,0,0,JHU
+Barbados,2020-01-31,0,0,0,0,JHU
+Barbados,2020-02-01,0,0,0,0,JHU
+Barbados,2020-02-02,0,0,0,0,JHU
+Barbados,2020-02-03,0,0,0,0,JHU
+Barbados,2020-02-04,0,0,0,0,JHU
+Barbados,2020-02-05,0,0,0,0,JHU
+Barbados,2020-02-06,0,0,0,0,JHU
+Barbados,2020-02-07,0,0,0,0,JHU
+Barbados,2020-02-08,0,0,0,0,JHU
+Barbados,2020-02-09,0,0,0,0,JHU
+Barbados,2020-02-10,0,0,0,0,JHU
+Barbados,2020-02-11,0,0,0,0,JHU
+Barbados,2020-02-12,0,0,0,0,JHU
+Barbados,2020-02-13,0,0,0,0,JHU
+Barbados,2020-02-14,0,0,0,0,JHU
+Barbados,2020-02-15,0,0,0,0,JHU
+Barbados,2020-02-16,0,0,0,0,JHU
+Barbados,2020-02-17,0,0,0,0,JHU
+Barbados,2020-02-18,0,0,0,0,JHU
+Barbados,2020-02-19,0,0,0,0,JHU
+Barbados,2020-02-20,0,0,0,0,JHU
+Barbados,2020-02-21,0,0,0,0,JHU
+Barbados,2020-02-22,0,0,0,0,JHU
+Barbados,2020-02-23,0,0,0,0,JHU
+Barbados,2020-02-24,0,0,0,0,JHU
+Barbados,2020-02-25,0,0,0,0,JHU
+Barbados,2020-02-26,0,0,0,0,JHU
+Barbados,2020-02-27,0,0,0,0,JHU
+Barbados,2020-02-28,0,0,0,0,JHU
+Barbados,2020-02-29,0,0,0,0,JHU
+Barbados,2020-03-01,0,0,0,0,JHU
+Barbados,2020-03-02,0,0,0,0,JHU
+Barbados,2020-03-03,0,0,0,0,JHU
+Barbados,2020-03-04,0,0,0,0,JHU
+Barbados,2020-03-05,0,0,0,0,JHU
+Barbados,2020-03-06,0,0,0,0,JHU
+Barbados,2020-03-07,0,0,0,0,JHU
+Barbados,2020-03-08,0,0,0,0,JHU
+Barbados,2020-03-09,0,0,0,0,JHU
+Barbados,2020-03-10,0,0,0,0,JHU
+Barbados,2020-03-11,0,0,0,0,JHU
+Barbados,2020-03-12,0,0,0,0,JHU
+Barbados,2020-03-13,0,0,0,0,JHU
+Barbados,2020-03-14,0,0,0,0,JHU
+Barbados,2020-03-15,0,0,0,0,JHU
+Barbados,2020-03-16,0,0,0,0,JHU
+Barbados,2020-03-17,2,0,2,0,JHU
 Belarus,2020-01-23,0,0,0,0,JHU
 Belarus,2020-01-24,0,0,0,0,JHU
 Belarus,2020-01-25,0,0,0,0,JHU
@@ -741,6 +822,8 @@ Belarus,2020-03-12,12,0,3,0,JHU
 Belarus,2020-03-13,27,0,15,0,JHU
 Belarus,2020-03-14,27,0,0,0,JHU
 Belarus,2020-03-15,27,0,0,0,JHU
+Belarus,2020-03-16,36,0,9,0,JHU
+Belarus,2020-03-17,36,0,0,0,JHU
 Belgium,2020-01-23,0,0,0,0,JHU
 Belgium,2020-01-24,0,0,0,0,JHU
 Belgium,2020-01-25,0,0,0,0,JHU
@@ -794,6 +877,63 @@ Belgium,2020-03-12,314,3,0,0,JHU
 Belgium,2020-03-13,559,3,245,0,JHU
 Belgium,2020-03-14,689,4,130,1,JHU
 Belgium,2020-03-15,886,4,197,0,JHU
+Belgium,2020-03-16,1058,5,172,1,JHU
+Belgium,2020-03-17,1243,10,185,5,JHU
+Benin,2020-01-23,0,0,0,0,JHU
+Benin,2020-01-24,0,0,0,0,JHU
+Benin,2020-01-25,0,0,0,0,JHU
+Benin,2020-01-26,0,0,0,0,JHU
+Benin,2020-01-27,0,0,0,0,JHU
+Benin,2020-01-28,0,0,0,0,JHU
+Benin,2020-01-29,0,0,0,0,JHU
+Benin,2020-01-30,0,0,0,0,JHU
+Benin,2020-01-31,0,0,0,0,JHU
+Benin,2020-02-01,0,0,0,0,JHU
+Benin,2020-02-02,0,0,0,0,JHU
+Benin,2020-02-03,0,0,0,0,JHU
+Benin,2020-02-04,0,0,0,0,JHU
+Benin,2020-02-05,0,0,0,0,JHU
+Benin,2020-02-06,0,0,0,0,JHU
+Benin,2020-02-07,0,0,0,0,JHU
+Benin,2020-02-08,0,0,0,0,JHU
+Benin,2020-02-09,0,0,0,0,JHU
+Benin,2020-02-10,0,0,0,0,JHU
+Benin,2020-02-11,0,0,0,0,JHU
+Benin,2020-02-12,0,0,0,0,JHU
+Benin,2020-02-13,0,0,0,0,JHU
+Benin,2020-02-14,0,0,0,0,JHU
+Benin,2020-02-15,0,0,0,0,JHU
+Benin,2020-02-16,0,0,0,0,JHU
+Benin,2020-02-17,0,0,0,0,JHU
+Benin,2020-02-18,0,0,0,0,JHU
+Benin,2020-02-19,0,0,0,0,JHU
+Benin,2020-02-20,0,0,0,0,JHU
+Benin,2020-02-21,0,0,0,0,JHU
+Benin,2020-02-22,0,0,0,0,JHU
+Benin,2020-02-23,0,0,0,0,JHU
+Benin,2020-02-24,0,0,0,0,JHU
+Benin,2020-02-25,0,0,0,0,JHU
+Benin,2020-02-26,0,0,0,0,JHU
+Benin,2020-02-27,0,0,0,0,JHU
+Benin,2020-02-28,0,0,0,0,JHU
+Benin,2020-02-29,0,0,0,0,JHU
+Benin,2020-03-01,0,0,0,0,JHU
+Benin,2020-03-02,0,0,0,0,JHU
+Benin,2020-03-03,0,0,0,0,JHU
+Benin,2020-03-04,0,0,0,0,JHU
+Benin,2020-03-05,0,0,0,0,JHU
+Benin,2020-03-06,0,0,0,0,JHU
+Benin,2020-03-07,0,0,0,0,JHU
+Benin,2020-03-08,0,0,0,0,JHU
+Benin,2020-03-09,0,0,0,0,JHU
+Benin,2020-03-10,0,0,0,0,JHU
+Benin,2020-03-11,0,0,0,0,JHU
+Benin,2020-03-12,0,0,0,0,JHU
+Benin,2020-03-13,0,0,0,0,JHU
+Benin,2020-03-14,0,0,0,0,JHU
+Benin,2020-03-15,0,0,0,0,JHU
+Benin,2020-03-16,1,0,1,0,JHU
+Benin,2020-03-17,1,0,0,0,JHU
 Bhutan,2020-01-23,0,0,0,0,JHU
 Bhutan,2020-01-24,0,0,0,0,JHU
 Bhutan,2020-01-25,0,0,0,0,JHU
@@ -847,6 +987,8 @@ Bhutan,2020-03-12,1,0,0,0,JHU
 Bhutan,2020-03-13,1,0,0,0,JHU
 Bhutan,2020-03-14,1,0,0,0,JHU
 Bhutan,2020-03-15,1,0,0,0,JHU
+Bhutan,2020-03-16,1,0,0,0,JHU
+Bhutan,2020-03-17,1,0,0,0,JHU
 Bolivia,2020-01-23,0,0,0,0,JHU
 Bolivia,2020-01-24,0,0,0,0,JHU
 Bolivia,2020-01-25,0,0,0,0,JHU
@@ -900,6 +1042,8 @@ Bolivia,2020-03-12,2,0,0,0,JHU
 Bolivia,2020-03-13,3,0,1,0,JHU
 Bolivia,2020-03-14,10,0,7,0,JHU
 Bolivia,2020-03-15,10,0,0,0,JHU
+Bolivia,2020-03-16,11,0,1,0,JHU
+Bolivia,2020-03-17,11,0,0,0,JHU
 Bosnia and Herzegovina,2020-01-23,0,0,0,0,JHU
 Bosnia and Herzegovina,2020-01-24,0,0,0,0,JHU
 Bosnia and Herzegovina,2020-01-25,0,0,0,0,JHU
@@ -953,6 +1097,8 @@ Bosnia and Herzegovina,2020-03-12,11,0,4,0,JHU
 Bosnia and Herzegovina,2020-03-13,13,0,2,0,JHU
 Bosnia and Herzegovina,2020-03-14,18,0,5,0,JHU
 Bosnia and Herzegovina,2020-03-15,24,0,6,0,JHU
+Bosnia and Herzegovina,2020-03-16,25,0,1,0,JHU
+Bosnia and Herzegovina,2020-03-17,26,0,1,0,JHU
 Brazil,2020-01-23,0,0,0,0,JHU
 Brazil,2020-01-24,0,0,0,0,JHU
 Brazil,2020-01-25,0,0,0,0,JHU
@@ -1006,6 +1152,8 @@ Brazil,2020-03-12,52,0,14,0,JHU
 Brazil,2020-03-13,151,0,99,0,JHU
 Brazil,2020-03-14,151,0,0,0,JHU
 Brazil,2020-03-15,162,0,11,0,JHU
+Brazil,2020-03-16,200,0,38,0,JHU
+Brazil,2020-03-17,321,1,121,1,JHU
 Brunei,2020-01-23,0,0,0,0,JHU
 Brunei,2020-01-24,0,0,0,0,JHU
 Brunei,2020-01-25,0,0,0,0,JHU
@@ -1059,6 +1207,8 @@ Brunei,2020-03-12,11,0,0,0,JHU
 Brunei,2020-03-13,37,0,26,0,JHU
 Brunei,2020-03-14,40,0,3,0,JHU
 Brunei,2020-03-15,50,0,10,0,JHU
+Brunei,2020-03-16,54,0,4,0,JHU
+Brunei,2020-03-17,56,0,2,0,JHU
 Bulgaria,2020-01-23,0,0,0,0,JHU
 Bulgaria,2020-01-24,0,0,0,0,JHU
 Bulgaria,2020-01-25,0,0,0,0,JHU
@@ -1112,6 +1262,8 @@ Bulgaria,2020-03-12,7,1,0,0,JHU
 Bulgaria,2020-03-13,23,1,16,0,JHU
 Bulgaria,2020-03-14,41,2,18,1,JHU
 Bulgaria,2020-03-15,51,2,10,0,JHU
+Bulgaria,2020-03-16,52,2,1,0,JHU
+Bulgaria,2020-03-17,67,2,15,0,JHU
 Burkina Faso,2020-01-23,0,0,0,0,JHU
 Burkina Faso,2020-01-24,0,0,0,0,JHU
 Burkina Faso,2020-01-25,0,0,0,0,JHU
@@ -1165,6 +1317,8 @@ Burkina Faso,2020-03-12,2,0,0,0,JHU
 Burkina Faso,2020-03-13,2,0,0,0,JHU
 Burkina Faso,2020-03-14,2,0,0,0,JHU
 Burkina Faso,2020-03-15,3,0,1,0,JHU
+Burkina Faso,2020-03-16,15,0,12,0,JHU
+Burkina Faso,2020-03-17,15,0,0,0,JHU
 Cambodia,2020-01-23,0,0,0,0,JHU
 Cambodia,2020-01-24,0,0,0,0,JHU
 Cambodia,2020-01-25,0,0,0,0,JHU
@@ -1218,6 +1372,8 @@ Cambodia,2020-03-12,3,0,0,0,JHU
 Cambodia,2020-03-13,5,0,2,0,JHU
 Cambodia,2020-03-14,7,0,2,0,JHU
 Cambodia,2020-03-15,7,0,0,0,JHU
+Cambodia,2020-03-16,7,0,0,0,JHU
+Cambodia,2020-03-17,33,0,26,0,JHU
 Cameroon,2020-01-23,0,0,0,0,JHU
 Cameroon,2020-01-24,0,0,0,0,JHU
 Cameroon,2020-01-25,0,0,0,0,JHU
@@ -1271,6 +1427,8 @@ Cameroon,2020-03-12,2,0,0,0,JHU
 Cameroon,2020-03-13,2,0,0,0,JHU
 Cameroon,2020-03-14,2,0,0,0,JHU
 Cameroon,2020-03-15,2,0,0,0,JHU
+Cameroon,2020-03-16,4,0,2,0,JHU
+Cameroon,2020-03-17,10,0,6,0,JHU
 Canada,2020-01-23,0,0,0,0,JHU
 Canada,2020-01-24,0,0,0,0,JHU
 Canada,2020-01-25,0,0,0,0,JHU
@@ -1324,59 +1482,8 @@ Canada,2020-03-12,117,1,9,0,JHU
 Canada,2020-03-13,193,1,76,0,JHU
 Canada,2020-03-14,198,1,5,0,JHU
 Canada,2020-03-15,252,1,54,0,JHU
-Cayman Islands,2020-01-23,0,0,0,0,JHU
-Cayman Islands,2020-01-24,0,0,0,0,JHU
-Cayman Islands,2020-01-25,0,0,0,0,JHU
-Cayman Islands,2020-01-26,0,0,0,0,JHU
-Cayman Islands,2020-01-27,0,0,0,0,JHU
-Cayman Islands,2020-01-28,0,0,0,0,JHU
-Cayman Islands,2020-01-29,0,0,0,0,JHU
-Cayman Islands,2020-01-30,0,0,0,0,JHU
-Cayman Islands,2020-01-31,0,0,0,0,JHU
-Cayman Islands,2020-02-01,0,0,0,0,JHU
-Cayman Islands,2020-02-02,0,0,0,0,JHU
-Cayman Islands,2020-02-03,0,0,0,0,JHU
-Cayman Islands,2020-02-04,0,0,0,0,JHU
-Cayman Islands,2020-02-05,0,0,0,0,JHU
-Cayman Islands,2020-02-06,0,0,0,0,JHU
-Cayman Islands,2020-02-07,0,0,0,0,JHU
-Cayman Islands,2020-02-08,0,0,0,0,JHU
-Cayman Islands,2020-02-09,0,0,0,0,JHU
-Cayman Islands,2020-02-10,0,0,0,0,JHU
-Cayman Islands,2020-02-11,0,0,0,0,JHU
-Cayman Islands,2020-02-12,0,0,0,0,JHU
-Cayman Islands,2020-02-13,0,0,0,0,JHU
-Cayman Islands,2020-02-14,0,0,0,0,JHU
-Cayman Islands,2020-02-15,0,0,0,0,JHU
-Cayman Islands,2020-02-16,0,0,0,0,JHU
-Cayman Islands,2020-02-17,0,0,0,0,JHU
-Cayman Islands,2020-02-18,0,0,0,0,JHU
-Cayman Islands,2020-02-19,0,0,0,0,JHU
-Cayman Islands,2020-02-20,0,0,0,0,JHU
-Cayman Islands,2020-02-21,0,0,0,0,JHU
-Cayman Islands,2020-02-22,0,0,0,0,JHU
-Cayman Islands,2020-02-23,0,0,0,0,JHU
-Cayman Islands,2020-02-24,0,0,0,0,JHU
-Cayman Islands,2020-02-25,0,0,0,0,JHU
-Cayman Islands,2020-02-26,0,0,0,0,JHU
-Cayman Islands,2020-02-27,0,0,0,0,JHU
-Cayman Islands,2020-02-28,0,0,0,0,JHU
-Cayman Islands,2020-02-29,0,0,0,0,JHU
-Cayman Islands,2020-03-01,0,0,0,0,JHU
-Cayman Islands,2020-03-02,0,0,0,0,JHU
-Cayman Islands,2020-03-03,0,0,0,0,JHU
-Cayman Islands,2020-03-04,0,0,0,0,JHU
-Cayman Islands,2020-03-05,0,0,0,0,JHU
-Cayman Islands,2020-03-06,0,0,0,0,JHU
-Cayman Islands,2020-03-07,0,0,0,0,JHU
-Cayman Islands,2020-03-08,0,0,0,0,JHU
-Cayman Islands,2020-03-09,0,0,0,0,JHU
-Cayman Islands,2020-03-10,0,0,0,0,JHU
-Cayman Islands,2020-03-11,0,0,0,0,JHU
-Cayman Islands,2020-03-12,0,0,0,0,JHU
-Cayman Islands,2020-03-13,1,0,1,0,JHU
-Cayman Islands,2020-03-14,1,0,0,0,JHU
-Cayman Islands,2020-03-15,1,0,0,0,JHU
+Canada,2020-03-16,415,4,163,3,JHU
+Canada,2020-03-17,478,5,63,1,JHU
 Central African Republic,2020-01-23,0,0,0,0,JHU
 Central African Republic,2020-01-24,0,0,0,0,JHU
 Central African Republic,2020-01-25,0,0,0,0,JHU
@@ -1430,6 +1537,8 @@ Central African Republic,2020-03-12,0,0,0,0,JHU
 Central African Republic,2020-03-13,0,0,0,0,JHU
 Central African Republic,2020-03-14,0,0,0,0,JHU
 Central African Republic,2020-03-15,1,0,1,0,JHU
+Central African Republic,2020-03-16,1,0,0,0,JHU
+Central African Republic,2020-03-17,1,0,0,0,JHU
 Chile,2020-01-23,0,0,0,0,JHU
 Chile,2020-01-24,0,0,0,0,JHU
 Chile,2020-01-25,0,0,0,0,JHU
@@ -1483,6 +1592,8 @@ Chile,2020-03-12,23,0,0,0,JHU
 Chile,2020-03-13,43,0,20,0,JHU
 Chile,2020-03-14,61,0,18,0,JHU
 Chile,2020-03-15,74,0,13,0,JHU
+Chile,2020-03-16,155,0,81,0,JHU
+Chile,2020-03-17,201,0,46,0,JHU
 China,2020-01-23,643,18,95,1,JHU
 China,2020-01-24,920,26,277,8,JHU
 China,2020-01-25,1406,42,486,16,JHU
@@ -1536,6 +1647,8 @@ China,2020-03-12,80932,3172,11,11,JHU
 China,2020-03-13,80945,3180,13,8,JHU
 China,2020-03-14,80977,3193,32,13,JHU
 China,2020-03-15,81003,3203,26,10,JHU
+China,2020-03-16,81033,3217,30,14,JHU
+China,2020-03-17,81058,3230,25,13,JHU
 Colombia,2020-01-23,0,0,0,0,JHU
 Colombia,2020-01-24,0,0,0,0,JHU
 Colombia,2020-01-25,0,0,0,0,JHU
@@ -1589,6 +1702,8 @@ Colombia,2020-03-12,9,0,0,0,JHU
 Colombia,2020-03-13,13,0,4,0,JHU
 Colombia,2020-03-14,22,0,9,0,JHU
 Colombia,2020-03-15,34,0,12,0,JHU
+Colombia,2020-03-16,54,0,20,0,JHU
+Colombia,2020-03-17,65,0,11,0,JHU
 Congo (Brazzaville),2020-01-23,0,0,0,0,JHU
 Congo (Brazzaville),2020-01-24,0,0,0,0,JHU
 Congo (Brazzaville),2020-01-25,0,0,0,0,JHU
@@ -1642,6 +1757,8 @@ Congo (Brazzaville),2020-03-12,0,0,0,0,JHU
 Congo (Brazzaville),2020-03-13,0,0,0,0,JHU
 Congo (Brazzaville),2020-03-14,0,0,0,0,JHU
 Congo (Brazzaville),2020-03-15,1,0,1,0,JHU
+Congo (Brazzaville),2020-03-16,1,0,0,0,JHU
+Congo (Brazzaville),2020-03-17,1,0,0,0,JHU
 Congo (Kinshasa),2020-01-23,0,0,0,0,JHU
 Congo (Kinshasa),2020-01-24,0,0,0,0,JHU
 Congo (Kinshasa),2020-01-25,0,0,0,0,JHU
@@ -1695,6 +1812,8 @@ Congo (Kinshasa),2020-03-12,1,0,0,0,JHU
 Congo (Kinshasa),2020-03-13,2,0,1,0,JHU
 Congo (Kinshasa),2020-03-14,2,0,0,0,JHU
 Congo (Kinshasa),2020-03-15,2,0,0,0,JHU
+Congo (Kinshasa),2020-03-16,2,0,0,0,JHU
+Congo (Kinshasa),2020-03-17,3,0,1,0,JHU
 Costa Rica,2020-01-23,0,0,0,0,JHU
 Costa Rica,2020-01-24,0,0,0,0,JHU
 Costa Rica,2020-01-25,0,0,0,0,JHU
@@ -1748,6 +1867,8 @@ Costa Rica,2020-03-12,22,0,9,0,JHU
 Costa Rica,2020-03-13,23,0,1,0,JHU
 Costa Rica,2020-03-14,26,0,3,0,JHU
 Costa Rica,2020-03-15,27,0,1,0,JHU
+Costa Rica,2020-03-16,35,0,8,0,JHU
+Costa Rica,2020-03-17,41,0,6,0,JHU
 Cote d'Ivoire,2020-01-23,0,0,0,0,JHU
 Cote d'Ivoire,2020-01-24,0,0,0,0,JHU
 Cote d'Ivoire,2020-01-25,0,0,0,0,JHU
@@ -1801,6 +1922,8 @@ Cote d'Ivoire,2020-03-12,1,0,0,0,JHU
 Cote d'Ivoire,2020-03-13,1,0,0,0,JHU
 Cote d'Ivoire,2020-03-14,1,0,0,0,JHU
 Cote d'Ivoire,2020-03-15,1,0,0,0,JHU
+Cote d'Ivoire,2020-03-16,1,0,0,0,JHU
+Cote d'Ivoire,2020-03-17,5,0,4,0,JHU
 Croatia,2020-01-23,0,0,0,0,JHU
 Croatia,2020-01-24,0,0,0,0,JHU
 Croatia,2020-01-25,0,0,0,0,JHU
@@ -1854,6 +1977,8 @@ Croatia,2020-03-12,19,0,0,0,JHU
 Croatia,2020-03-13,32,0,13,0,JHU
 Croatia,2020-03-14,38,0,6,0,JHU
 Croatia,2020-03-15,49,0,11,0,JHU
+Croatia,2020-03-16,57,0,8,0,JHU
+Croatia,2020-03-17,65,0,8,0,JHU
 Cruise Ship,2020-01-23,0,0,0,0,JHU
 Cruise Ship,2020-01-24,0,0,0,0,JHU
 Cruise Ship,2020-01-25,0,0,0,0,JHU
@@ -1907,6 +2032,8 @@ Cruise Ship,2020-03-12,696,7,0,0,JHU
 Cruise Ship,2020-03-13,696,7,0,0,JHU
 Cruise Ship,2020-03-14,696,7,0,0,JHU
 Cruise Ship,2020-03-15,696,7,0,0,JHU
+Cruise Ship,2020-03-16,696,7,0,0,JHU
+Cruise Ship,2020-03-17,696,7,0,0,JHU
 Cuba,2020-01-23,0,0,0,0,JHU
 Cuba,2020-01-24,0,0,0,0,JHU
 Cuba,2020-01-25,0,0,0,0,JHU
@@ -1960,59 +2087,8 @@ Cuba,2020-03-12,3,0,3,0,JHU
 Cuba,2020-03-13,4,0,1,0,JHU
 Cuba,2020-03-14,4,0,0,0,JHU
 Cuba,2020-03-15,4,0,0,0,JHU
-Curacao,2020-01-23,0,0,0,0,JHU
-Curacao,2020-01-24,0,0,0,0,JHU
-Curacao,2020-01-25,0,0,0,0,JHU
-Curacao,2020-01-26,0,0,0,0,JHU
-Curacao,2020-01-27,0,0,0,0,JHU
-Curacao,2020-01-28,0,0,0,0,JHU
-Curacao,2020-01-29,0,0,0,0,JHU
-Curacao,2020-01-30,0,0,0,0,JHU
-Curacao,2020-01-31,0,0,0,0,JHU
-Curacao,2020-02-01,0,0,0,0,JHU
-Curacao,2020-02-02,0,0,0,0,JHU
-Curacao,2020-02-03,0,0,0,0,JHU
-Curacao,2020-02-04,0,0,0,0,JHU
-Curacao,2020-02-05,0,0,0,0,JHU
-Curacao,2020-02-06,0,0,0,0,JHU
-Curacao,2020-02-07,0,0,0,0,JHU
-Curacao,2020-02-08,0,0,0,0,JHU
-Curacao,2020-02-09,0,0,0,0,JHU
-Curacao,2020-02-10,0,0,0,0,JHU
-Curacao,2020-02-11,0,0,0,0,JHU
-Curacao,2020-02-12,0,0,0,0,JHU
-Curacao,2020-02-13,0,0,0,0,JHU
-Curacao,2020-02-14,0,0,0,0,JHU
-Curacao,2020-02-15,0,0,0,0,JHU
-Curacao,2020-02-16,0,0,0,0,JHU
-Curacao,2020-02-17,0,0,0,0,JHU
-Curacao,2020-02-18,0,0,0,0,JHU
-Curacao,2020-02-19,0,0,0,0,JHU
-Curacao,2020-02-20,0,0,0,0,JHU
-Curacao,2020-02-21,0,0,0,0,JHU
-Curacao,2020-02-22,0,0,0,0,JHU
-Curacao,2020-02-23,0,0,0,0,JHU
-Curacao,2020-02-24,0,0,0,0,JHU
-Curacao,2020-02-25,0,0,0,0,JHU
-Curacao,2020-02-26,0,0,0,0,JHU
-Curacao,2020-02-27,0,0,0,0,JHU
-Curacao,2020-02-28,0,0,0,0,JHU
-Curacao,2020-02-29,0,0,0,0,JHU
-Curacao,2020-03-01,0,0,0,0,JHU
-Curacao,2020-03-02,0,0,0,0,JHU
-Curacao,2020-03-03,0,0,0,0,JHU
-Curacao,2020-03-04,0,0,0,0,JHU
-Curacao,2020-03-05,0,0,0,0,JHU
-Curacao,2020-03-06,0,0,0,0,JHU
-Curacao,2020-03-07,0,0,0,0,JHU
-Curacao,2020-03-08,0,0,0,0,JHU
-Curacao,2020-03-09,0,0,0,0,JHU
-Curacao,2020-03-10,0,0,0,0,JHU
-Curacao,2020-03-11,0,0,0,0,JHU
-Curacao,2020-03-12,0,0,0,0,JHU
-Curacao,2020-03-13,0,0,0,0,JHU
-Curacao,2020-03-14,1,0,1,0,JHU
-Curacao,2020-03-15,1,0,0,0,JHU
+Cuba,2020-03-16,4,0,0,0,JHU
+Cuba,2020-03-17,5,0,1,0,JHU
 Cyprus,2020-01-23,0,0,0,0,JHU
 Cyprus,2020-01-24,0,0,0,0,JHU
 Cyprus,2020-01-25,0,0,0,0,JHU
@@ -2066,6 +2142,8 @@ Cyprus,2020-03-12,6,0,0,0,JHU
 Cyprus,2020-03-13,14,0,8,0,JHU
 Cyprus,2020-03-14,26,0,12,0,JHU
 Cyprus,2020-03-15,26,0,0,0,JHU
+Cyprus,2020-03-16,33,0,7,0,JHU
+Cyprus,2020-03-17,46,0,13,0,JHU
 Czechia,2020-01-23,0,0,0,0,JHU
 Czechia,2020-01-24,0,0,0,0,JHU
 Czechia,2020-01-25,0,0,0,0,JHU
@@ -2119,6 +2197,8 @@ Czechia,2020-03-12,94,0,3,0,JHU
 Czechia,2020-03-13,141,0,47,0,JHU
 Czechia,2020-03-14,189,0,48,0,JHU
 Czechia,2020-03-15,253,0,64,0,JHU
+Czechia,2020-03-16,298,0,45,0,JHU
+Czechia,2020-03-17,396,0,98,0,JHU
 Denmark,2020-01-23,0,0,0,0,JHU
 Denmark,2020-01-24,0,0,0,0,JHU
 Denmark,2020-01-25,0,0,0,0,JHU
@@ -2172,6 +2252,8 @@ Denmark,2020-03-12,617,0,173,0,JHU
 Denmark,2020-03-13,804,0,187,0,JHU
 Denmark,2020-03-14,836,1,32,1,JHU
 Denmark,2020-03-15,875,2,39,1,JHU
+Denmark,2020-03-16,932,3,57,1,JHU
+Denmark,2020-03-17,1024,4,92,1,JHU
 Dominican Republic,2020-01-23,0,0,0,0,JHU
 Dominican Republic,2020-01-24,0,0,0,0,JHU
 Dominican Republic,2020-01-25,0,0,0,0,JHU
@@ -2225,6 +2307,8 @@ Dominican Republic,2020-03-12,5,0,0,0,JHU
 Dominican Republic,2020-03-13,5,0,0,0,JHU
 Dominican Republic,2020-03-14,11,0,6,0,JHU
 Dominican Republic,2020-03-15,11,0,0,0,JHU
+Dominican Republic,2020-03-16,11,0,0,0,JHU
+Dominican Republic,2020-03-17,21,1,10,1,JHU
 Ecuador,2020-01-23,0,0,0,0,JHU
 Ecuador,2020-01-24,0,0,0,0,JHU
 Ecuador,2020-01-25,0,0,0,0,JHU
@@ -2278,6 +2362,8 @@ Ecuador,2020-03-12,17,0,0,0,JHU
 Ecuador,2020-03-13,17,0,0,0,JHU
 Ecuador,2020-03-14,28,2,11,2,JHU
 Ecuador,2020-03-15,28,2,0,0,JHU
+Ecuador,2020-03-16,37,2,9,0,JHU
+Ecuador,2020-03-17,58,2,21,0,JHU
 Egypt,2020-01-23,0,0,0,0,JHU
 Egypt,2020-01-24,0,0,0,0,JHU
 Egypt,2020-01-25,0,0,0,0,JHU
@@ -2331,6 +2417,8 @@ Egypt,2020-03-12,67,1,7,0,JHU
 Egypt,2020-03-13,80,2,13,1,JHU
 Egypt,2020-03-14,109,2,29,0,JHU
 Egypt,2020-03-15,110,2,1,0,JHU
+Egypt,2020-03-16,150,2,40,0,JHU
+Egypt,2020-03-17,196,4,46,2,JHU
 Equatorial Guinea,2020-01-23,0,0,0,0,JHU
 Equatorial Guinea,2020-01-24,0,0,0,0,JHU
 Equatorial Guinea,2020-01-25,0,0,0,0,JHU
@@ -2384,6 +2472,8 @@ Equatorial Guinea,2020-03-12,0,0,0,0,JHU
 Equatorial Guinea,2020-03-13,0,0,0,0,JHU
 Equatorial Guinea,2020-03-14,0,0,0,0,JHU
 Equatorial Guinea,2020-03-15,1,0,1,0,JHU
+Equatorial Guinea,2020-03-16,1,0,0,0,JHU
+Equatorial Guinea,2020-03-17,1,0,0,0,JHU
 Estonia,2020-01-23,0,0,0,0,JHU
 Estonia,2020-01-24,0,0,0,0,JHU
 Estonia,2020-01-25,0,0,0,0,JHU
@@ -2437,6 +2527,8 @@ Estonia,2020-03-12,16,0,0,0,JHU
 Estonia,2020-03-13,79,0,63,0,JHU
 Estonia,2020-03-14,115,0,36,0,JHU
 Estonia,2020-03-15,171,0,56,0,JHU
+Estonia,2020-03-16,205,0,34,0,JHU
+Estonia,2020-03-17,225,0,20,0,JHU
 Eswatini,2020-01-23,0,0,0,0,JHU
 Eswatini,2020-01-24,0,0,0,0,JHU
 Eswatini,2020-01-25,0,0,0,0,JHU
@@ -2490,6 +2582,8 @@ Eswatini,2020-03-12,0,0,0,0,JHU
 Eswatini,2020-03-13,0,0,0,0,JHU
 Eswatini,2020-03-14,1,0,1,0,JHU
 Eswatini,2020-03-15,1,0,0,0,JHU
+Eswatini,2020-03-16,1,0,0,0,JHU
+Eswatini,2020-03-17,1,0,0,0,JHU
 Ethiopia,2020-01-23,0,0,0,0,JHU
 Ethiopia,2020-01-24,0,0,0,0,JHU
 Ethiopia,2020-01-25,0,0,0,0,JHU
@@ -2543,6 +2637,8 @@ Ethiopia,2020-03-12,0,0,0,0,JHU
 Ethiopia,2020-03-13,1,0,1,0,JHU
 Ethiopia,2020-03-14,1,0,0,0,JHU
 Ethiopia,2020-03-15,1,0,0,0,JHU
+Ethiopia,2020-03-16,5,0,4,0,JHU
+Ethiopia,2020-03-17,5,0,0,0,JHU
 Finland,2020-01-23,0,0,0,0,JHU
 Finland,2020-01-24,0,0,0,0,JHU
 Finland,2020-01-25,0,0,0,0,JHU
@@ -2596,6 +2692,8 @@ Finland,2020-03-12,59,0,0,0,JHU
 Finland,2020-03-13,155,0,96,0,JHU
 Finland,2020-03-14,225,0,70,0,JHU
 Finland,2020-03-15,244,0,19,0,JHU
+Finland,2020-03-16,277,0,33,0,JHU
+Finland,2020-03-17,321,0,44,0,JHU
 France,2020-01-23,0,0,0,0,JHU
 France,2020-01-24,2,0,2,0,JHU
 France,2020-01-25,3,0,1,0,JHU
@@ -2644,11 +2742,13 @@ France,2020-03-07,957,11,301,2,JHU
 France,2020-03-08,1134,19,177,8,JHU
 France,2020-03-09,1217,19,83,0,JHU
 France,2020-03-10,1792,33,575,14,JHU
-France,2020-03-11,2289,48,497,15,JHU
-France,2020-03-12,2289,48,0,0,JHU
-France,2020-03-13,3672,79,1383,31,JHU
-France,2020-03-14,4480,91,808,12,JHU
-France,2020-03-15,4513,91,33,0,JHU
+France,2020-03-11,2290,48,498,15,JHU
+France,2020-03-12,2290,48,0,0,JHU
+France,2020-03-13,3678,79,1388,31,JHU
+France,2020-03-14,4487,91,809,12,JHU
+France,2020-03-15,4523,91,36,0,JHU
+France,2020-03-16,6668,148,2145,57,JHU
+France,2020-03-17,7699,148,1031,0,JHU
 Gabon,2020-01-23,0,0,0,0,JHU
 Gabon,2020-01-24,0,0,0,0,JHU
 Gabon,2020-01-25,0,0,0,0,JHU
@@ -2702,6 +2802,8 @@ Gabon,2020-03-12,0,0,0,0,JHU
 Gabon,2020-03-13,0,0,0,0,JHU
 Gabon,2020-03-14,1,0,1,0,JHU
 Gabon,2020-03-15,1,0,0,0,JHU
+Gabon,2020-03-16,1,0,0,0,JHU
+Gabon,2020-03-17,1,0,0,0,JHU
 Georgia,2020-01-23,0,0,0,0,JHU
 Georgia,2020-01-24,0,0,0,0,JHU
 Georgia,2020-01-25,0,0,0,0,JHU
@@ -2755,6 +2857,8 @@ Georgia,2020-03-12,24,0,0,0,JHU
 Georgia,2020-03-13,25,0,1,0,JHU
 Georgia,2020-03-14,30,0,5,0,JHU
 Georgia,2020-03-15,33,0,3,0,JHU
+Georgia,2020-03-16,33,0,0,0,JHU
+Georgia,2020-03-17,34,0,1,0,JHU
 Germany,2020-01-23,0,0,0,0,JHU
 Germany,2020-01-24,0,0,0,0,JHU
 Germany,2020-01-25,0,0,0,0,JHU
@@ -2808,6 +2912,8 @@ Germany,2020-03-12,2078,3,170,0,JHU
 Germany,2020-03-13,3675,7,1597,4,JHU
 Germany,2020-03-14,4585,9,910,2,JHU
 Germany,2020-03-15,5795,11,1210,2,JHU
+Germany,2020-03-16,7272,17,1477,6,JHU
+Germany,2020-03-17,9257,24,1985,7,JHU
 Ghana,2020-01-23,0,0,0,0,JHU
 Ghana,2020-01-24,0,0,0,0,JHU
 Ghana,2020-01-25,0,0,0,0,JHU
@@ -2861,6 +2967,8 @@ Ghana,2020-03-12,0,0,0,0,JHU
 Ghana,2020-03-13,0,0,0,0,JHU
 Ghana,2020-03-14,3,0,3,0,JHU
 Ghana,2020-03-15,6,0,3,0,JHU
+Ghana,2020-03-16,6,0,0,0,JHU
+Ghana,2020-03-17,7,0,1,0,JHU
 Greece,2020-01-23,0,0,0,0,JHU
 Greece,2020-01-24,0,0,0,0,JHU
 Greece,2020-01-25,0,0,0,0,JHU
@@ -2914,59 +3022,63 @@ Greece,2020-03-12,99,1,0,0,JHU
 Greece,2020-03-13,190,1,91,0,JHU
 Greece,2020-03-14,228,3,38,2,JHU
 Greece,2020-03-15,331,4,103,1,JHU
-Guadeloupe,2020-01-23,0,0,0,0,JHU
-Guadeloupe,2020-01-24,0,0,0,0,JHU
-Guadeloupe,2020-01-25,0,0,0,0,JHU
-Guadeloupe,2020-01-26,0,0,0,0,JHU
-Guadeloupe,2020-01-27,0,0,0,0,JHU
-Guadeloupe,2020-01-28,0,0,0,0,JHU
-Guadeloupe,2020-01-29,0,0,0,0,JHU
-Guadeloupe,2020-01-30,0,0,0,0,JHU
-Guadeloupe,2020-01-31,0,0,0,0,JHU
-Guadeloupe,2020-02-01,0,0,0,0,JHU
-Guadeloupe,2020-02-02,0,0,0,0,JHU
-Guadeloupe,2020-02-03,0,0,0,0,JHU
-Guadeloupe,2020-02-04,0,0,0,0,JHU
-Guadeloupe,2020-02-05,0,0,0,0,JHU
-Guadeloupe,2020-02-06,0,0,0,0,JHU
-Guadeloupe,2020-02-07,0,0,0,0,JHU
-Guadeloupe,2020-02-08,0,0,0,0,JHU
-Guadeloupe,2020-02-09,0,0,0,0,JHU
-Guadeloupe,2020-02-10,0,0,0,0,JHU
-Guadeloupe,2020-02-11,0,0,0,0,JHU
-Guadeloupe,2020-02-12,0,0,0,0,JHU
-Guadeloupe,2020-02-13,0,0,0,0,JHU
-Guadeloupe,2020-02-14,0,0,0,0,JHU
-Guadeloupe,2020-02-15,0,0,0,0,JHU
-Guadeloupe,2020-02-16,0,0,0,0,JHU
-Guadeloupe,2020-02-17,0,0,0,0,JHU
-Guadeloupe,2020-02-18,0,0,0,0,JHU
-Guadeloupe,2020-02-19,0,0,0,0,JHU
-Guadeloupe,2020-02-20,0,0,0,0,JHU
-Guadeloupe,2020-02-21,0,0,0,0,JHU
-Guadeloupe,2020-02-22,0,0,0,0,JHU
-Guadeloupe,2020-02-23,0,0,0,0,JHU
-Guadeloupe,2020-02-24,0,0,0,0,JHU
-Guadeloupe,2020-02-25,0,0,0,0,JHU
-Guadeloupe,2020-02-26,0,0,0,0,JHU
-Guadeloupe,2020-02-27,0,0,0,0,JHU
-Guadeloupe,2020-02-28,0,0,0,0,JHU
-Guadeloupe,2020-02-29,0,0,0,0,JHU
-Guadeloupe,2020-03-01,0,0,0,0,JHU
-Guadeloupe,2020-03-02,0,0,0,0,JHU
-Guadeloupe,2020-03-03,0,0,0,0,JHU
-Guadeloupe,2020-03-04,0,0,0,0,JHU
-Guadeloupe,2020-03-05,0,0,0,0,JHU
-Guadeloupe,2020-03-06,0,0,0,0,JHU
-Guadeloupe,2020-03-07,0,0,0,0,JHU
-Guadeloupe,2020-03-08,0,0,0,0,JHU
-Guadeloupe,2020-03-09,0,0,0,0,JHU
-Guadeloupe,2020-03-10,0,0,0,0,JHU
-Guadeloupe,2020-03-11,0,0,0,0,JHU
-Guadeloupe,2020-03-12,0,0,0,0,JHU
-Guadeloupe,2020-03-13,1,0,1,0,JHU
-Guadeloupe,2020-03-14,1,0,0,0,JHU
-Guadeloupe,2020-03-15,3,0,2,0,JHU
+Greece,2020-03-16,331,4,0,0,JHU
+Greece,2020-03-17,387,5,56,1,JHU
+Greenland,2020-01-23,0,0,0,0,JHU
+Greenland,2020-01-24,0,0,0,0,JHU
+Greenland,2020-01-25,0,0,0,0,JHU
+Greenland,2020-01-26,0,0,0,0,JHU
+Greenland,2020-01-27,0,0,0,0,JHU
+Greenland,2020-01-28,0,0,0,0,JHU
+Greenland,2020-01-29,0,0,0,0,JHU
+Greenland,2020-01-30,0,0,0,0,JHU
+Greenland,2020-01-31,0,0,0,0,JHU
+Greenland,2020-02-01,0,0,0,0,JHU
+Greenland,2020-02-02,0,0,0,0,JHU
+Greenland,2020-02-03,0,0,0,0,JHU
+Greenland,2020-02-04,0,0,0,0,JHU
+Greenland,2020-02-05,0,0,0,0,JHU
+Greenland,2020-02-06,0,0,0,0,JHU
+Greenland,2020-02-07,0,0,0,0,JHU
+Greenland,2020-02-08,0,0,0,0,JHU
+Greenland,2020-02-09,0,0,0,0,JHU
+Greenland,2020-02-10,0,0,0,0,JHU
+Greenland,2020-02-11,0,0,0,0,JHU
+Greenland,2020-02-12,0,0,0,0,JHU
+Greenland,2020-02-13,0,0,0,0,JHU
+Greenland,2020-02-14,0,0,0,0,JHU
+Greenland,2020-02-15,0,0,0,0,JHU
+Greenland,2020-02-16,0,0,0,0,JHU
+Greenland,2020-02-17,0,0,0,0,JHU
+Greenland,2020-02-18,0,0,0,0,JHU
+Greenland,2020-02-19,0,0,0,0,JHU
+Greenland,2020-02-20,0,0,0,0,JHU
+Greenland,2020-02-21,0,0,0,0,JHU
+Greenland,2020-02-22,0,0,0,0,JHU
+Greenland,2020-02-23,0,0,0,0,JHU
+Greenland,2020-02-24,0,0,0,0,JHU
+Greenland,2020-02-25,0,0,0,0,JHU
+Greenland,2020-02-26,0,0,0,0,JHU
+Greenland,2020-02-27,0,0,0,0,JHU
+Greenland,2020-02-28,0,0,0,0,JHU
+Greenland,2020-02-29,0,0,0,0,JHU
+Greenland,2020-03-01,0,0,0,0,JHU
+Greenland,2020-03-02,0,0,0,0,JHU
+Greenland,2020-03-03,0,0,0,0,JHU
+Greenland,2020-03-04,0,0,0,0,JHU
+Greenland,2020-03-05,0,0,0,0,JHU
+Greenland,2020-03-06,0,0,0,0,JHU
+Greenland,2020-03-07,0,0,0,0,JHU
+Greenland,2020-03-08,0,0,0,0,JHU
+Greenland,2020-03-09,0,0,0,0,JHU
+Greenland,2020-03-10,0,0,0,0,JHU
+Greenland,2020-03-11,0,0,0,0,JHU
+Greenland,2020-03-12,0,0,0,0,JHU
+Greenland,2020-03-13,0,0,0,0,JHU
+Greenland,2020-03-14,0,0,0,0,JHU
+Greenland,2020-03-15,0,0,0,0,JHU
+Greenland,2020-03-16,1,0,1,0,JHU
+Greenland,2020-03-17,1,0,0,0,JHU
 Guatemala,2020-01-23,0,0,0,0,JHU
 Guatemala,2020-01-24,0,0,0,0,JHU
 Guatemala,2020-01-25,0,0,0,0,JHU
@@ -3020,6 +3132,8 @@ Guatemala,2020-03-12,0,0,0,0,JHU
 Guatemala,2020-03-13,0,0,0,0,JHU
 Guatemala,2020-03-14,1,0,1,0,JHU
 Guatemala,2020-03-15,1,0,0,0,JHU
+Guatemala,2020-03-16,2,1,1,1,JHU
+Guatemala,2020-03-17,6,1,4,0,JHU
 Guernsey,2020-01-23,0,0,0,0,JHU
 Guernsey,2020-01-24,0,0,0,0,JHU
 Guernsey,2020-01-25,0,0,0,0,JHU
@@ -3073,6 +3187,8 @@ Guernsey,2020-03-12,0,0,0,0,JHU
 Guernsey,2020-03-13,0,0,0,0,JHU
 Guernsey,2020-03-14,1,0,1,0,JHU
 Guernsey,2020-03-15,1,0,0,0,JHU
+Guernsey,2020-03-16,1,0,0,0,JHU
+Guernsey,2020-03-17,1,0,0,0,JHU
 Guinea,2020-01-23,0,0,0,0,JHU
 Guinea,2020-01-24,0,0,0,0,JHU
 Guinea,2020-01-25,0,0,0,0,JHU
@@ -3126,6 +3242,8 @@ Guinea,2020-03-12,0,0,0,0,JHU
 Guinea,2020-03-13,1,0,1,0,JHU
 Guinea,2020-03-14,1,0,0,0,JHU
 Guinea,2020-03-15,1,0,0,0,JHU
+Guinea,2020-03-16,1,0,0,0,JHU
+Guinea,2020-03-17,1,0,0,0,JHU
 Guyana,2020-01-23,0,0,0,0,JHU
 Guyana,2020-01-24,0,0,0,0,JHU
 Guyana,2020-01-25,0,0,0,0,JHU
@@ -3179,6 +3297,8 @@ Guyana,2020-03-12,1,1,1,1,JHU
 Guyana,2020-03-13,1,1,0,0,JHU
 Guyana,2020-03-14,1,1,0,0,JHU
 Guyana,2020-03-15,4,1,3,0,JHU
+Guyana,2020-03-16,4,1,0,0,JHU
+Guyana,2020-03-17,7,1,3,0,JHU
 Holy See,2020-01-23,0,0,0,0,JHU
 Holy See,2020-01-24,0,0,0,0,JHU
 Holy See,2020-01-25,0,0,0,0,JHU
@@ -3232,6 +3352,8 @@ Holy See,2020-03-12,1,0,0,0,JHU
 Holy See,2020-03-13,1,0,0,0,JHU
 Holy See,2020-03-14,1,0,0,0,JHU
 Holy See,2020-03-15,1,0,0,0,JHU
+Holy See,2020-03-16,1,0,0,0,JHU
+Holy See,2020-03-17,1,0,0,0,JHU
 Honduras,2020-01-23,0,0,0,0,JHU
 Honduras,2020-01-24,0,0,0,0,JHU
 Honduras,2020-01-25,0,0,0,0,JHU
@@ -3285,6 +3407,8 @@ Honduras,2020-03-12,2,0,0,0,JHU
 Honduras,2020-03-13,2,0,0,0,JHU
 Honduras,2020-03-14,2,0,0,0,JHU
 Honduras,2020-03-15,3,0,1,0,JHU
+Honduras,2020-03-16,6,0,3,0,JHU
+Honduras,2020-03-17,8,0,2,0,JHU
 Hungary,2020-01-23,0,0,0,0,JHU
 Hungary,2020-01-24,0,0,0,0,JHU
 Hungary,2020-01-25,0,0,0,0,JHU
@@ -3338,6 +3462,8 @@ Hungary,2020-03-12,13,0,0,0,JHU
 Hungary,2020-03-13,19,0,6,0,JHU
 Hungary,2020-03-14,30,0,11,0,JHU
 Hungary,2020-03-15,32,1,2,1,JHU
+Hungary,2020-03-16,39,1,7,0,JHU
+Hungary,2020-03-17,50,1,11,0,JHU
 Iceland,2020-01-23,0,0,0,0,JHU
 Iceland,2020-01-24,0,0,0,0,JHU
 Iceland,2020-01-25,0,0,0,0,JHU
@@ -3391,6 +3517,8 @@ Iceland,2020-03-12,103,0,18,0,JHU
 Iceland,2020-03-13,134,0,31,0,JHU
 Iceland,2020-03-14,156,0,22,0,JHU
 Iceland,2020-03-15,171,5,15,5,JHU
+Iceland,2020-03-16,180,0,9,-5,JHU
+Iceland,2020-03-17,220,1,40,1,JHU
 India,2020-01-23,0,0,0,0,JHU
 India,2020-01-24,0,0,0,0,JHU
 India,2020-01-25,0,0,0,0,JHU
@@ -3444,6 +3572,8 @@ India,2020-03-12,73,1,11,0,JHU
 India,2020-03-13,82,2,9,1,JHU
 India,2020-03-14,102,2,20,0,JHU
 India,2020-03-15,113,2,11,0,JHU
+India,2020-03-16,119,2,6,0,JHU
+India,2020-03-17,142,3,23,1,JHU
 Indonesia,2020-01-23,0,0,0,0,JHU
 Indonesia,2020-01-24,0,0,0,0,JHU
 Indonesia,2020-01-25,0,0,0,0,JHU
@@ -3497,6 +3627,8 @@ Indonesia,2020-03-12,34,1,0,0,JHU
 Indonesia,2020-03-13,69,4,35,3,JHU
 Indonesia,2020-03-14,96,5,27,1,JHU
 Indonesia,2020-03-15,117,5,21,0,JHU
+Indonesia,2020-03-16,134,5,17,0,JHU
+Indonesia,2020-03-17,172,5,38,0,JHU
 Iran,2020-01-23,0,0,0,0,JHU
 Iran,2020-01-24,0,0,0,0,JHU
 Iran,2020-01-25,0,0,0,0,JHU
@@ -3550,6 +3682,8 @@ Iran,2020-03-12,10075,429,1075,75,JHU
 Iran,2020-03-13,11364,514,1289,85,JHU
 Iran,2020-03-14,12729,611,1365,97,JHU
 Iran,2020-03-15,13938,724,1209,113,JHU
+Iran,2020-03-16,14991,853,1053,129,JHU
+Iran,2020-03-17,16169,988,1178,135,JHU
 Iraq,2020-01-23,0,0,0,0,JHU
 Iraq,2020-01-24,0,0,0,0,JHU
 Iraq,2020-01-25,0,0,0,0,JHU
@@ -3603,6 +3737,8 @@ Iraq,2020-03-12,71,8,0,1,JHU
 Iraq,2020-03-13,101,9,30,1,JHU
 Iraq,2020-03-14,110,10,9,1,JHU
 Iraq,2020-03-15,116,10,6,0,JHU
+Iraq,2020-03-16,124,10,8,0,JHU
+Iraq,2020-03-17,154,11,30,1,JHU
 Ireland,2020-01-23,0,0,0,0,JHU
 Ireland,2020-01-24,0,0,0,0,JHU
 Ireland,2020-01-25,0,0,0,0,JHU
@@ -3656,6 +3792,8 @@ Ireland,2020-03-12,43,1,0,0,JHU
 Ireland,2020-03-13,90,1,47,0,JHU
 Ireland,2020-03-14,129,2,39,1,JHU
 Ireland,2020-03-15,129,2,0,0,JHU
+Ireland,2020-03-16,169,2,40,0,JHU
+Ireland,2020-03-17,223,2,54,0,JHU
 Israel,2020-01-23,0,0,0,0,JHU
 Israel,2020-01-24,0,0,0,0,JHU
 Israel,2020-01-25,0,0,0,0,JHU
@@ -3709,6 +3847,8 @@ Israel,2020-03-12,131,0,22,0,JHU
 Israel,2020-03-13,161,0,30,0,JHU
 Israel,2020-03-14,193,0,32,0,JHU
 Israel,2020-03-15,251,0,58,0,JHU
+Israel,2020-03-16,255,0,4,0,JHU
+Israel,2020-03-17,337,0,82,0,JHU
 Italy,2020-01-23,0,0,0,0,JHU
 Italy,2020-01-24,0,0,0,0,JHU
 Italy,2020-01-25,0,0,0,0,JHU
@@ -3762,6 +3902,8 @@ Italy,2020-03-12,12462,827,0,0,JHU
 Italy,2020-03-13,17660,1266,5198,439,JHU
 Italy,2020-03-14,21157,1441,3497,175,JHU
 Italy,2020-03-15,24747,1809,3590,368,JHU
+Italy,2020-03-16,27980,2158,3233,349,JHU
+Italy,2020-03-17,31506,2503,3526,345,JHU
 Jamaica,2020-01-23,0,0,0,0,JHU
 Jamaica,2020-01-24,0,0,0,0,JHU
 Jamaica,2020-01-25,0,0,0,0,JHU
@@ -3815,6 +3957,8 @@ Jamaica,2020-03-12,2,0,1,0,JHU
 Jamaica,2020-03-13,8,0,6,0,JHU
 Jamaica,2020-03-14,8,0,0,0,JHU
 Jamaica,2020-03-15,10,0,2,0,JHU
+Jamaica,2020-03-16,10,0,0,0,JHU
+Jamaica,2020-03-17,12,0,2,0,JHU
 Japan,2020-01-23,1,0,-1,0,JHU
 Japan,2020-01-24,2,0,1,0,JHU
 Japan,2020-01-25,2,0,0,0,JHU
@@ -3868,6 +4012,8 @@ Japan,2020-03-12,639,16,0,1,JHU
 Japan,2020-03-13,701,19,62,3,JHU
 Japan,2020-03-14,773,22,72,3,JHU
 Japan,2020-03-15,839,22,66,0,JHU
+Japan,2020-03-16,825,27,-14,5,JHU
+Japan,2020-03-17,878,29,53,2,JHU
 Jersey,2020-01-23,0,0,0,0,JHU
 Jersey,2020-01-24,0,0,0,0,JHU
 Jersey,2020-01-25,0,0,0,0,JHU
@@ -3921,6 +4067,8 @@ Jersey,2020-03-12,0,0,0,0,JHU
 Jersey,2020-03-13,0,0,0,0,JHU
 Jersey,2020-03-14,2,0,2,0,JHU
 Jersey,2020-03-15,2,0,0,0,JHU
+Jersey,2020-03-16,2,0,0,0,JHU
+Jersey,2020-03-17,2,0,0,0,JHU
 Jordan,2020-01-23,0,0,0,0,JHU
 Jordan,2020-01-24,0,0,0,0,JHU
 Jordan,2020-01-25,0,0,0,0,JHU
@@ -3974,6 +4122,8 @@ Jordan,2020-03-12,1,0,0,0,JHU
 Jordan,2020-03-13,1,0,0,0,JHU
 Jordan,2020-03-14,1,0,0,0,JHU
 Jordan,2020-03-15,8,0,7,0,JHU
+Jordan,2020-03-16,17,0,9,0,JHU
+Jordan,2020-03-17,34,0,17,0,JHU
 Kazakhstan,2020-01-23,0,0,0,0,JHU
 Kazakhstan,2020-01-24,0,0,0,0,JHU
 Kazakhstan,2020-01-25,0,0,0,0,JHU
@@ -4027,6 +4177,8 @@ Kazakhstan,2020-03-12,0,0,0,0,JHU
 Kazakhstan,2020-03-13,4,0,4,0,JHU
 Kazakhstan,2020-03-14,6,0,2,0,JHU
 Kazakhstan,2020-03-15,9,0,3,0,JHU
+Kazakhstan,2020-03-16,10,0,1,0,JHU
+Kazakhstan,2020-03-17,33,0,23,0,JHU
 Kenya,2020-01-23,0,0,0,0,JHU
 Kenya,2020-01-24,0,0,0,0,JHU
 Kenya,2020-01-25,0,0,0,0,JHU
@@ -4080,6 +4232,8 @@ Kenya,2020-03-12,0,0,0,0,JHU
 Kenya,2020-03-13,1,0,1,0,JHU
 Kenya,2020-03-14,1,0,0,0,JHU
 Kenya,2020-03-15,3,0,2,0,JHU
+Kenya,2020-03-16,3,0,0,0,JHU
+Kenya,2020-03-17,3,0,0,0,JHU
 Kosovo,2020-01-23,0,0,0,0,JHU
 Kosovo,2020-01-24,0,0,0,0,JHU
 Kosovo,2020-01-25,0,0,0,0,JHU
@@ -4133,6 +4287,8 @@ Kosovo,2020-03-12,0,0,0,0,JHU
 Kosovo,2020-03-13,0,0,0,0,JHU
 Kosovo,2020-03-14,0,0,0,0,JHU
 Kosovo,2020-03-15,2,0,2,0,JHU
+Kosovo,2020-03-16,2,0,0,0,JHU
+Kosovo,2020-03-17,2,0,0,0,JHU
 Kuwait,2020-01-23,0,0,0,0,JHU
 Kuwait,2020-01-24,0,0,0,0,JHU
 Kuwait,2020-01-25,0,0,0,0,JHU
@@ -4186,6 +4342,8 @@ Kuwait,2020-03-12,80,0,8,0,JHU
 Kuwait,2020-03-13,80,0,0,0,JHU
 Kuwait,2020-03-14,104,0,24,0,JHU
 Kuwait,2020-03-15,112,0,8,0,JHU
+Kuwait,2020-03-16,123,0,11,0,JHU
+Kuwait,2020-03-17,130,0,7,0,JHU
 Latvia,2020-01-23,0,0,0,0,JHU
 Latvia,2020-01-24,0,0,0,0,JHU
 Latvia,2020-01-25,0,0,0,0,JHU
@@ -4239,6 +4397,8 @@ Latvia,2020-03-12,10,0,0,0,JHU
 Latvia,2020-03-13,17,0,7,0,JHU
 Latvia,2020-03-14,26,0,9,0,JHU
 Latvia,2020-03-15,30,0,4,0,JHU
+Latvia,2020-03-16,34,0,4,0,JHU
+Latvia,2020-03-17,49,0,15,0,JHU
 Lebanon,2020-01-23,0,0,0,0,JHU
 Lebanon,2020-01-24,0,0,0,0,JHU
 Lebanon,2020-01-25,0,0,0,0,JHU
@@ -4292,6 +4452,63 @@ Lebanon,2020-03-12,61,3,0,0,JHU
 Lebanon,2020-03-13,77,3,16,0,JHU
 Lebanon,2020-03-14,93,3,16,0,JHU
 Lebanon,2020-03-15,110,3,17,0,JHU
+Lebanon,2020-03-16,99,3,-11,0,JHU
+Lebanon,2020-03-17,120,3,21,0,JHU
+Liberia,2020-01-23,0,0,0,0,JHU
+Liberia,2020-01-24,0,0,0,0,JHU
+Liberia,2020-01-25,0,0,0,0,JHU
+Liberia,2020-01-26,0,0,0,0,JHU
+Liberia,2020-01-27,0,0,0,0,JHU
+Liberia,2020-01-28,0,0,0,0,JHU
+Liberia,2020-01-29,0,0,0,0,JHU
+Liberia,2020-01-30,0,0,0,0,JHU
+Liberia,2020-01-31,0,0,0,0,JHU
+Liberia,2020-02-01,0,0,0,0,JHU
+Liberia,2020-02-02,0,0,0,0,JHU
+Liberia,2020-02-03,0,0,0,0,JHU
+Liberia,2020-02-04,0,0,0,0,JHU
+Liberia,2020-02-05,0,0,0,0,JHU
+Liberia,2020-02-06,0,0,0,0,JHU
+Liberia,2020-02-07,0,0,0,0,JHU
+Liberia,2020-02-08,0,0,0,0,JHU
+Liberia,2020-02-09,0,0,0,0,JHU
+Liberia,2020-02-10,0,0,0,0,JHU
+Liberia,2020-02-11,0,0,0,0,JHU
+Liberia,2020-02-12,0,0,0,0,JHU
+Liberia,2020-02-13,0,0,0,0,JHU
+Liberia,2020-02-14,0,0,0,0,JHU
+Liberia,2020-02-15,0,0,0,0,JHU
+Liberia,2020-02-16,0,0,0,0,JHU
+Liberia,2020-02-17,0,0,0,0,JHU
+Liberia,2020-02-18,0,0,0,0,JHU
+Liberia,2020-02-19,0,0,0,0,JHU
+Liberia,2020-02-20,0,0,0,0,JHU
+Liberia,2020-02-21,0,0,0,0,JHU
+Liberia,2020-02-22,0,0,0,0,JHU
+Liberia,2020-02-23,0,0,0,0,JHU
+Liberia,2020-02-24,0,0,0,0,JHU
+Liberia,2020-02-25,0,0,0,0,JHU
+Liberia,2020-02-26,0,0,0,0,JHU
+Liberia,2020-02-27,0,0,0,0,JHU
+Liberia,2020-02-28,0,0,0,0,JHU
+Liberia,2020-02-29,0,0,0,0,JHU
+Liberia,2020-03-01,0,0,0,0,JHU
+Liberia,2020-03-02,0,0,0,0,JHU
+Liberia,2020-03-03,0,0,0,0,JHU
+Liberia,2020-03-04,0,0,0,0,JHU
+Liberia,2020-03-05,0,0,0,0,JHU
+Liberia,2020-03-06,0,0,0,0,JHU
+Liberia,2020-03-07,0,0,0,0,JHU
+Liberia,2020-03-08,0,0,0,0,JHU
+Liberia,2020-03-09,0,0,0,0,JHU
+Liberia,2020-03-10,0,0,0,0,JHU
+Liberia,2020-03-11,0,0,0,0,JHU
+Liberia,2020-03-12,0,0,0,0,JHU
+Liberia,2020-03-13,0,0,0,0,JHU
+Liberia,2020-03-14,0,0,0,0,JHU
+Liberia,2020-03-15,0,0,0,0,JHU
+Liberia,2020-03-16,1,0,1,0,JHU
+Liberia,2020-03-17,1,0,0,0,JHU
 Liechtenstein,2020-01-23,0,0,0,0,JHU
 Liechtenstein,2020-01-24,0,0,0,0,JHU
 Liechtenstein,2020-01-25,0,0,0,0,JHU
@@ -4345,6 +4562,8 @@ Liechtenstein,2020-03-12,1,0,0,0,JHU
 Liechtenstein,2020-03-13,1,0,0,0,JHU
 Liechtenstein,2020-03-14,4,0,3,0,JHU
 Liechtenstein,2020-03-15,4,0,0,0,JHU
+Liechtenstein,2020-03-16,4,0,0,0,JHU
+Liechtenstein,2020-03-17,7,0,3,0,JHU
 Lithuania,2020-01-23,0,0,0,0,JHU
 Lithuania,2020-01-24,0,0,0,0,JHU
 Lithuania,2020-01-25,0,0,0,0,JHU
@@ -4398,6 +4617,8 @@ Lithuania,2020-03-12,3,0,0,0,JHU
 Lithuania,2020-03-13,6,0,3,0,JHU
 Lithuania,2020-03-14,8,0,2,0,JHU
 Lithuania,2020-03-15,12,0,4,0,JHU
+Lithuania,2020-03-16,17,0,5,0,JHU
+Lithuania,2020-03-17,25,0,8,0,JHU
 Luxembourg,2020-01-23,0,0,0,0,JHU
 Luxembourg,2020-01-24,0,0,0,0,JHU
 Luxembourg,2020-01-25,0,0,0,0,JHU
@@ -4451,6 +4672,8 @@ Luxembourg,2020-03-12,19,0,12,0,JHU
 Luxembourg,2020-03-13,34,0,15,0,JHU
 Luxembourg,2020-03-14,51,1,17,1,JHU
 Luxembourg,2020-03-15,59,1,8,0,JHU
+Luxembourg,2020-03-16,77,1,18,0,JHU
+Luxembourg,2020-03-17,140,1,63,0,JHU
 Malaysia,2020-01-23,0,0,0,0,JHU
 Malaysia,2020-01-24,0,0,0,0,JHU
 Malaysia,2020-01-25,3,0,3,0,JHU
@@ -4504,6 +4727,8 @@ Malaysia,2020-03-12,149,0,0,0,JHU
 Malaysia,2020-03-13,197,0,48,0,JHU
 Malaysia,2020-03-14,238,0,41,0,JHU
 Malaysia,2020-03-15,428,0,190,0,JHU
+Malaysia,2020-03-16,566,0,138,0,JHU
+Malaysia,2020-03-17,673,2,107,2,JHU
 Maldives,2020-01-23,0,0,0,0,JHU
 Maldives,2020-01-24,0,0,0,0,JHU
 Maldives,2020-01-25,0,0,0,0,JHU
@@ -4557,6 +4782,8 @@ Maldives,2020-03-12,8,0,0,0,JHU
 Maldives,2020-03-13,9,0,1,0,JHU
 Maldives,2020-03-14,10,0,1,0,JHU
 Maldives,2020-03-15,13,0,3,0,JHU
+Maldives,2020-03-16,13,0,0,0,JHU
+Maldives,2020-03-17,13,0,0,0,JHU
 Malta,2020-01-23,0,0,0,0,JHU
 Malta,2020-01-24,0,0,0,0,JHU
 Malta,2020-01-25,0,0,0,0,JHU
@@ -4610,6 +4837,8 @@ Malta,2020-03-12,6,0,0,0,JHU
 Malta,2020-03-13,12,0,6,0,JHU
 Malta,2020-03-14,18,0,6,0,JHU
 Malta,2020-03-15,21,0,3,0,JHU
+Malta,2020-03-16,30,0,9,0,JHU
+Malta,2020-03-17,38,0,8,0,JHU
 Martinique,2020-01-23,0,0,0,0,JHU
 Martinique,2020-01-24,0,0,0,0,JHU
 Martinique,2020-01-25,0,0,0,0,JHU
@@ -4663,6 +4892,8 @@ Martinique,2020-03-12,3,0,0,0,JHU
 Martinique,2020-03-13,3,0,0,0,JHU
 Martinique,2020-03-14,9,0,6,0,JHU
 Martinique,2020-03-15,9,0,0,0,JHU
+Martinique,2020-03-16,15,1,6,1,JHU
+Martinique,2020-03-17,16,1,1,0,JHU
 Mauritania,2020-01-23,0,0,0,0,JHU
 Mauritania,2020-01-24,0,0,0,0,JHU
 Mauritania,2020-01-25,0,0,0,0,JHU
@@ -4716,6 +4947,8 @@ Mauritania,2020-03-12,0,0,0,0,JHU
 Mauritania,2020-03-13,0,0,0,0,JHU
 Mauritania,2020-03-14,1,0,1,0,JHU
 Mauritania,2020-03-15,1,0,0,0,JHU
+Mauritania,2020-03-16,1,0,0,0,JHU
+Mauritania,2020-03-17,1,0,0,0,JHU
 Mexico,2020-01-23,0,0,0,0,JHU
 Mexico,2020-01-24,0,0,0,0,JHU
 Mexico,2020-01-25,0,0,0,0,JHU
@@ -4769,6 +5002,8 @@ Mexico,2020-03-12,12,0,4,0,JHU
 Mexico,2020-03-13,12,0,0,0,JHU
 Mexico,2020-03-14,26,0,14,0,JHU
 Mexico,2020-03-15,41,0,15,0,JHU
+Mexico,2020-03-16,53,0,12,0,JHU
+Mexico,2020-03-17,82,0,29,0,JHU
 Moldova,2020-01-23,0,0,0,0,JHU
 Moldova,2020-01-24,0,0,0,0,JHU
 Moldova,2020-01-25,0,0,0,0,JHU
@@ -4822,6 +5057,8 @@ Moldova,2020-03-12,3,0,0,0,JHU
 Moldova,2020-03-13,6,0,3,0,JHU
 Moldova,2020-03-14,12,0,6,0,JHU
 Moldova,2020-03-15,23,0,11,0,JHU
+Moldova,2020-03-16,23,0,0,0,JHU
+Moldova,2020-03-17,30,0,7,0,JHU
 Monaco,2020-01-23,0,0,0,0,JHU
 Monaco,2020-01-24,0,0,0,0,JHU
 Monaco,2020-01-25,0,0,0,0,JHU
@@ -4875,6 +5112,8 @@ Monaco,2020-03-12,2,0,1,0,JHU
 Monaco,2020-03-13,2,0,0,0,JHU
 Monaco,2020-03-14,2,0,0,0,JHU
 Monaco,2020-03-15,2,0,0,0,JHU
+Monaco,2020-03-16,7,0,5,0,JHU
+Monaco,2020-03-17,7,0,0,0,JHU
 Mongolia,2020-01-23,0,0,0,0,JHU
 Mongolia,2020-01-24,0,0,0,0,JHU
 Mongolia,2020-01-25,0,0,0,0,JHU
@@ -4928,6 +5167,63 @@ Mongolia,2020-03-12,1,0,0,0,JHU
 Mongolia,2020-03-13,1,0,0,0,JHU
 Mongolia,2020-03-14,1,0,0,0,JHU
 Mongolia,2020-03-15,1,0,0,0,JHU
+Mongolia,2020-03-16,1,0,0,0,JHU
+Mongolia,2020-03-17,5,0,4,0,JHU
+Montenegro,2020-01-23,0,0,0,0,JHU
+Montenegro,2020-01-24,0,0,0,0,JHU
+Montenegro,2020-01-25,0,0,0,0,JHU
+Montenegro,2020-01-26,0,0,0,0,JHU
+Montenegro,2020-01-27,0,0,0,0,JHU
+Montenegro,2020-01-28,0,0,0,0,JHU
+Montenegro,2020-01-29,0,0,0,0,JHU
+Montenegro,2020-01-30,0,0,0,0,JHU
+Montenegro,2020-01-31,0,0,0,0,JHU
+Montenegro,2020-02-01,0,0,0,0,JHU
+Montenegro,2020-02-02,0,0,0,0,JHU
+Montenegro,2020-02-03,0,0,0,0,JHU
+Montenegro,2020-02-04,0,0,0,0,JHU
+Montenegro,2020-02-05,0,0,0,0,JHU
+Montenegro,2020-02-06,0,0,0,0,JHU
+Montenegro,2020-02-07,0,0,0,0,JHU
+Montenegro,2020-02-08,0,0,0,0,JHU
+Montenegro,2020-02-09,0,0,0,0,JHU
+Montenegro,2020-02-10,0,0,0,0,JHU
+Montenegro,2020-02-11,0,0,0,0,JHU
+Montenegro,2020-02-12,0,0,0,0,JHU
+Montenegro,2020-02-13,0,0,0,0,JHU
+Montenegro,2020-02-14,0,0,0,0,JHU
+Montenegro,2020-02-15,0,0,0,0,JHU
+Montenegro,2020-02-16,0,0,0,0,JHU
+Montenegro,2020-02-17,0,0,0,0,JHU
+Montenegro,2020-02-18,0,0,0,0,JHU
+Montenegro,2020-02-19,0,0,0,0,JHU
+Montenegro,2020-02-20,0,0,0,0,JHU
+Montenegro,2020-02-21,0,0,0,0,JHU
+Montenegro,2020-02-22,0,0,0,0,JHU
+Montenegro,2020-02-23,0,0,0,0,JHU
+Montenegro,2020-02-24,0,0,0,0,JHU
+Montenegro,2020-02-25,0,0,0,0,JHU
+Montenegro,2020-02-26,0,0,0,0,JHU
+Montenegro,2020-02-27,0,0,0,0,JHU
+Montenegro,2020-02-28,0,0,0,0,JHU
+Montenegro,2020-02-29,0,0,0,0,JHU
+Montenegro,2020-03-01,0,0,0,0,JHU
+Montenegro,2020-03-02,0,0,0,0,JHU
+Montenegro,2020-03-03,0,0,0,0,JHU
+Montenegro,2020-03-04,0,0,0,0,JHU
+Montenegro,2020-03-05,0,0,0,0,JHU
+Montenegro,2020-03-06,0,0,0,0,JHU
+Montenegro,2020-03-07,0,0,0,0,JHU
+Montenegro,2020-03-08,0,0,0,0,JHU
+Montenegro,2020-03-09,0,0,0,0,JHU
+Montenegro,2020-03-10,0,0,0,0,JHU
+Montenegro,2020-03-11,0,0,0,0,JHU
+Montenegro,2020-03-12,0,0,0,0,JHU
+Montenegro,2020-03-13,0,0,0,0,JHU
+Montenegro,2020-03-14,0,0,0,0,JHU
+Montenegro,2020-03-15,0,0,0,0,JHU
+Montenegro,2020-03-16,0,0,0,0,JHU
+Montenegro,2020-03-17,2,0,2,0,JHU
 Morocco,2020-01-23,0,0,0,0,JHU
 Morocco,2020-01-24,0,0,0,0,JHU
 Morocco,2020-01-25,0,0,0,0,JHU
@@ -4981,6 +5277,8 @@ Morocco,2020-03-12,6,1,1,0,JHU
 Morocco,2020-03-13,7,1,1,0,JHU
 Morocco,2020-03-14,17,1,10,0,JHU
 Morocco,2020-03-15,28,1,11,0,JHU
+Morocco,2020-03-16,29,1,1,0,JHU
+Morocco,2020-03-17,38,2,9,1,JHU
 Namibia,2020-01-23,0,0,0,0,JHU
 Namibia,2020-01-24,0,0,0,0,JHU
 Namibia,2020-01-25,0,0,0,0,JHU
@@ -5034,6 +5332,8 @@ Namibia,2020-03-12,0,0,0,0,JHU
 Namibia,2020-03-13,0,0,0,0,JHU
 Namibia,2020-03-14,2,0,2,0,JHU
 Namibia,2020-03-15,2,0,0,0,JHU
+Namibia,2020-03-16,2,0,0,0,JHU
+Namibia,2020-03-17,2,0,0,0,JHU
 Nepal,2020-01-23,0,0,0,0,JHU
 Nepal,2020-01-24,0,0,0,0,JHU
 Nepal,2020-01-25,1,0,1,0,JHU
@@ -5087,6 +5387,8 @@ Nepal,2020-03-12,1,0,0,0,JHU
 Nepal,2020-03-13,1,0,0,0,JHU
 Nepal,2020-03-14,1,0,0,0,JHU
 Nepal,2020-03-15,1,0,0,0,JHU
+Nepal,2020-03-16,1,0,0,0,JHU
+Nepal,2020-03-17,1,0,0,0,JHU
 Netherlands,2020-01-23,0,0,0,0,JHU
 Netherlands,2020-01-24,0,0,0,0,JHU
 Netherlands,2020-01-25,0,0,0,0,JHU
@@ -5138,8 +5440,10 @@ Netherlands,2020-03-10,382,4,61,1,JHU
 Netherlands,2020-03-11,503,5,121,1,JHU
 Netherlands,2020-03-12,503,5,0,0,JHU
 Netherlands,2020-03-13,804,10,301,5,JHU
-Netherlands,2020-03-14,959,12,155,2,JHU
-Netherlands,2020-03-15,1135,20,176,8,JHU
+Netherlands,2020-03-14,960,12,156,2,JHU
+Netherlands,2020-03-15,1136,20,176,8,JHU
+Netherlands,2020-03-16,1414,24,278,4,JHU
+Netherlands,2020-03-17,1708,43,294,19,JHU
 New Zealand,2020-01-23,0,0,0,0,JHU
 New Zealand,2020-01-24,0,0,0,0,JHU
 New Zealand,2020-01-25,0,0,0,0,JHU
@@ -5193,6 +5497,8 @@ New Zealand,2020-03-12,5,0,0,0,JHU
 New Zealand,2020-03-13,5,0,0,0,JHU
 New Zealand,2020-03-14,6,0,1,0,JHU
 New Zealand,2020-03-15,8,0,2,0,JHU
+New Zealand,2020-03-16,8,0,0,0,JHU
+New Zealand,2020-03-17,12,0,4,0,JHU
 Nigeria,2020-01-23,0,0,0,0,JHU
 Nigeria,2020-01-24,0,0,0,0,JHU
 Nigeria,2020-01-25,0,0,0,0,JHU
@@ -5246,6 +5552,8 @@ Nigeria,2020-03-12,2,0,0,0,JHU
 Nigeria,2020-03-13,2,0,0,0,JHU
 Nigeria,2020-03-14,2,0,0,0,JHU
 Nigeria,2020-03-15,2,0,0,0,JHU
+Nigeria,2020-03-16,2,0,0,0,JHU
+Nigeria,2020-03-17,3,0,1,0,JHU
 North Macedonia,2020-01-23,0,0,0,0,JHU
 North Macedonia,2020-01-24,0,0,0,0,JHU
 North Macedonia,2020-01-25,0,0,0,0,JHU
@@ -5299,6 +5607,8 @@ North Macedonia,2020-03-12,7,0,0,0,JHU
 North Macedonia,2020-03-13,14,0,7,0,JHU
 North Macedonia,2020-03-14,14,0,0,0,JHU
 North Macedonia,2020-03-15,14,0,0,0,JHU
+North Macedonia,2020-03-16,18,0,4,0,JHU
+North Macedonia,2020-03-17,26,0,8,0,JHU
 Norway,2020-01-23,0,0,0,0,JHU
 Norway,2020-01-24,0,0,0,0,JHU
 Norway,2020-01-25,0,0,0,0,JHU
@@ -5352,59 +5662,8 @@ Norway,2020-03-12,702,0,104,0,JHU
 Norway,2020-03-13,996,0,294,0,JHU
 Norway,2020-03-14,1090,3,94,3,JHU
 Norway,2020-03-15,1221,3,131,0,JHU
-occupied Palestinian territory,2020-01-23,0,0,0,0,JHU
-occupied Palestinian territory,2020-01-24,0,0,0,0,JHU
-occupied Palestinian territory,2020-01-25,0,0,0,0,JHU
-occupied Palestinian territory,2020-01-26,0,0,0,0,JHU
-occupied Palestinian territory,2020-01-27,0,0,0,0,JHU
-occupied Palestinian territory,2020-01-28,0,0,0,0,JHU
-occupied Palestinian territory,2020-01-29,0,0,0,0,JHU
-occupied Palestinian territory,2020-01-30,0,0,0,0,JHU
-occupied Palestinian territory,2020-01-31,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-01,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-02,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-03,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-04,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-05,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-06,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-07,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-08,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-09,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-10,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-11,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-12,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-13,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-14,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-15,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-16,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-17,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-18,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-19,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-20,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-21,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-22,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-23,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-24,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-25,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-26,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-27,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-28,0,0,0,0,JHU
-occupied Palestinian territory,2020-02-29,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-01,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-02,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-03,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-04,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-05,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-06,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-07,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-08,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-09,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-10,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-11,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-12,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-13,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-14,0,0,0,0,JHU
-occupied Palestinian territory,2020-03-15,0,0,0,0,JHU
+Norway,2020-03-16,1333,3,112,0,JHU
+Norway,2020-03-17,1463,3,130,0,JHU
 Oman,2020-01-23,0,0,0,0,JHU
 Oman,2020-01-24,0,0,0,0,JHU
 Oman,2020-01-25,0,0,0,0,JHU
@@ -5458,6 +5717,8 @@ Oman,2020-03-12,18,0,0,0,JHU
 Oman,2020-03-13,19,0,1,0,JHU
 Oman,2020-03-14,19,0,0,0,JHU
 Oman,2020-03-15,22,0,3,0,JHU
+Oman,2020-03-16,22,0,0,0,JHU
+Oman,2020-03-17,24,0,2,0,JHU
 Pakistan,2020-01-23,0,0,0,0,JHU
 Pakistan,2020-01-24,0,0,0,0,JHU
 Pakistan,2020-01-25,0,0,0,0,JHU
@@ -5511,6 +5772,8 @@ Pakistan,2020-03-12,20,0,1,0,JHU
 Pakistan,2020-03-13,28,0,8,0,JHU
 Pakistan,2020-03-14,31,0,3,0,JHU
 Pakistan,2020-03-15,53,0,22,0,JHU
+Pakistan,2020-03-16,136,0,83,0,JHU
+Pakistan,2020-03-17,236,0,100,0,JHU
 Panama,2020-01-23,0,0,0,0,JHU
 Panama,2020-01-24,0,0,0,0,JHU
 Panama,2020-01-25,0,0,0,0,JHU
@@ -5564,6 +5827,8 @@ Panama,2020-03-12,11,1,3,0,JHU
 Panama,2020-03-13,27,1,16,0,JHU
 Panama,2020-03-14,36,1,9,0,JHU
 Panama,2020-03-15,43,1,7,0,JHU
+Panama,2020-03-16,55,1,12,0,JHU
+Panama,2020-03-17,69,1,14,0,JHU
 Paraguay,2020-01-23,0,0,0,0,JHU
 Paraguay,2020-01-24,0,0,0,0,JHU
 Paraguay,2020-01-25,0,0,0,0,JHU
@@ -5617,6 +5882,8 @@ Paraguay,2020-03-12,5,0,0,0,JHU
 Paraguay,2020-03-13,6,0,1,0,JHU
 Paraguay,2020-03-14,6,0,0,0,JHU
 Paraguay,2020-03-15,6,0,0,0,JHU
+Paraguay,2020-03-16,8,0,2,0,JHU
+Paraguay,2020-03-17,9,0,1,0,JHU
 Peru,2020-01-23,0,0,0,0,JHU
 Peru,2020-01-24,0,0,0,0,JHU
 Peru,2020-01-25,0,0,0,0,JHU
@@ -5670,6 +5937,8 @@ Peru,2020-03-12,15,0,4,0,JHU
 Peru,2020-03-13,28,0,13,0,JHU
 Peru,2020-03-14,38,0,10,0,JHU
 Peru,2020-03-15,43,0,5,0,JHU
+Peru,2020-03-16,86,0,43,0,JHU
+Peru,2020-03-17,117,0,31,0,JHU
 Philippines,2020-01-23,0,0,0,0,JHU
 Philippines,2020-01-24,0,0,0,0,JHU
 Philippines,2020-01-25,0,0,0,0,JHU
@@ -5723,6 +5992,8 @@ Philippines,2020-03-12,52,2,3,1,JHU
 Philippines,2020-03-13,64,5,12,3,JHU
 Philippines,2020-03-14,111,8,47,3,JHU
 Philippines,2020-03-15,140,11,29,3,JHU
+Philippines,2020-03-16,142,12,2,1,JHU
+Philippines,2020-03-17,187,12,45,0,JHU
 Poland,2020-01-23,0,0,0,0,JHU
 Poland,2020-01-24,0,0,0,0,JHU
 Poland,2020-01-25,0,0,0,0,JHU
@@ -5776,6 +6047,8 @@ Poland,2020-03-12,49,1,18,1,JHU
 Poland,2020-03-13,68,2,19,1,JHU
 Poland,2020-03-14,103,3,35,1,JHU
 Poland,2020-03-15,119,3,16,0,JHU
+Poland,2020-03-16,177,4,58,1,JHU
+Poland,2020-03-17,238,5,61,1,JHU
 Portugal,2020-01-23,0,0,0,0,JHU
 Portugal,2020-01-24,0,0,0,0,JHU
 Portugal,2020-01-25,0,0,0,0,JHU
@@ -5829,6 +6102,8 @@ Portugal,2020-03-12,59,0,0,0,JHU
 Portugal,2020-03-13,112,0,53,0,JHU
 Portugal,2020-03-14,169,0,57,0,JHU
 Portugal,2020-03-15,245,0,76,0,JHU
+Portugal,2020-03-16,331,0,86,0,JHU
+Portugal,2020-03-17,448,1,117,1,JHU
 Qatar,2020-01-23,0,0,0,0,JHU
 Qatar,2020-01-24,0,0,0,0,JHU
 Qatar,2020-01-25,0,0,0,0,JHU
@@ -5882,59 +6157,63 @@ Qatar,2020-03-12,262,0,0,0,JHU
 Qatar,2020-03-13,320,0,58,0,JHU
 Qatar,2020-03-14,337,0,17,0,JHU
 Qatar,2020-03-15,401,0,64,0,JHU
-Reunion,2020-01-23,0,0,0,0,JHU
-Reunion,2020-01-24,0,0,0,0,JHU
-Reunion,2020-01-25,0,0,0,0,JHU
-Reunion,2020-01-26,0,0,0,0,JHU
-Reunion,2020-01-27,0,0,0,0,JHU
-Reunion,2020-01-28,0,0,0,0,JHU
-Reunion,2020-01-29,0,0,0,0,JHU
-Reunion,2020-01-30,0,0,0,0,JHU
-Reunion,2020-01-31,0,0,0,0,JHU
-Reunion,2020-02-01,0,0,0,0,JHU
-Reunion,2020-02-02,0,0,0,0,JHU
-Reunion,2020-02-03,0,0,0,0,JHU
-Reunion,2020-02-04,0,0,0,0,JHU
-Reunion,2020-02-05,0,0,0,0,JHU
-Reunion,2020-02-06,0,0,0,0,JHU
-Reunion,2020-02-07,0,0,0,0,JHU
-Reunion,2020-02-08,0,0,0,0,JHU
-Reunion,2020-02-09,0,0,0,0,JHU
-Reunion,2020-02-10,0,0,0,0,JHU
-Reunion,2020-02-11,0,0,0,0,JHU
-Reunion,2020-02-12,0,0,0,0,JHU
-Reunion,2020-02-13,0,0,0,0,JHU
-Reunion,2020-02-14,0,0,0,0,JHU
-Reunion,2020-02-15,0,0,0,0,JHU
-Reunion,2020-02-16,0,0,0,0,JHU
-Reunion,2020-02-17,0,0,0,0,JHU
-Reunion,2020-02-18,0,0,0,0,JHU
-Reunion,2020-02-19,0,0,0,0,JHU
-Reunion,2020-02-20,0,0,0,0,JHU
-Reunion,2020-02-21,0,0,0,0,JHU
-Reunion,2020-02-22,0,0,0,0,JHU
-Reunion,2020-02-23,0,0,0,0,JHU
-Reunion,2020-02-24,0,0,0,0,JHU
-Reunion,2020-02-25,0,0,0,0,JHU
-Reunion,2020-02-26,0,0,0,0,JHU
-Reunion,2020-02-27,0,0,0,0,JHU
-Reunion,2020-02-28,0,0,0,0,JHU
-Reunion,2020-02-29,0,0,0,0,JHU
-Reunion,2020-03-01,0,0,0,0,JHU
-Reunion,2020-03-02,0,0,0,0,JHU
-Reunion,2020-03-03,0,0,0,0,JHU
-Reunion,2020-03-04,0,0,0,0,JHU
-Reunion,2020-03-05,0,0,0,0,JHU
-Reunion,2020-03-06,0,0,0,0,JHU
-Reunion,2020-03-07,0,0,0,0,JHU
-Reunion,2020-03-08,0,0,0,0,JHU
-Reunion,2020-03-09,0,0,0,0,JHU
-Reunion,2020-03-10,0,0,0,0,JHU
-Reunion,2020-03-11,1,0,1,0,JHU
-Reunion,2020-03-12,1,0,0,0,JHU
-Reunion,2020-03-13,5,0,4,0,JHU
-Reunion,2020-03-14,6,0,1,0,JHU
-Reunion,2020-03-15,7,0,1,0,JHU
+Qatar,2020-03-16,439,0,38,0,JHU
+Qatar,2020-03-17,439,0,0,0,JHU
+Republic of the Congo,2020-01-23,0,0,0,0,JHU
+Republic of the Congo,2020-01-24,0,0,0,0,JHU
+Republic of the Congo,2020-01-25,0,0,0,0,JHU
+Republic of the Congo,2020-01-26,0,0,0,0,JHU
+Republic of the Congo,2020-01-27,0,0,0,0,JHU
+Republic of the Congo,2020-01-28,0,0,0,0,JHU
+Republic of the Congo,2020-01-29,0,0,0,0,JHU
+Republic of the Congo,2020-01-30,0,0,0,0,JHU
+Republic of the Congo,2020-01-31,0,0,0,0,JHU
+Republic of the Congo,2020-02-01,0,0,0,0,JHU
+Republic of the Congo,2020-02-02,0,0,0,0,JHU
+Republic of the Congo,2020-02-03,0,0,0,0,JHU
+Republic of the Congo,2020-02-04,0,0,0,0,JHU
+Republic of the Congo,2020-02-05,0,0,0,0,JHU
+Republic of the Congo,2020-02-06,0,0,0,0,JHU
+Republic of the Congo,2020-02-07,0,0,0,0,JHU
+Republic of the Congo,2020-02-08,0,0,0,0,JHU
+Republic of the Congo,2020-02-09,0,0,0,0,JHU
+Republic of the Congo,2020-02-10,0,0,0,0,JHU
+Republic of the Congo,2020-02-11,0,0,0,0,JHU
+Republic of the Congo,2020-02-12,0,0,0,0,JHU
+Republic of the Congo,2020-02-13,0,0,0,0,JHU
+Republic of the Congo,2020-02-14,0,0,0,0,JHU
+Republic of the Congo,2020-02-15,0,0,0,0,JHU
+Republic of the Congo,2020-02-16,0,0,0,0,JHU
+Republic of the Congo,2020-02-17,0,0,0,0,JHU
+Republic of the Congo,2020-02-18,0,0,0,0,JHU
+Republic of the Congo,2020-02-19,0,0,0,0,JHU
+Republic of the Congo,2020-02-20,0,0,0,0,JHU
+Republic of the Congo,2020-02-21,0,0,0,0,JHU
+Republic of the Congo,2020-02-22,0,0,0,0,JHU
+Republic of the Congo,2020-02-23,0,0,0,0,JHU
+Republic of the Congo,2020-02-24,0,0,0,0,JHU
+Republic of the Congo,2020-02-25,0,0,0,0,JHU
+Republic of the Congo,2020-02-26,0,0,0,0,JHU
+Republic of the Congo,2020-02-27,0,0,0,0,JHU
+Republic of the Congo,2020-02-28,0,0,0,0,JHU
+Republic of the Congo,2020-02-29,0,0,0,0,JHU
+Republic of the Congo,2020-03-01,0,0,0,0,JHU
+Republic of the Congo,2020-03-02,0,0,0,0,JHU
+Republic of the Congo,2020-03-03,0,0,0,0,JHU
+Republic of the Congo,2020-03-04,0,0,0,0,JHU
+Republic of the Congo,2020-03-05,0,0,0,0,JHU
+Republic of the Congo,2020-03-06,0,0,0,0,JHU
+Republic of the Congo,2020-03-07,0,0,0,0,JHU
+Republic of the Congo,2020-03-08,0,0,0,0,JHU
+Republic of the Congo,2020-03-09,0,0,0,0,JHU
+Republic of the Congo,2020-03-10,0,0,0,0,JHU
+Republic of the Congo,2020-03-11,0,0,0,0,JHU
+Republic of the Congo,2020-03-12,0,0,0,0,JHU
+Republic of the Congo,2020-03-13,0,0,0,0,JHU
+Republic of the Congo,2020-03-14,0,0,0,0,JHU
+Republic of the Congo,2020-03-15,0,0,0,0,JHU
+Republic of the Congo,2020-03-16,1,0,1,0,JHU
+Republic of the Congo,2020-03-17,1,0,0,0,JHU
 Romania,2020-01-23,0,0,0,0,JHU
 Romania,2020-01-24,0,0,0,0,JHU
 Romania,2020-01-25,0,0,0,0,JHU
@@ -5988,6 +6267,8 @@ Romania,2020-03-12,49,0,4,0,JHU
 Romania,2020-03-13,89,0,40,0,JHU
 Romania,2020-03-14,123,0,34,0,JHU
 Romania,2020-03-15,131,0,8,0,JHU
+Romania,2020-03-16,158,0,27,0,JHU
+Romania,2020-03-17,184,0,26,0,JHU
 Russia,2020-01-23,0,0,0,0,JHU
 Russia,2020-01-24,0,0,0,0,JHU
 Russia,2020-01-25,0,0,0,0,JHU
@@ -6041,6 +6322,8 @@ Russia,2020-03-12,28,0,8,0,JHU
 Russia,2020-03-13,45,0,17,0,JHU
 Russia,2020-03-14,59,0,14,0,JHU
 Russia,2020-03-15,63,0,4,0,JHU
+Russia,2020-03-16,90,0,27,0,JHU
+Russia,2020-03-17,114,0,24,0,JHU
 Rwanda,2020-01-23,0,0,0,0,JHU
 Rwanda,2020-01-24,0,0,0,0,JHU
 Rwanda,2020-01-25,0,0,0,0,JHU
@@ -6094,6 +6377,8 @@ Rwanda,2020-03-12,0,0,0,0,JHU
 Rwanda,2020-03-13,0,0,0,0,JHU
 Rwanda,2020-03-14,1,0,1,0,JHU
 Rwanda,2020-03-15,1,0,0,0,JHU
+Rwanda,2020-03-16,5,0,4,0,JHU
+Rwanda,2020-03-17,7,0,2,0,JHU
 Saint Lucia,2020-01-23,0,0,0,0,JHU
 Saint Lucia,2020-01-24,0,0,0,0,JHU
 Saint Lucia,2020-01-25,0,0,0,0,JHU
@@ -6147,6 +6432,8 @@ Saint Lucia,2020-03-12,0,0,0,0,JHU
 Saint Lucia,2020-03-13,0,0,0,0,JHU
 Saint Lucia,2020-03-14,1,0,1,0,JHU
 Saint Lucia,2020-03-15,2,0,1,0,JHU
+Saint Lucia,2020-03-16,2,0,0,0,JHU
+Saint Lucia,2020-03-17,2,0,0,0,JHU
 Saint Vincent and the Grenadines,2020-01-23,0,0,0,0,JHU
 Saint Vincent and the Grenadines,2020-01-24,0,0,0,0,JHU
 Saint Vincent and the Grenadines,2020-01-25,0,0,0,0,JHU
@@ -6200,6 +6487,8 @@ Saint Vincent and the Grenadines,2020-03-12,0,0,0,0,JHU
 Saint Vincent and the Grenadines,2020-03-13,0,0,0,0,JHU
 Saint Vincent and the Grenadines,2020-03-14,1,0,1,0,JHU
 Saint Vincent and the Grenadines,2020-03-15,1,0,0,0,JHU
+Saint Vincent and the Grenadines,2020-03-16,1,0,0,0,JHU
+Saint Vincent and the Grenadines,2020-03-17,1,0,0,0,JHU
 San Marino,2020-01-23,0,0,0,0,JHU
 San Marino,2020-01-24,0,0,0,0,JHU
 San Marino,2020-01-25,0,0,0,0,JHU
@@ -6253,6 +6542,8 @@ San Marino,2020-03-12,69,3,7,1,JHU
 San Marino,2020-03-13,80,5,11,2,JHU
 San Marino,2020-03-14,80,5,0,0,JHU
 San Marino,2020-03-15,101,5,21,0,JHU
+San Marino,2020-03-16,109,7,8,2,JHU
+San Marino,2020-03-17,109,7,0,0,JHU
 Saudi Arabia,2020-01-23,0,0,0,0,JHU
 Saudi Arabia,2020-01-24,0,0,0,0,JHU
 Saudi Arabia,2020-01-25,0,0,0,0,JHU
@@ -6306,6 +6597,8 @@ Saudi Arabia,2020-03-12,45,0,24,0,JHU
 Saudi Arabia,2020-03-13,86,0,41,0,JHU
 Saudi Arabia,2020-03-14,103,0,17,0,JHU
 Saudi Arabia,2020-03-15,103,0,0,0,JHU
+Saudi Arabia,2020-03-16,118,0,15,0,JHU
+Saudi Arabia,2020-03-17,171,0,53,0,JHU
 Senegal,2020-01-23,0,0,0,0,JHU
 Senegal,2020-01-24,0,0,0,0,JHU
 Senegal,2020-01-25,0,0,0,0,JHU
@@ -6359,6 +6652,8 @@ Senegal,2020-03-12,4,0,0,0,JHU
 Senegal,2020-03-13,10,0,6,0,JHU
 Senegal,2020-03-14,10,0,0,0,JHU
 Senegal,2020-03-15,24,0,14,0,JHU
+Senegal,2020-03-16,24,0,0,0,JHU
+Senegal,2020-03-17,26,0,2,0,JHU
 Serbia,2020-01-23,0,0,0,0,JHU
 Serbia,2020-01-24,0,0,0,0,JHU
 Serbia,2020-01-25,0,0,0,0,JHU
@@ -6412,6 +6707,8 @@ Serbia,2020-03-12,19,0,7,0,JHU
 Serbia,2020-03-13,35,0,16,0,JHU
 Serbia,2020-03-14,46,0,11,0,JHU
 Serbia,2020-03-15,48,0,2,0,JHU
+Serbia,2020-03-16,55,0,7,0,JHU
+Serbia,2020-03-17,65,0,10,0,JHU
 Seychelles,2020-01-23,0,0,0,0,JHU
 Seychelles,2020-01-24,0,0,0,0,JHU
 Seychelles,2020-01-25,0,0,0,0,JHU
@@ -6465,6 +6762,8 @@ Seychelles,2020-03-12,0,0,0,0,JHU
 Seychelles,2020-03-13,0,0,0,0,JHU
 Seychelles,2020-03-14,2,0,2,0,JHU
 Seychelles,2020-03-15,2,0,0,0,JHU
+Seychelles,2020-03-16,3,0,1,0,JHU
+Seychelles,2020-03-17,4,0,1,0,JHU
 Singapore,2020-01-23,1,0,1,0,JHU
 Singapore,2020-01-24,3,0,2,0,JHU
 Singapore,2020-01-25,3,0,0,0,JHU
@@ -6518,6 +6817,8 @@ Singapore,2020-03-12,178,0,0,0,JHU
 Singapore,2020-03-13,200,0,22,0,JHU
 Singapore,2020-03-14,212,0,12,0,JHU
 Singapore,2020-03-15,226,0,14,0,JHU
+Singapore,2020-03-16,243,0,17,0,JHU
+Singapore,2020-03-17,266,0,23,0,JHU
 Slovakia,2020-01-23,0,0,0,0,JHU
 Slovakia,2020-01-24,0,0,0,0,JHU
 Slovakia,2020-01-25,0,0,0,0,JHU
@@ -6571,6 +6872,8 @@ Slovakia,2020-03-12,16,0,6,0,JHU
 Slovakia,2020-03-13,32,0,16,0,JHU
 Slovakia,2020-03-14,44,0,12,0,JHU
 Slovakia,2020-03-15,54,0,10,0,JHU
+Slovakia,2020-03-16,63,0,9,0,JHU
+Slovakia,2020-03-17,72,0,9,0,JHU
 Slovenia,2020-01-23,0,0,0,0,JHU
 Slovenia,2020-01-24,0,0,0,0,JHU
 Slovenia,2020-01-25,0,0,0,0,JHU
@@ -6624,6 +6927,63 @@ Slovenia,2020-03-12,89,0,32,0,JHU
 Slovenia,2020-03-13,141,0,52,0,JHU
 Slovenia,2020-03-14,181,1,40,1,JHU
 Slovenia,2020-03-15,219,1,38,0,JHU
+Slovenia,2020-03-16,253,1,34,0,JHU
+Slovenia,2020-03-17,275,1,22,0,JHU
+Somalia,2020-01-23,0,0,0,0,JHU
+Somalia,2020-01-24,0,0,0,0,JHU
+Somalia,2020-01-25,0,0,0,0,JHU
+Somalia,2020-01-26,0,0,0,0,JHU
+Somalia,2020-01-27,0,0,0,0,JHU
+Somalia,2020-01-28,0,0,0,0,JHU
+Somalia,2020-01-29,0,0,0,0,JHU
+Somalia,2020-01-30,0,0,0,0,JHU
+Somalia,2020-01-31,0,0,0,0,JHU
+Somalia,2020-02-01,0,0,0,0,JHU
+Somalia,2020-02-02,0,0,0,0,JHU
+Somalia,2020-02-03,0,0,0,0,JHU
+Somalia,2020-02-04,0,0,0,0,JHU
+Somalia,2020-02-05,0,0,0,0,JHU
+Somalia,2020-02-06,0,0,0,0,JHU
+Somalia,2020-02-07,0,0,0,0,JHU
+Somalia,2020-02-08,0,0,0,0,JHU
+Somalia,2020-02-09,0,0,0,0,JHU
+Somalia,2020-02-10,0,0,0,0,JHU
+Somalia,2020-02-11,0,0,0,0,JHU
+Somalia,2020-02-12,0,0,0,0,JHU
+Somalia,2020-02-13,0,0,0,0,JHU
+Somalia,2020-02-14,0,0,0,0,JHU
+Somalia,2020-02-15,0,0,0,0,JHU
+Somalia,2020-02-16,0,0,0,0,JHU
+Somalia,2020-02-17,0,0,0,0,JHU
+Somalia,2020-02-18,0,0,0,0,JHU
+Somalia,2020-02-19,0,0,0,0,JHU
+Somalia,2020-02-20,0,0,0,0,JHU
+Somalia,2020-02-21,0,0,0,0,JHU
+Somalia,2020-02-22,0,0,0,0,JHU
+Somalia,2020-02-23,0,0,0,0,JHU
+Somalia,2020-02-24,0,0,0,0,JHU
+Somalia,2020-02-25,0,0,0,0,JHU
+Somalia,2020-02-26,0,0,0,0,JHU
+Somalia,2020-02-27,0,0,0,0,JHU
+Somalia,2020-02-28,0,0,0,0,JHU
+Somalia,2020-02-29,0,0,0,0,JHU
+Somalia,2020-03-01,0,0,0,0,JHU
+Somalia,2020-03-02,0,0,0,0,JHU
+Somalia,2020-03-03,0,0,0,0,JHU
+Somalia,2020-03-04,0,0,0,0,JHU
+Somalia,2020-03-05,0,0,0,0,JHU
+Somalia,2020-03-06,0,0,0,0,JHU
+Somalia,2020-03-07,0,0,0,0,JHU
+Somalia,2020-03-08,0,0,0,0,JHU
+Somalia,2020-03-09,0,0,0,0,JHU
+Somalia,2020-03-10,0,0,0,0,JHU
+Somalia,2020-03-11,0,0,0,0,JHU
+Somalia,2020-03-12,0,0,0,0,JHU
+Somalia,2020-03-13,0,0,0,0,JHU
+Somalia,2020-03-14,0,0,0,0,JHU
+Somalia,2020-03-15,0,0,0,0,JHU
+Somalia,2020-03-16,1,0,1,0,JHU
+Somalia,2020-03-17,1,0,0,0,JHU
 South Africa,2020-01-23,0,0,0,0,JHU
 South Africa,2020-01-24,0,0,0,0,JHU
 South Africa,2020-01-25,0,0,0,0,JHU
@@ -6677,6 +7037,8 @@ South Africa,2020-03-12,17,0,4,0,JHU
 South Africa,2020-03-13,24,0,7,0,JHU
 South Africa,2020-03-14,38,0,14,0,JHU
 South Africa,2020-03-15,51,0,13,0,JHU
+South Africa,2020-03-16,62,0,11,0,JHU
+South Africa,2020-03-17,62,0,0,0,JHU
 South Korea,2020-01-23,1,0,0,0,JHU
 South Korea,2020-01-24,2,0,1,0,JHU
 South Korea,2020-01-25,2,0,0,0,JHU
@@ -6730,6 +7092,8 @@ South Korea,2020-03-12,7869,66,114,6,JHU
 South Korea,2020-03-13,7979,66,110,0,JHU
 South Korea,2020-03-14,8086,72,107,6,JHU
 South Korea,2020-03-15,8162,75,76,3,JHU
+South Korea,2020-03-16,8236,75,74,0,JHU
+South Korea,2020-03-17,8320,81,84,6,JHU
 Spain,2020-01-23,0,0,0,0,JHU
 Spain,2020-01-24,0,0,0,0,JHU
 Spain,2020-01-25,0,0,0,0,JHU
@@ -6783,6 +7147,8 @@ Spain,2020-03-12,2277,55,0,1,JHU
 Spain,2020-03-13,5232,133,2955,78,JHU
 Spain,2020-03-14,6391,195,1159,62,JHU
 Spain,2020-03-15,7798,289,1407,94,JHU
+Spain,2020-03-16,9942,342,2144,53,JHU
+Spain,2020-03-17,11748,533,1806,191,JHU
 Sri Lanka,2020-01-23,0,0,0,0,JHU
 Sri Lanka,2020-01-24,0,0,0,0,JHU
 Sri Lanka,2020-01-25,0,0,0,0,JHU
@@ -6836,6 +7202,8 @@ Sri Lanka,2020-03-12,2,0,0,0,JHU
 Sri Lanka,2020-03-13,6,0,4,0,JHU
 Sri Lanka,2020-03-14,10,0,4,0,JHU
 Sri Lanka,2020-03-15,18,0,8,0,JHU
+Sri Lanka,2020-03-16,28,0,10,0,JHU
+Sri Lanka,2020-03-17,44,0,16,0,JHU
 Sudan,2020-01-23,0,0,0,0,JHU
 Sudan,2020-01-24,0,0,0,0,JHU
 Sudan,2020-01-25,0,0,0,0,JHU
@@ -6889,6 +7257,8 @@ Sudan,2020-03-12,0,0,0,0,JHU
 Sudan,2020-03-13,1,1,1,1,JHU
 Sudan,2020-03-14,1,1,0,0,JHU
 Sudan,2020-03-15,1,1,0,0,JHU
+Sudan,2020-03-16,1,1,0,0,JHU
+Sudan,2020-03-17,1,1,0,0,JHU
 Suriname,2020-01-23,0,0,0,0,JHU
 Suriname,2020-01-24,0,0,0,0,JHU
 Suriname,2020-01-25,0,0,0,0,JHU
@@ -6942,6 +7312,8 @@ Suriname,2020-03-12,0,0,0,0,JHU
 Suriname,2020-03-13,0,0,0,0,JHU
 Suriname,2020-03-14,1,0,1,0,JHU
 Suriname,2020-03-15,1,0,0,0,JHU
+Suriname,2020-03-16,1,0,0,0,JHU
+Suriname,2020-03-17,1,0,0,0,JHU
 Sweden,2020-01-23,0,0,0,0,JHU
 Sweden,2020-01-24,0,0,0,0,JHU
 Sweden,2020-01-25,0,0,0,0,JHU
@@ -6995,6 +7367,8 @@ Sweden,2020-03-12,599,1,99,0,JHU
 Sweden,2020-03-13,814,1,215,0,JHU
 Sweden,2020-03-14,961,2,147,1,JHU
 Sweden,2020-03-15,1022,3,61,1,JHU
+Sweden,2020-03-16,1103,6,81,3,JHU
+Sweden,2020-03-17,1190,7,87,1,JHU
 Switzerland,2020-01-23,0,0,0,0,JHU
 Switzerland,2020-01-24,0,0,0,0,JHU
 Switzerland,2020-01-25,0,0,0,0,JHU
@@ -7048,59 +7422,118 @@ Switzerland,2020-03-12,652,4,0,0,JHU
 Switzerland,2020-03-13,1139,11,487,7,JHU
 Switzerland,2020-03-14,1359,13,220,2,JHU
 Switzerland,2020-03-15,2200,14,841,1,JHU
-Taiwan*,2020-01-23,1,0,0,0,JHU
-Taiwan*,2020-01-24,3,0,2,0,JHU
-Taiwan*,2020-01-25,3,0,0,0,JHU
-Taiwan*,2020-01-26,4,0,1,0,JHU
-Taiwan*,2020-01-27,5,0,1,0,JHU
-Taiwan*,2020-01-28,8,0,3,0,JHU
-Taiwan*,2020-01-29,8,0,0,0,JHU
-Taiwan*,2020-01-30,9,0,1,0,JHU
-Taiwan*,2020-01-31,10,0,1,0,JHU
-Taiwan*,2020-02-01,10,0,0,0,JHU
-Taiwan*,2020-02-02,10,0,0,0,JHU
-Taiwan*,2020-02-03,10,0,0,0,JHU
-Taiwan*,2020-02-04,11,0,1,0,JHU
-Taiwan*,2020-02-05,11,0,0,0,JHU
-Taiwan*,2020-02-06,16,0,5,0,JHU
-Taiwan*,2020-02-07,16,0,0,0,JHU
-Taiwan*,2020-02-08,17,0,1,0,JHU
-Taiwan*,2020-02-09,18,0,1,0,JHU
-Taiwan*,2020-02-10,18,0,0,0,JHU
-Taiwan*,2020-02-11,18,0,0,0,JHU
-Taiwan*,2020-02-12,18,0,0,0,JHU
-Taiwan*,2020-02-13,18,0,0,0,JHU
-Taiwan*,2020-02-14,18,0,0,0,JHU
-Taiwan*,2020-02-15,18,0,0,0,JHU
-Taiwan*,2020-02-16,20,1,2,1,JHU
-Taiwan*,2020-02-17,22,1,2,0,JHU
-Taiwan*,2020-02-18,22,1,0,0,JHU
-Taiwan*,2020-02-19,23,1,1,0,JHU
-Taiwan*,2020-02-20,24,1,1,0,JHU
-Taiwan*,2020-02-21,26,1,2,0,JHU
-Taiwan*,2020-02-22,26,1,0,0,JHU
-Taiwan*,2020-02-23,28,1,2,0,JHU
-Taiwan*,2020-02-24,30,1,2,0,JHU
-Taiwan*,2020-02-25,31,1,1,0,JHU
-Taiwan*,2020-02-26,32,1,1,0,JHU
-Taiwan*,2020-02-27,32,1,0,0,JHU
-Taiwan*,2020-02-28,34,1,2,0,JHU
-Taiwan*,2020-02-29,39,1,5,0,JHU
-Taiwan*,2020-03-01,40,1,1,0,JHU
-Taiwan*,2020-03-02,41,1,1,0,JHU
-Taiwan*,2020-03-03,42,1,1,0,JHU
-Taiwan*,2020-03-04,42,1,0,0,JHU
-Taiwan*,2020-03-05,44,1,2,0,JHU
-Taiwan*,2020-03-06,45,1,1,0,JHU
-Taiwan*,2020-03-07,45,1,0,0,JHU
-Taiwan*,2020-03-08,45,1,0,0,JHU
-Taiwan*,2020-03-09,45,1,0,0,JHU
-Taiwan*,2020-03-10,47,1,2,0,JHU
-Taiwan*,2020-03-11,48,1,1,0,JHU
-Taiwan*,2020-03-12,49,1,1,0,JHU
-Taiwan*,2020-03-13,50,1,1,0,JHU
-Taiwan*,2020-03-14,53,1,3,0,JHU
-Taiwan*,2020-03-15,59,1,6,0,JHU
+Switzerland,2020-03-16,2200,14,0,0,JHU
+Switzerland,2020-03-17,2700,27,500,13,JHU
+Taiwan,2020-01-23,1,0,0,0,JHU
+Taiwan,2020-01-24,3,0,2,0,JHU
+Taiwan,2020-01-25,3,0,0,0,JHU
+Taiwan,2020-01-26,4,0,1,0,JHU
+Taiwan,2020-01-27,5,0,1,0,JHU
+Taiwan,2020-01-28,8,0,3,0,JHU
+Taiwan,2020-01-29,8,0,0,0,JHU
+Taiwan,2020-01-30,9,0,1,0,JHU
+Taiwan,2020-01-31,10,0,1,0,JHU
+Taiwan,2020-02-01,10,0,0,0,JHU
+Taiwan,2020-02-02,10,0,0,0,JHU
+Taiwan,2020-02-03,10,0,0,0,JHU
+Taiwan,2020-02-04,11,0,1,0,JHU
+Taiwan,2020-02-05,11,0,0,0,JHU
+Taiwan,2020-02-06,16,0,5,0,JHU
+Taiwan,2020-02-07,16,0,0,0,JHU
+Taiwan,2020-02-08,17,0,1,0,JHU
+Taiwan,2020-02-09,18,0,1,0,JHU
+Taiwan,2020-02-10,18,0,0,0,JHU
+Taiwan,2020-02-11,18,0,0,0,JHU
+Taiwan,2020-02-12,18,0,0,0,JHU
+Taiwan,2020-02-13,18,0,0,0,JHU
+Taiwan,2020-02-14,18,0,0,0,JHU
+Taiwan,2020-02-15,18,0,0,0,JHU
+Taiwan,2020-02-16,20,1,2,1,JHU
+Taiwan,2020-02-17,22,1,2,0,JHU
+Taiwan,2020-02-18,22,1,0,0,JHU
+Taiwan,2020-02-19,23,1,1,0,JHU
+Taiwan,2020-02-20,24,1,1,0,JHU
+Taiwan,2020-02-21,26,1,2,0,JHU
+Taiwan,2020-02-22,26,1,0,0,JHU
+Taiwan,2020-02-23,28,1,2,0,JHU
+Taiwan,2020-02-24,30,1,2,0,JHU
+Taiwan,2020-02-25,31,1,1,0,JHU
+Taiwan,2020-02-26,32,1,1,0,JHU
+Taiwan,2020-02-27,32,1,0,0,JHU
+Taiwan,2020-02-28,34,1,2,0,JHU
+Taiwan,2020-02-29,39,1,5,0,JHU
+Taiwan,2020-03-01,40,1,1,0,JHU
+Taiwan,2020-03-02,41,1,1,0,JHU
+Taiwan,2020-03-03,42,1,1,0,JHU
+Taiwan,2020-03-04,42,1,0,0,JHU
+Taiwan,2020-03-05,44,1,2,0,JHU
+Taiwan,2020-03-06,45,1,1,0,JHU
+Taiwan,2020-03-07,45,1,0,0,JHU
+Taiwan,2020-03-08,45,1,0,0,JHU
+Taiwan,2020-03-09,45,1,0,0,JHU
+Taiwan,2020-03-10,47,1,2,0,JHU
+Taiwan,2020-03-11,48,1,1,0,JHU
+Taiwan,2020-03-12,49,1,1,0,JHU
+Taiwan,2020-03-13,50,1,1,0,JHU
+Taiwan,2020-03-14,53,1,3,0,JHU
+Taiwan,2020-03-15,59,1,6,0,JHU
+Taiwan,2020-03-16,67,1,8,0,JHU
+Taiwan,2020-03-17,77,1,10,0,JHU
+Tanzania,2020-01-23,0,0,0,0,JHU
+Tanzania,2020-01-24,0,0,0,0,JHU
+Tanzania,2020-01-25,0,0,0,0,JHU
+Tanzania,2020-01-26,0,0,0,0,JHU
+Tanzania,2020-01-27,0,0,0,0,JHU
+Tanzania,2020-01-28,0,0,0,0,JHU
+Tanzania,2020-01-29,0,0,0,0,JHU
+Tanzania,2020-01-30,0,0,0,0,JHU
+Tanzania,2020-01-31,0,0,0,0,JHU
+Tanzania,2020-02-01,0,0,0,0,JHU
+Tanzania,2020-02-02,0,0,0,0,JHU
+Tanzania,2020-02-03,0,0,0,0,JHU
+Tanzania,2020-02-04,0,0,0,0,JHU
+Tanzania,2020-02-05,0,0,0,0,JHU
+Tanzania,2020-02-06,0,0,0,0,JHU
+Tanzania,2020-02-07,0,0,0,0,JHU
+Tanzania,2020-02-08,0,0,0,0,JHU
+Tanzania,2020-02-09,0,0,0,0,JHU
+Tanzania,2020-02-10,0,0,0,0,JHU
+Tanzania,2020-02-11,0,0,0,0,JHU
+Tanzania,2020-02-12,0,0,0,0,JHU
+Tanzania,2020-02-13,0,0,0,0,JHU
+Tanzania,2020-02-14,0,0,0,0,JHU
+Tanzania,2020-02-15,0,0,0,0,JHU
+Tanzania,2020-02-16,0,0,0,0,JHU
+Tanzania,2020-02-17,0,0,0,0,JHU
+Tanzania,2020-02-18,0,0,0,0,JHU
+Tanzania,2020-02-19,0,0,0,0,JHU
+Tanzania,2020-02-20,0,0,0,0,JHU
+Tanzania,2020-02-21,0,0,0,0,JHU
+Tanzania,2020-02-22,0,0,0,0,JHU
+Tanzania,2020-02-23,0,0,0,0,JHU
+Tanzania,2020-02-24,0,0,0,0,JHU
+Tanzania,2020-02-25,0,0,0,0,JHU
+Tanzania,2020-02-26,0,0,0,0,JHU
+Tanzania,2020-02-27,0,0,0,0,JHU
+Tanzania,2020-02-28,0,0,0,0,JHU
+Tanzania,2020-02-29,0,0,0,0,JHU
+Tanzania,2020-03-01,0,0,0,0,JHU
+Tanzania,2020-03-02,0,0,0,0,JHU
+Tanzania,2020-03-03,0,0,0,0,JHU
+Tanzania,2020-03-04,0,0,0,0,JHU
+Tanzania,2020-03-05,0,0,0,0,JHU
+Tanzania,2020-03-06,0,0,0,0,JHU
+Tanzania,2020-03-07,0,0,0,0,JHU
+Tanzania,2020-03-08,0,0,0,0,JHU
+Tanzania,2020-03-09,0,0,0,0,JHU
+Tanzania,2020-03-10,0,0,0,0,JHU
+Tanzania,2020-03-11,0,0,0,0,JHU
+Tanzania,2020-03-12,0,0,0,0,JHU
+Tanzania,2020-03-13,0,0,0,0,JHU
+Tanzania,2020-03-14,0,0,0,0,JHU
+Tanzania,2020-03-15,0,0,0,0,JHU
+Tanzania,2020-03-16,1,0,1,0,JHU
+Tanzania,2020-03-17,1,0,0,0,JHU
 Thailand,2020-01-23,3,0,1,0,JHU
 Thailand,2020-01-24,5,0,2,0,JHU
 Thailand,2020-01-25,7,0,2,0,JHU
@@ -7154,6 +7587,118 @@ Thailand,2020-03-12,70,1,11,0,JHU
 Thailand,2020-03-13,75,1,5,0,JHU
 Thailand,2020-03-14,82,1,7,0,JHU
 Thailand,2020-03-15,114,1,32,0,JHU
+Thailand,2020-03-16,147,1,33,0,JHU
+Thailand,2020-03-17,177,1,30,0,JHU
+The Bahamas,2020-01-23,0,0,0,0,JHU
+The Bahamas,2020-01-24,0,0,0,0,JHU
+The Bahamas,2020-01-25,0,0,0,0,JHU
+The Bahamas,2020-01-26,0,0,0,0,JHU
+The Bahamas,2020-01-27,0,0,0,0,JHU
+The Bahamas,2020-01-28,0,0,0,0,JHU
+The Bahamas,2020-01-29,0,0,0,0,JHU
+The Bahamas,2020-01-30,0,0,0,0,JHU
+The Bahamas,2020-01-31,0,0,0,0,JHU
+The Bahamas,2020-02-01,0,0,0,0,JHU
+The Bahamas,2020-02-02,0,0,0,0,JHU
+The Bahamas,2020-02-03,0,0,0,0,JHU
+The Bahamas,2020-02-04,0,0,0,0,JHU
+The Bahamas,2020-02-05,0,0,0,0,JHU
+The Bahamas,2020-02-06,0,0,0,0,JHU
+The Bahamas,2020-02-07,0,0,0,0,JHU
+The Bahamas,2020-02-08,0,0,0,0,JHU
+The Bahamas,2020-02-09,0,0,0,0,JHU
+The Bahamas,2020-02-10,0,0,0,0,JHU
+The Bahamas,2020-02-11,0,0,0,0,JHU
+The Bahamas,2020-02-12,0,0,0,0,JHU
+The Bahamas,2020-02-13,0,0,0,0,JHU
+The Bahamas,2020-02-14,0,0,0,0,JHU
+The Bahamas,2020-02-15,0,0,0,0,JHU
+The Bahamas,2020-02-16,0,0,0,0,JHU
+The Bahamas,2020-02-17,0,0,0,0,JHU
+The Bahamas,2020-02-18,0,0,0,0,JHU
+The Bahamas,2020-02-19,0,0,0,0,JHU
+The Bahamas,2020-02-20,0,0,0,0,JHU
+The Bahamas,2020-02-21,0,0,0,0,JHU
+The Bahamas,2020-02-22,0,0,0,0,JHU
+The Bahamas,2020-02-23,0,0,0,0,JHU
+The Bahamas,2020-02-24,0,0,0,0,JHU
+The Bahamas,2020-02-25,0,0,0,0,JHU
+The Bahamas,2020-02-26,0,0,0,0,JHU
+The Bahamas,2020-02-27,0,0,0,0,JHU
+The Bahamas,2020-02-28,0,0,0,0,JHU
+The Bahamas,2020-02-29,0,0,0,0,JHU
+The Bahamas,2020-03-01,0,0,0,0,JHU
+The Bahamas,2020-03-02,0,0,0,0,JHU
+The Bahamas,2020-03-03,0,0,0,0,JHU
+The Bahamas,2020-03-04,0,0,0,0,JHU
+The Bahamas,2020-03-05,0,0,0,0,JHU
+The Bahamas,2020-03-06,0,0,0,0,JHU
+The Bahamas,2020-03-07,0,0,0,0,JHU
+The Bahamas,2020-03-08,0,0,0,0,JHU
+The Bahamas,2020-03-09,0,0,0,0,JHU
+The Bahamas,2020-03-10,0,0,0,0,JHU
+The Bahamas,2020-03-11,0,0,0,0,JHU
+The Bahamas,2020-03-12,0,0,0,0,JHU
+The Bahamas,2020-03-13,0,0,0,0,JHU
+The Bahamas,2020-03-14,0,0,0,0,JHU
+The Bahamas,2020-03-15,0,0,0,0,JHU
+The Bahamas,2020-03-16,1,0,1,0,JHU
+The Bahamas,2020-03-17,1,0,0,0,JHU
+The Gambia,2020-01-23,0,0,0,0,JHU
+The Gambia,2020-01-24,0,0,0,0,JHU
+The Gambia,2020-01-25,0,0,0,0,JHU
+The Gambia,2020-01-26,0,0,0,0,JHU
+The Gambia,2020-01-27,0,0,0,0,JHU
+The Gambia,2020-01-28,0,0,0,0,JHU
+The Gambia,2020-01-29,0,0,0,0,JHU
+The Gambia,2020-01-30,0,0,0,0,JHU
+The Gambia,2020-01-31,0,0,0,0,JHU
+The Gambia,2020-02-01,0,0,0,0,JHU
+The Gambia,2020-02-02,0,0,0,0,JHU
+The Gambia,2020-02-03,0,0,0,0,JHU
+The Gambia,2020-02-04,0,0,0,0,JHU
+The Gambia,2020-02-05,0,0,0,0,JHU
+The Gambia,2020-02-06,0,0,0,0,JHU
+The Gambia,2020-02-07,0,0,0,0,JHU
+The Gambia,2020-02-08,0,0,0,0,JHU
+The Gambia,2020-02-09,0,0,0,0,JHU
+The Gambia,2020-02-10,0,0,0,0,JHU
+The Gambia,2020-02-11,0,0,0,0,JHU
+The Gambia,2020-02-12,0,0,0,0,JHU
+The Gambia,2020-02-13,0,0,0,0,JHU
+The Gambia,2020-02-14,0,0,0,0,JHU
+The Gambia,2020-02-15,0,0,0,0,JHU
+The Gambia,2020-02-16,0,0,0,0,JHU
+The Gambia,2020-02-17,0,0,0,0,JHU
+The Gambia,2020-02-18,0,0,0,0,JHU
+The Gambia,2020-02-19,0,0,0,0,JHU
+The Gambia,2020-02-20,0,0,0,0,JHU
+The Gambia,2020-02-21,0,0,0,0,JHU
+The Gambia,2020-02-22,0,0,0,0,JHU
+The Gambia,2020-02-23,0,0,0,0,JHU
+The Gambia,2020-02-24,0,0,0,0,JHU
+The Gambia,2020-02-25,0,0,0,0,JHU
+The Gambia,2020-02-26,0,0,0,0,JHU
+The Gambia,2020-02-27,0,0,0,0,JHU
+The Gambia,2020-02-28,0,0,0,0,JHU
+The Gambia,2020-02-29,0,0,0,0,JHU
+The Gambia,2020-03-01,0,0,0,0,JHU
+The Gambia,2020-03-02,0,0,0,0,JHU
+The Gambia,2020-03-03,0,0,0,0,JHU
+The Gambia,2020-03-04,0,0,0,0,JHU
+The Gambia,2020-03-05,0,0,0,0,JHU
+The Gambia,2020-03-06,0,0,0,0,JHU
+The Gambia,2020-03-07,0,0,0,0,JHU
+The Gambia,2020-03-08,0,0,0,0,JHU
+The Gambia,2020-03-09,0,0,0,0,JHU
+The Gambia,2020-03-10,0,0,0,0,JHU
+The Gambia,2020-03-11,0,0,0,0,JHU
+The Gambia,2020-03-12,0,0,0,0,JHU
+The Gambia,2020-03-13,0,0,0,0,JHU
+The Gambia,2020-03-14,0,0,0,0,JHU
+The Gambia,2020-03-15,0,0,0,0,JHU
+The Gambia,2020-03-16,0,0,0,0,JHU
+The Gambia,2020-03-17,1,0,1,0,JHU
 Togo,2020-01-23,0,0,0,0,JHU
 Togo,2020-01-24,0,0,0,0,JHU
 Togo,2020-01-25,0,0,0,0,JHU
@@ -7207,6 +7752,8 @@ Togo,2020-03-12,1,0,0,0,JHU
 Togo,2020-03-13,1,0,0,0,JHU
 Togo,2020-03-14,1,0,0,0,JHU
 Togo,2020-03-15,1,0,0,0,JHU
+Togo,2020-03-16,1,0,0,0,JHU
+Togo,2020-03-17,1,0,0,0,JHU
 Trinidad and Tobago,2020-01-23,0,0,0,0,JHU
 Trinidad and Tobago,2020-01-24,0,0,0,0,JHU
 Trinidad and Tobago,2020-01-25,0,0,0,0,JHU
@@ -7260,6 +7807,8 @@ Trinidad and Tobago,2020-03-12,0,0,0,0,JHU
 Trinidad and Tobago,2020-03-13,0,0,0,0,JHU
 Trinidad and Tobago,2020-03-14,2,0,2,0,JHU
 Trinidad and Tobago,2020-03-15,2,0,0,0,JHU
+Trinidad and Tobago,2020-03-16,4,0,2,0,JHU
+Trinidad and Tobago,2020-03-17,5,0,1,0,JHU
 Tunisia,2020-01-23,0,0,0,0,JHU
 Tunisia,2020-01-24,0,0,0,0,JHU
 Tunisia,2020-01-25,0,0,0,0,JHU
@@ -7313,6 +7862,8 @@ Tunisia,2020-03-12,7,0,0,0,JHU
 Tunisia,2020-03-13,16,0,9,0,JHU
 Tunisia,2020-03-14,18,0,2,0,JHU
 Tunisia,2020-03-15,18,0,0,0,JHU
+Tunisia,2020-03-16,20,0,2,0,JHU
+Tunisia,2020-03-17,24,0,4,0,JHU
 Turkey,2020-01-23,0,0,0,0,JHU
 Turkey,2020-01-24,0,0,0,0,JHU
 Turkey,2020-01-25,0,0,0,0,JHU
@@ -7366,6 +7917,8 @@ Turkey,2020-03-12,1,0,0,0,JHU
 Turkey,2020-03-13,5,0,4,0,JHU
 Turkey,2020-03-14,5,0,0,0,JHU
 Turkey,2020-03-15,6,0,1,0,JHU
+Turkey,2020-03-16,18,0,12,0,JHU
+Turkey,2020-03-17,47,1,29,1,JHU
 Ukraine,2020-01-23,0,0,0,0,JHU
 Ukraine,2020-01-24,0,0,0,0,JHU
 Ukraine,2020-01-25,0,0,0,0,JHU
@@ -7419,6 +7972,8 @@ Ukraine,2020-03-12,1,0,0,0,JHU
 Ukraine,2020-03-13,3,1,2,1,JHU
 Ukraine,2020-03-14,3,1,0,0,JHU
 Ukraine,2020-03-15,3,1,0,0,JHU
+Ukraine,2020-03-16,7,1,4,0,JHU
+Ukraine,2020-03-17,14,2,7,1,JHU
 United Arab Emirates,2020-01-23,0,0,0,0,JHU
 United Arab Emirates,2020-01-24,0,0,0,0,JHU
 United Arab Emirates,2020-01-25,0,0,0,0,JHU
@@ -7472,6 +8027,8 @@ United Arab Emirates,2020-03-12,85,0,11,0,JHU
 United Arab Emirates,2020-03-13,85,0,0,0,JHU
 United Arab Emirates,2020-03-14,85,0,0,0,JHU
 United Arab Emirates,2020-03-15,98,0,13,0,JHU
+United Arab Emirates,2020-03-16,98,0,0,0,JHU
+United Arab Emirates,2020-03-17,98,0,0,0,JHU
 United Kingdom,2020-01-23,0,0,0,0,JHU
 United Kingdom,2020-01-24,0,0,0,0,JHU
 United Kingdom,2020-01-25,0,0,0,0,JHU
@@ -7522,9 +8079,11 @@ United Kingdom,2020-03-09,322,4,48,1,JHU
 United Kingdom,2020-03-10,384,6,62,2,JHU
 United Kingdom,2020-03-11,459,8,75,2,JHU
 United Kingdom,2020-03-12,459,8,0,0,JHU
-United Kingdom,2020-03-13,801,8,342,0,JHU
-United Kingdom,2020-03-14,1143,21,342,13,JHU
-United Kingdom,2020-03-15,1144,21,1,0,JHU
+United Kingdom,2020-03-13,802,8,343,0,JHU
+United Kingdom,2020-03-14,1144,21,342,13,JHU
+United Kingdom,2020-03-15,1145,21,1,0,JHU
+United Kingdom,2020-03-16,1551,56,406,35,JHU
+United Kingdom,2020-03-17,1960,56,409,0,JHU
 Uruguay,2020-01-23,0,0,0,0,JHU
 Uruguay,2020-01-24,0,0,0,0,JHU
 Uruguay,2020-01-25,0,0,0,0,JHU
@@ -7578,6 +8137,8 @@ Uruguay,2020-03-12,0,0,0,0,JHU
 Uruguay,2020-03-13,0,0,0,0,JHU
 Uruguay,2020-03-14,4,0,4,0,JHU
 Uruguay,2020-03-15,4,0,0,0,JHU
+Uruguay,2020-03-16,8,0,4,0,JHU
+Uruguay,2020-03-17,29,0,21,0,JHU
 US,2020-01-23,1,0,0,0,JHU
 US,2020-01-24,2,0,1,0,JHU
 US,2020-01-25,2,0,0,0,JHU
@@ -7631,6 +8192,8 @@ US,2020-03-12,1663,40,382,4,JHU
 US,2020-03-13,2179,47,516,7,JHU
 US,2020-03-14,2727,54,548,7,JHU
 US,2020-03-15,3499,63,772,9,JHU
+US,2020-03-16,4632,85,1133,22,JHU
+US,2020-03-17,6421,108,1789,23,JHU
 Uzbekistan,2020-01-23,0,0,0,0,JHU
 Uzbekistan,2020-01-24,0,0,0,0,JHU
 Uzbekistan,2020-01-25,0,0,0,0,JHU
@@ -7684,6 +8247,8 @@ Uzbekistan,2020-03-12,0,0,0,0,JHU
 Uzbekistan,2020-03-13,0,0,0,0,JHU
 Uzbekistan,2020-03-14,0,0,0,0,JHU
 Uzbekistan,2020-03-15,1,0,1,0,JHU
+Uzbekistan,2020-03-16,6,0,5,0,JHU
+Uzbekistan,2020-03-17,10,0,4,0,JHU
 Venezuela,2020-01-23,0,0,0,0,JHU
 Venezuela,2020-01-24,0,0,0,0,JHU
 Venezuela,2020-01-25,0,0,0,0,JHU
@@ -7737,6 +8302,8 @@ Venezuela,2020-03-12,0,0,0,0,JHU
 Venezuela,2020-03-13,0,0,0,0,JHU
 Venezuela,2020-03-14,2,0,2,0,JHU
 Venezuela,2020-03-15,10,0,8,0,JHU
+Venezuela,2020-03-16,17,0,7,0,JHU
+Venezuela,2020-03-17,33,0,16,0,JHU
 Vietnam,2020-01-23,2,0,2,0,JHU
 Vietnam,2020-01-24,2,0,0,0,JHU
 Vietnam,2020-01-25,2,0,0,0,JHU
@@ -7790,167 +8357,177 @@ Vietnam,2020-03-12,39,0,1,0,JHU
 Vietnam,2020-03-13,47,0,8,0,JHU
 Vietnam,2020-03-14,53,0,6,0,JHU
 Vietnam,2020-03-15,56,0,3,0,JHU
-China,2020-03-16,80880,3213,NA,NA,worldometers
-Italy,2020-03-16,27980,2158,NA,NA,worldometers
-Iran,2020-03-16,14991,853,NA,NA,worldometers
-Spain,2020-03-16,9682,342,NA,NA,worldometers
-South Korea,2020-03-16,8236,75,NA,NA,worldometers
-Germany,2020-03-16,7241,15,NA,NA,worldometers
-France,2020-03-16,6633,148,NA,NA,worldometers
-US,2020-03-16,4349,77,NA,NA,worldometers
-Switzerland,2020-03-16,2353,19,NA,NA,worldometers
-United Kingdom,2020-03-16,1543,55,NA,NA,worldometers
-Netherlands,2020-03-16,1413,24,NA,NA,worldometers
-Norway,2020-03-16,1334,3,NA,NA,worldometers
-Sweden,2020-03-16,1119,7,NA,NA,worldometers
-Belgium,2020-03-16,1058,10,NA,NA,worldometers
-Austria,2020-03-16,1018,3,NA,NA,worldometers
-Denmark,2020-03-16,914,4,NA,NA,worldometers
-Japan,2020-03-16,895,27,NA,NA,worldometers
-Diamond Princess,2020-03-16,696,7,NA,NA,worldometers
-Malaysia,2020-03-16,566,NA,NA,NA,worldometers
-Qatar,2020-03-16,439,NA,NA,NA,worldometers
-Canada,2020-03-16,406,4,NA,NA,worldometers
-Australia,2020-03-16,375,5,NA,NA,worldometers
-Greece,2020-03-16,352,4,NA,NA,worldometers
-Czechia,2020-03-16,344,NA,NA,NA,worldometers
-Portugal,2020-03-16,331,1,NA,NA,worldometers
-Israel,2020-03-16,298,NA,NA,NA,worldometers
-Finland,2020-03-16,278,NA,NA,NA,worldometers
-Slovenia,2020-03-16,253,1,NA,NA,worldometers
-Singapore,2020-03-16,243,NA,NA,NA,worldometers
-Brazil,2020-03-16,234,NA,NA,NA,worldometers
-Bahrain,2020-03-16,227,1,NA,NA,worldometers
-Estonia,2020-03-16,205,NA,NA,NA,worldometers
-Iceland,2020-03-16,198,NA,NA,NA,worldometers
-Pakistan,2020-03-16,184,1,NA,NA,worldometers
-Poland,2020-03-16,177,4,NA,NA,worldometers
-Ireland,2020-03-16,170,2,NA,NA,worldometers
-Romania,2020-03-16,168,NA,NA,NA,worldometers
-Chile,2020-03-16,156,NA,NA,NA,worldometers
-Hong Kong,2020-03-16,155,4,NA,NA,worldometers
-Egypt,2020-03-16,150,2,NA,NA,worldometers
-Thailand,2020-03-16,147,1,NA,NA,worldometers
-Philippines,2020-03-16,142,12,NA,NA,worldometers
-Indonesia,2020-03-16,134,5,NA,NA,worldometers
-Iraq,2020-03-16,133,10,NA,NA,worldometers
-Saudi Arabia,2020-03-16,133,NA,NA,NA,worldometers
-India,2020-03-16,129,2,NA,NA,worldometers
-Kuwait,2020-03-16,123,NA,NA,NA,worldometers
-San Marino,2020-03-16,109,7,NA,NA,worldometers
-Lebanon,2020-03-16,109,3,NA,NA,worldometers
-UAE,2020-03-16,98,NA,NA,NA,worldometers
-Russia,2020-03-16,93,NA,NA,NA,worldometers
-Peru,2020-03-16,86,NA,NA,NA,worldometers
-Luxembourg,2020-03-16,81,1,NA,NA,worldometers
-Slovakia,2020-03-16,72,NA,NA,NA,worldometers
-Taiwan,2020-03-16,67,1,NA,NA,worldometers
-South Africa,2020-03-16,64,NA,NA,NA,worldometers
-Bulgaria,2020-03-16,62,2,NA,NA,worldometers
-Vietnam,2020-03-16,61,NA,NA,NA,worldometers
-Algeria,2020-03-16,60,4,NA,NA,worldometers
-Ecuador,2020-03-16,58,2,NA,NA,worldometers
-Croatia,2020-03-16,57,NA,NA,NA,worldometers
-Serbia,2020-03-16,57,NA,NA,NA,worldometers
-Argentina,2020-03-16,56,2,NA,NA,worldometers
-Panama,2020-03-16,55,1,NA,NA,worldometers
-Brunei,2020-03-16,54,NA,NA,NA,worldometers
-Colombia,2020-03-16,54,NA,NA,NA,worldometers
-Mexico,2020-03-16,53,NA,NA,NA,worldometers
-Albania,2020-03-16,51,1,NA,NA,worldometers
-Cyprus,2020-03-16,46,NA,NA,NA,worldometers
-Armenia,2020-03-16,45,NA,NA,NA,worldometers
-Hungary,2020-03-16,39,1,NA,NA,worldometers
-Palestine,2020-03-16,39,NA,NA,NA,worldometers
-Belarus,2020-03-16,36,NA,NA,NA,worldometers
-Costa Rica,2020-03-16,35,NA,NA,NA,worldometers
-Latvia,2020-03-16,34,NA,NA,NA,worldometers
-Georgia,2020-03-16,33,NA,NA,NA,worldometers
-Malta,2020-03-16,30,NA,NA,NA,worldometers
-Morocco,2020-03-16,29,1,NA,NA,worldometers
-Jordan,2020-03-16,29,NA,NA,NA,worldometers
-Moldova,2020-03-16,29,NA,NA,NA,worldometers
-Sri Lanka,2020-03-16,28,NA,NA,NA,worldometers
-Azerbaijan,2020-03-16,25,1,NA,NA,worldometers
-Bosnia and Herzegovina,2020-03-16,25,NA,NA,NA,worldometers
-Senegal,2020-03-16,24,NA,NA,NA,worldometers
-Oman,2020-03-16,22,NA,NA,NA,worldometers
-Afghanistan,2020-03-16,21,NA,NA,NA,worldometers
-Dominican Republic,2020-03-16,21,NA,NA,NA,worldometers
-Tunisia,2020-03-16,20,NA,NA,NA,worldometers
-North Macedonia,2020-03-16,19,NA,NA,NA,worldometers
-Faeroe Islands,2020-03-16,18,NA,NA,NA,worldometers
-Turkey,2020-03-16,18,NA,NA,NA,worldometers
-Lithuania,2020-03-16,17,NA,NA,NA,worldometers
-Venezuela,2020-03-16,17,NA,NA,NA,worldometers
-Burkina Faso,2020-03-16,15,NA,NA,NA,worldometers
-Jamaica,2020-03-16,15,NA,NA,NA,worldometers
-Martinique,2020-03-16,15,NA,NA,NA,worldometers
-Andorra,2020-03-16,14,NA,NA,NA,worldometers
-Maldives,2020-03-16,13,NA,NA,NA,worldometers
-Cambodia,2020-03-16,12,NA,NA,NA,worldometers
-Macao,2020-03-16,11,NA,NA,NA,worldometers
-Bolivia,2020-03-16,11,NA,NA,NA,worldometers
-French Guiana,2020-03-16,11,NA,NA,NA,worldometers
-Kazakhstan,2020-03-16,10,NA,NA,NA,worldometers
-Réunion,2020-03-16,9,NA,NA,NA,worldometers
-Guatemala,2020-03-16,8,1,NA,NA,worldometers
-New Zealand,2020-03-16,8,NA,NA,NA,worldometers
-Bangladesh,2020-03-16,8,NA,NA,NA,worldometers
-Paraguay,2020-03-16,8,NA,NA,NA,worldometers
-Uruguay,2020-03-16,8,NA,NA,NA,worldometers
-Uzbekistan,2020-03-16,8,NA,NA,NA,worldometers
-Guyana,2020-03-16,7,1,NA,NA,worldometers
-Ukraine,2020-03-16,7,1,NA,NA,worldometers
-Liechtenstein,2020-03-16,7,NA,NA,NA,worldometers
-Monaco,2020-03-16,6,NA,NA,NA,worldometers
-Channel Islands,2020-03-16,6,NA,NA,NA,worldometers
-Ghana,2020-03-16,6,NA,NA,NA,worldometers
-Guadeloupe,2020-03-16,6,NA,NA,NA,worldometers
-Honduras,2020-03-16,6,NA,NA,NA,worldometers
-Ethiopia,2020-03-16,5,NA,NA,NA,worldometers
-Puerto Rico,2020-03-16,5,NA,NA,NA,worldometers
-Rwanda,2020-03-16,5,NA,NA,NA,worldometers
-Cameroon,2020-03-16,4,NA,NA,NA,worldometers
-Ivory Coast,2020-03-16,4,NA,NA,NA,worldometers
-Cuba,2020-03-16,4,NA,NA,NA,worldometers
-Trinidad and Tobago,2020-03-16,4,NA,NA,NA,worldometers
-French Polynesia,2020-03-16,3,NA,NA,NA,worldometers
-Gibraltar,2020-03-16,3,NA,NA,NA,worldometers
-Guam,2020-03-16,3,NA,NA,NA,worldometers
-Kenya,2020-03-16,3,NA,NA,NA,worldometers
-St. Barth,2020-03-16,3,NA,NA,NA,worldometers
-Seychelles,2020-03-16,3,NA,NA,NA,worldometers
-Nigeria,2020-03-16,2,NA,NA,NA,worldometers
-Aruba,2020-03-16,2,NA,NA,NA,worldometers
-Curaçao,2020-03-16,2,NA,NA,NA,worldometers
-DRC,2020-03-16,2,NA,NA,NA,worldometers
-Namibia,2020-03-16,2,NA,NA,NA,worldometers
-Saint Lucia,2020-03-16,2,NA,NA,NA,worldometers
-Saint Martin,2020-03-16,2,NA,NA,NA,worldometers
-Cayman Islands,2020-03-16,1,1,NA,NA,worldometers
-Sudan,2020-03-16,1,1,NA,NA,worldometers
-Nepal,2020-03-16,1,NA,NA,NA,worldometers
-Antigua and Barbuda,2020-03-16,1,NA,NA,NA,worldometers
-Bahamas,2020-03-16,1,NA,NA,NA,worldometers
-Benin,2020-03-16,1,NA,NA,NA,worldometers
-Bhutan,2020-03-16,1,NA,NA,NA,worldometers
-CAR,2020-03-16,1,NA,NA,NA,worldometers
-Congo,2020-03-16,1,NA,NA,NA,worldometers
-Equatorial Guinea,2020-03-16,1,NA,NA,NA,worldometers
-Gabon,2020-03-16,1,NA,NA,NA,worldometers
-Greenland,2020-03-16,1,NA,NA,NA,worldometers
-Guinea,2020-03-16,1,NA,NA,NA,worldometers
-Vatican City,2020-03-16,1,NA,NA,NA,worldometers
-Liberia,2020-03-16,1,NA,NA,NA,worldometers
-Mauritania,2020-03-16,1,NA,NA,NA,worldometers
-Mayotte,2020-03-16,1,NA,NA,NA,worldometers
-Mongolia,2020-03-16,1,NA,NA,NA,worldometers
-St. Vincent Grenadines,2020-03-16,1,NA,NA,NA,worldometers
-Somalia,2020-03-16,1,NA,NA,NA,worldometers
-Suriname,2020-03-16,1,NA,NA,NA,worldometers
-Eswatini,2020-03-16,1,NA,NA,NA,worldometers
-Tanzania,2020-03-16,1,NA,NA,NA,worldometers
-Togo,2020-03-16,1,NA,NA,NA,worldometers
-U.S. Virgin Islands,2020-03-16,1,NA,NA,NA,worldometers
-Total:,2020-03-16,181664,7131,NA,NA,worldometers
+Vietnam,2020-03-16,61,0,5,0,JHU
+Vietnam,2020-03-17,66,0,5,0,JHU
+China,2020-03-18,80894,3237,NA,NA,worldometers
+Italy,2020-03-18,31506,2503,NA,NA,worldometers
+Iran,2020-03-18,17361,1135,NA,NA,worldometers
+Spain,2020-03-18,13910,623,NA,NA,worldometers
+Germany,2020-03-18,10120,27,NA,NA,worldometers
+South Korea,2020-03-18,8413,84,NA,NA,worldometers
+France,2020-03-18,7730,175,NA,NA,worldometers
+US,2020-03-18,7301,116,NA,NA,worldometers
+Switzerland,2020-03-18,2742,27,NA,NA,worldometers
+Netherlands,2020-03-18,2051,58,NA,NA,worldometers
+United Kingdom,2020-03-18,1950,71,NA,NA,worldometers
+Norway,2020-03-18,1527,6,NA,NA,worldometers
+Belgium,2020-03-18,1486,14,NA,NA,worldometers
+Austria,2020-03-18,1471,3,NA,NA,worldometers
+Sweden,2020-03-18,1292,8,NA,NA,worldometers
+Denmark,2020-03-18,1044,4,NA,NA,worldometers
+Japan,2020-03-18,889,29,NA,NA,worldometers
+Malaysia,2020-03-18,790,2,NA,NA,worldometers
+Diamond Princess,2020-03-18,712,7,NA,NA,worldometers
+Portugal,2020-03-18,642,2,NA,NA,worldometers
+Canada,2020-03-18,598,8,NA,NA,worldometers
+Australia,2020-03-18,565,6,NA,NA,worldometers
+Czechia,2020-03-18,464,NA,NA,NA,worldometers
+Qatar,2020-03-18,442,NA,NA,NA,worldometers
+Israel,2020-03-18,427,NA,NA,NA,worldometers
+Greece,2020-03-18,387,5,NA,NA,worldometers
+Finland,2020-03-18,359,NA,NA,NA,worldometers
+Brazil,2020-03-18,350,1,NA,NA,worldometers
+Singapore,2020-03-18,313,NA,NA,NA,worldometers
+Ireland,2020-03-18,292,2,NA,NA,worldometers
+Slovenia,2020-03-18,286,1,NA,NA,worldometers
+Pakistan,2020-03-18,272,NA,NA,NA,worldometers
+Estonia,2020-03-18,258,NA,NA,NA,worldometers
+Bahrain,2020-03-18,255,1,NA,NA,worldometers
+Poland,2020-03-18,251,5,NA,NA,worldometers
+Iceland,2020-03-18,250,NA,NA,NA,worldometers
+Romania,2020-03-18,246,NA,NA,NA,worldometers
+Chile,2020-03-18,238,NA,NA,NA,worldometers
+Indonesia,2020-03-18,227,19,NA,NA,worldometers
+Thailand,2020-03-18,212,1,NA,NA,worldometers
+Luxembourg,2020-03-18,203,2,NA,NA,worldometers
+Philippines,2020-03-18,202,17,NA,NA,worldometers
+Egypt,2020-03-18,196,6,NA,NA,worldometers
+Hong Kong,2020-03-18,181,4,NA,NA,worldometers
+Saudi Arabia,2020-03-18,171,NA,NA,NA,worldometers
+Iraq,2020-03-18,164,12,NA,NA,worldometers
+Ecuador,2020-03-18,155,2,NA,NA,worldometers
+India,2020-03-18,152,3,NA,NA,worldometers
+Russia,2020-03-18,147,NA,NA,NA,worldometers
+Kuwait,2020-03-18,142,NA,NA,NA,worldometers
+Lebanon,2020-03-18,133,4,NA,NA,worldometers
+San Marino,2020-03-18,119,11,NA,NA,worldometers
+Peru,2020-03-18,117,NA,NA,NA,worldometers
+South Africa,2020-03-18,116,NA,NA,NA,worldometers
+UAE,2020-03-18,113,NA,NA,NA,worldometers
+Slovakia,2020-03-18,105,1,NA,NA,worldometers
+Taiwan,2020-03-18,100,1,NA,NA,worldometers
+Turkey,2020-03-18,98,1,NA,NA,worldometers
+Mexico,2020-03-18,93,NA,NA,NA,worldometers
+Panama,2020-03-18,86,1,NA,NA,worldometers
+Armenia,2020-03-18,84,NA,NA,NA,worldometers
+Serbia,2020-03-18,83,NA,NA,NA,worldometers
+Bulgaria,2020-03-18,81,2,NA,NA,worldometers
+Croatia,2020-03-18,81,NA,NA,NA,worldometers
+Argentina,2020-03-18,79,2,NA,NA,worldometers
+Colombia,2020-03-18,75,NA,NA,NA,worldometers
+Algeria,2020-03-18,72,6,NA,NA,worldometers
+Latvia,2020-03-18,71,NA,NA,NA,worldometers
+Vietnam,2020-03-18,68,NA,NA,NA,worldometers
+Brunei,2020-03-18,68,NA,NA,NA,worldometers
+Albania,2020-03-18,59,2,NA,NA,worldometers
+Hungary,2020-03-18,58,1,NA,NA,worldometers
+Faeroe Islands,2020-03-18,58,NA,NA,NA,worldometers
+Belarus,2020-03-18,51,NA,NA,NA,worldometers
+Sri Lanka,2020-03-18,51,NA,NA,NA,worldometers
+Costa Rica,2020-03-18,50,NA,NA,NA,worldometers
+Uruguay,2020-03-18,50,NA,NA,NA,worldometers
+Morocco,2020-03-18,49,2,NA,NA,worldometers
+Cyprus,2020-03-18,49,NA,NA,NA,worldometers
+Jordan,2020-03-18,48,NA,NA,NA,worldometers
+Malta,2020-03-18,48,NA,NA,NA,worldometers
+Palestine,2020-03-18,44,NA,NA,NA,worldometers
+Andorra,2020-03-18,39,NA,NA,NA,worldometers
+Georgia,2020-03-18,38,NA,NA,NA,worldometers
+Bosnia and Herzegovina,2020-03-18,38,NA,NA,NA,worldometers
+Kazakhstan,2020-03-18,36,NA,NA,NA,worldometers
+Venezuela,2020-03-18,36,NA,NA,NA,worldometers
+Cambodia,2020-03-18,35,NA,NA,NA,worldometers
+North Macedonia,2020-03-18,35,NA,NA,NA,worldometers
+Azerbaijan,2020-03-18,34,1,NA,NA,worldometers
+Lithuania,2020-03-18,33,NA,NA,NA,worldometers
+Oman,2020-03-18,33,NA,NA,NA,worldometers
+Senegal,2020-03-18,31,NA,NA,NA,worldometers
+Moldova,2020-03-18,30,1,NA,NA,worldometers
+Tunisia,2020-03-18,29,NA,NA,NA,worldometers
+Guadeloupe,2020-03-18,27,NA,NA,NA,worldometers
+Afghanistan,2020-03-18,22,NA,NA,NA,worldometers
+Dominican Republic,2020-03-18,21,1,NA,NA,worldometers
+Burkina Faso,2020-03-18,20,1,NA,NA,worldometers
+New Zealand,2020-03-18,20,NA,NA,NA,worldometers
+Martinique,2020-03-18,19,1,NA,NA,worldometers
+Liechtenstein,2020-03-18,19,NA,NA,NA,worldometers
+Macao,2020-03-18,15,NA,NA,NA,worldometers
+Uzbekistan,2020-03-18,15,NA,NA,NA,worldometers
+Ukraine,2020-03-18,14,2,NA,NA,worldometers
+Bangladesh,2020-03-18,14,1,NA,NA,worldometers
+Jamaica,2020-03-18,13,NA,NA,NA,worldometers
+Maldives,2020-03-18,13,NA,NA,NA,worldometers
+Bolivia,2020-03-18,12,NA,NA,NA,worldometers
+Réunion,2020-03-18,12,NA,NA,NA,worldometers
+Guyana,2020-03-18,11,1,NA,NA,worldometers
+French Guiana,2020-03-18,11,NA,NA,NA,worldometers
+Paraguay,2020-03-18,11,NA,NA,NA,worldometers
+Cameroon,2020-03-18,10,NA,NA,NA,worldometers
+Monaco,2020-03-18,9,NA,NA,NA,worldometers
+Honduras,2020-03-18,9,NA,NA,NA,worldometers
+Guatemala,2020-03-18,8,1,NA,NA,worldometers
+Nigeria,2020-03-18,8,NA,NA,NA,worldometers
+Gibraltar,2020-03-18,8,NA,NA,NA,worldometers
+Guam,2020-03-18,8,NA,NA,NA,worldometers
+Rwanda,2020-03-18,8,NA,NA,NA,worldometers
+Cuba,2020-03-18,7,NA,NA,NA,worldometers
+DRC,2020-03-18,7,NA,NA,NA,worldometers
+Ghana,2020-03-18,7,NA,NA,NA,worldometers
+Kenya,2020-03-18,7,NA,NA,NA,worldometers
+Trinidad and Tobago,2020-03-18,7,NA,NA,NA,worldometers
+Channel Islands,2020-03-18,6,NA,NA,NA,worldometers
+Ivory Coast,2020-03-18,6,NA,NA,NA,worldometers
+Ethiopia,2020-03-18,6,NA,NA,NA,worldometers
+Mongolia,2020-03-18,6,NA,NA,NA,worldometers
+Puerto Rico,2020-03-18,5,NA,NA,NA,worldometers
+Aruba,2020-03-18,4,NA,NA,NA,worldometers
+Equatorial Guinea,2020-03-18,4,NA,NA,NA,worldometers
+Seychelles,2020-03-18,4,NA,NA,NA,worldometers
+Curaçao,2020-03-18,3,NA,NA,NA,worldometers
+French Polynesia,2020-03-18,3,NA,NA,NA,worldometers
+Gabon,2020-03-18,3,NA,NA,NA,worldometers
+Kyrgyzstan,2020-03-18,3,NA,NA,NA,worldometers
+Mayotte,2020-03-18,3,NA,NA,NA,worldometers
+St. Barth,2020-03-18,3,NA,NA,NA,worldometers
+Saint Martin,2020-03-18,3,NA,NA,NA,worldometers
+Tanzania,2020-03-18,3,NA,NA,NA,worldometers
+Sudan,2020-03-18,2,1,NA,NA,worldometers
+Barbados,2020-03-18,2,NA,NA,NA,worldometers
+Benin,2020-03-18,2,NA,NA,NA,worldometers
+Liberia,2020-03-18,2,NA,NA,NA,worldometers
+Montenegro,2020-03-18,2,NA,NA,NA,worldometers
+Namibia,2020-03-18,2,NA,NA,NA,worldometers
+New Caledonia,2020-03-18,2,NA,NA,NA,worldometers
+Saint Lucia,2020-03-18,2,NA,NA,NA,worldometers
+U.S. Virgin Islands,2020-03-18,2,NA,NA,NA,worldometers
+Zambia,2020-03-18,2,NA,NA,NA,worldometers
+Cayman Islands,2020-03-18,1,1,NA,NA,worldometers
+Nepal,2020-03-18,1,NA,NA,NA,worldometers
+Antigua and Barbuda,2020-03-18,1,NA,NA,NA,worldometers
+Bahamas,2020-03-18,1,NA,NA,NA,worldometers
+Bhutan,2020-03-18,1,NA,NA,NA,worldometers
+CAR,2020-03-18,1,NA,NA,NA,worldometers
+Congo,2020-03-18,1,NA,NA,NA,worldometers
+Djibouti,2020-03-18,1,NA,NA,NA,worldometers
+Gambia,2020-03-18,1,NA,NA,NA,worldometers
+Greenland,2020-03-18,1,NA,NA,NA,worldometers
+Guinea,2020-03-18,1,NA,NA,NA,worldometers
+Vatican City,2020-03-18,1,NA,NA,NA,worldometers
+Mauritania,2020-03-18,1,NA,NA,NA,worldometers
+Montserrat,2020-03-18,1,NA,NA,NA,worldometers
+St. Vincent Grenadines,2020-03-18,1,NA,NA,NA,worldometers
+Somalia,2020-03-18,1,NA,NA,NA,worldometers
+Suriname,2020-03-18,1,NA,NA,NA,worldometers
+Eswatini,2020-03-18,1,NA,NA,NA,worldometers
+Togo,2020-03-18,1,NA,NA,NA,worldometers
+Total:,2020-03-18,205636,8272,NA,NA,worldometers

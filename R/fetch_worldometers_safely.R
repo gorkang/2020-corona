@@ -32,6 +32,7 @@ fetch_worldometers_safely <-
           country = 
             case_when(
               country == "S. Korea" ~ "South Korea",
+              country == "Taiwan*" ~ "Taiwan",
               country == "USA" ~ "US",
               country == "UK" ~ "United Kingdom",
               TRUE ~ country)) %>% 
