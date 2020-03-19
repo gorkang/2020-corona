@@ -13,7 +13,8 @@ library(scales)
 library(shiny)
 library(shinythemes)
 library(shinyWidgets)
-library(tabulizer)
+library(shinyjs)
+# library(tabulizer)
 
 
 
@@ -29,7 +30,6 @@ source(here::here("R/data-preparation.R"))
 source(here::here("R/fetch_last_update_date.R"))
 
 
-
 data_download()
 data_preparation()
 
@@ -42,6 +42,8 @@ last_commit_time = fetch_last_update_date()$result
 ui <- 
     function(request) {
         fluidPage(
+            useShinyjs(),
+            
 
     titlePanel(windowTitle = "Coronavirus tracker",
                title = HTML("<a href=\"https://gorkang.shinyapps.io/2020-corona/\">Coronavirus tracker</a>")),
@@ -52,22 +54,25 @@ ui <-
             width = 2,
 
     selectInput(inputId = 'countries_plot', 
-                label = 'country',
+                label = 'Country',
                 choices = V1_alternatives,
                 multiple = TRUE, 
                 selectize = TRUE, 
                 width = 200, 
-                selected = c(top_countries, "United Kingdom", "Denmark")),
+                selected = c(top_countries, "United Kingdom", "Denmark", "Chile")),
     
     uiOutput('highlight2'),
     
-    
-    selectInput(
-        inputId = "cases_deaths", label = "Cases or deaths", selected = "cases", 
-        choices = c("cases", "deaths")),
+    selectInput(inputId = "cases_deaths", label = "Cases or deaths", selected = "cases", 
+                 choices = c("cases", "deaths")),
+
+    radioButtons(inputId = "acumulated_diff", label = "Accumulated or daily", selected = "acumulated", 
+                 choices = c("acumulated", "daily"), inline = TRUE),
     
     # Dynamically change with cases_deaths
-    uiOutput('min_n2'),
+    sliderInput('min_n_cases', paste0("# of cases"), min = 1, max = 200, value = 100), 
+    sliderInput('min_n_deaths', paste0("# of deaths"), min = 1, max = 200, value = 10),
+    
     
     
     sliderInput("growth", "Daily growth (%):",
@@ -90,6 +95,11 @@ ui <-
     
 
     HTML("<BR><BR>"),
+    span(
+        h6("REMEMBER: Different countries employ different testing strategies so number of cases are not directly comparable between countries."),
+        style="color:darkred"),
+    
+    HTML("<BR>"),
     HTML(paste0("By ", a(" @gorkang", href="https://twitter.com/gorkang", target = "_blank")))
     
     ), 
@@ -131,6 +141,8 @@ ui <-
 )
 }
 
+# v <- reactiveValues()
+
 # Server ------------------------------------------------------------------
 
 server <- function(input, output) {
@@ -144,39 +156,58 @@ server <- function(input, output) {
           'mytable_cell_clicked',
           'mytable_rows_selected'))
     
+    
+    observeEvent(input$cases_deaths,{
+        
+        if (input$cases_deaths == "cases") {
+            hide("min_n_deaths")
+            show("min_n_cases")
+            # VAR_min_n() <<- input$min_n_cases
+            # message(VAR_min_n())
+        }else{
+            hide("min_n_cases")
+            show("min_n_deaths")
+            # VAR_min_n() <<- input$min_n_deaths
+            # message(VAR_min_n())
+        }
+    })
+    
+    VAR_min_n = reactive({
+    # observeEvent(c(input$min_n_cases,input$min_n_deaths),{
+        if (input$cases_deaths == "cases") {
+            # v$value <- 
+                input$min_n_cases
+        }else{
+            # v$value <- 
+                input$min_n_deaths
+        }
+    })
+
+    # Dynamic menus -----------------------------------------------------------
+    
     # Dinamically set highlight choices bases on input$countries_plot
-    outVar = reactive({ c(input$countries_plot, "None") })
+    outVar = reactive({ c("None", input$countries_plot %>% sort()) })
     output$highlight2 = renderUI({
-        selectInput('highlight', 'highlight country', choices = outVar(),
+        selectInput('highlight', 'Highlight country', choices = outVar(),
                     selected = "None")
     })
     
     
-    output$min_n2 = renderUI({
-        
-        if (input$cases_deaths == "cases") {
-            sliderInput('min_n', paste0("Minimum cases:"),
-                    min = 1, max = 200, value = 100)
-        } else {
-            sliderInput('min_n', paste0("Minimum deaths:"),
-                        min = 1, max = 200, value = 10)
-        }
-    })
 
+    # final_df() creation -----------------------------------------------------
     
     final_df = reactive({ 
 
         withProgress(message = 'Preparing data', value = 0, {
             
             req(input$highlight)
+            req(VAR_min_n())
+            req(input$cases_deaths)
+            req(input$countries_plot)
             
-            # Run data preparation foe either cases or deaths
-            if (input$cases_deaths == "deaths") {
-                data_preparation(cases_deaths = input$cases_deaths)
-            } else if (input$cases_deaths == "cases") {
-                data_preparation(cases_deaths = input$cases_deaths)
-            }
-            
+            # Launch data preparation
+            data_preparation(cases_deaths = input$cases_deaths)
+
             if (!is.null(input$countries_plot)) {
                 
                 dta_temp = dta %>%
@@ -184,7 +215,7 @@ server <- function(input, output) {
                     filter(country %in% input$countries_plot) %>% 
                     
                     # filter
-                    filter(value >= input$min_n) %>% 
+                    filter(value >= VAR_min_n()) %>% 
                     
                     # If repeated values the same day, keep higher
                     group_by(country, time) %>% 
@@ -229,52 +260,70 @@ server <- function(input, output) {
                 
             }
         })
-    })
+    }) 
     
 
     growth_line = reactive({
         # We use 1.1 * to avoid overlaping
         tibble(
-            value = cumprod(c(input$min_n, rep((100 + input$growth) / 100, 1.1 * max(final_df()$days_after_100, na.rm = TRUE)))),
+            value = cumprod(c(VAR_min_n(), rep((100 + input$growth) / 100, 1.1 * max(final_df()$days_after_100, na.rm = TRUE)))),
             days_after_100 = 0:(1.1 * max(final_df()$days_after_100, na.rm = TRUE))
         )
     })
     
-    PLOT = reactive({
+    
+    # Show plot
+    output$distPlot <- renderPlot({
         
         withProgress(message = 'Loading plot', value = 0, {
             
-            p_temp = ggplot(data = final_df(), aes(x = days_after_100, y = value, group = country, color = highlight)) +
-                geom_line(data = growth_line(),
-                          aes(days_after_100, value),
-                          linetype = "dotted", inherit.aes = FALSE) +
-                geom_line() + 
-                geom_point(aes(size = as.integer(final_df()$name_end != ""))) + 
-                ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3) + 
+            # Show acumulated or daily plot
+            if (input$acumulated_diff == "daily") {
+                DF_plot = final_df() %>% rename(value_temp = value,
+                                                value = diff)
+            } else {
+                DF_plot = final_df()
+            }
+            
+            
+            # Draw plot
+            p_temp = ggplot(data = DF_plot, aes(x = days_after_100, y = value, group = country, color = highlight)) +
+                geom_line(data = growth_line(), aes(days_after_100, value), linetype = "dotted", inherit.aes = FALSE) +
+                # geom_line(alpha = .7) +
+                # geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, size = .5, span = 3/4, na.rm = TRUE,) +
+                geom_point(aes(size = as.integer(final_df()$name_end != ""))) +
+                ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3, alpha = .7) + 
                 scale_x_continuous(breaks = seq(0, max(final_df()$value), 2)) +
                 labs(
                     title = paste0("Confirmed ", input$cases_deaths ,""),
-                    subtitle = paste0("Arranged by number of days since ",  input$min_n ," or more ", input$cases_deaths),
-                    x = paste0("Days after ",  input$min_n ," confirmed ", input$cases_deaths),
-                    y = paste0("Confirmed ", input$cases_deaths, " (log scale)"), 
+                    subtitle = paste0("Arranged by number of days since ",  VAR_min_n() ," or more ", input$cases_deaths),
+                    x = paste0("Days after ",  VAR_min_n() ," confirmed ", input$cases_deaths),
+                    y = paste0("Confirmed ", input$acumulated_diff, " ", input$cases_deaths, " (log scale)"), 
                     caption = paste0("Source: Johns Hopkins CSSE\nFinal big point: worldometers.info")
                 ) +
                 theme_minimal(base_size = 14) +
                 theme(legend.position = "none")
             
+            if (input$acumulated_diff == "daily") {
+                p_temp = p_temp +  
+                    geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, size = .5, span = 3/4, na.rm = TRUE)
+            } else {
+                p_temp = p_temp +  
+                    geom_line(alpha = .7)
+            }
+            
             if (input$highlight != "None") {p_temp =  p_temp + scale_color_identity()}
             
             if (input$log_scale == TRUE) {
-                p_temp2 = p_temp +
+                p_temp = p_temp +
                     scale_y_log10(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) 
-                    
             } else {
-                p_temp2 = p_temp +
+                p_temp = p_temp +
                     scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
-                    labs(y = paste0("Confirmed ", input$cases_deaths))
+                    labs(y = paste0("Confirmed ", input$acumulated_diff, " ", input$cases_deaths))
             }
-                
-            p_temp2 + 
+            
+            p_temp + 
                 annotate(geom = "text",
                          x = max(growth_line()$days_after_100) - .5, 
                          y = max(growth_line()$value), 
@@ -283,11 +332,6 @@ server <- function(input, output) {
                          label = paste0(input$growth, "% growth"))
         })
     })
-    
-    # Show plot
-    output$distPlot <- renderPlot({
-            PLOT()
-    })
 
         
     # Show table
@@ -295,14 +339,15 @@ server <- function(input, output) {
         DT::datatable(final_df() %>%
                           arrange(desc(time), country) %>% 
                           select(-name_end, -highlight) %>% 
-                          rename_(.dots=setNames("days_after_100", paste0("days_after_", input$min_n))),
+                          rename_(.dots=setNames("days_after_100", paste0("days_after_", VAR_min_n()))),
                           filter = 'top',
                       rownames = FALSE, 
                       options = list(pageLength = 10, 
                                      dom = 'ltipr',
                                      autoWidth = FALSE))
     })
+    
 }
 
 # Run the application 
-shinyApp(ui = ui, server = server, enableBookmarking = "url") # Not woking yet in shinyapps.io :( Error bookmarking state: This server is not configured for saving sessions to disk.
+shinyApp(ui = ui, server = server, enableBookmarking = "url", options = "test.mode")
