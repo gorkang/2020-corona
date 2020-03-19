@@ -47,7 +47,7 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
     mutate(
       name_end = 
         case_when(
-          days_after_100 == max(days_after_100) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
+          days_after_100 == max(days_after_100) & source == "worldometers" ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
           TRUE ~ "")) %>% 
     mutate(highlight = country)
   
@@ -56,21 +56,20 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
   # Menu vars ---------------------------------------------------------------
   
   V1_alternatives <<- dta %>%
-    filter(value > 10) %>% 
-    filter(!country %in% c("Total:")) %>% 
+    # filter(value > 1) %>% 
+    filter(!country %in% c("Total:", "Diamond Princess")) %>% 
     arrange(desc(value)) %>% 
     distinct(country) %>% 
     pull(country)
   
   top_countries <<- dta %>%
+    filter(!country %in% c("Total:", "Cruise Ship", "China", "Diamond Princess")) %>% 
     group_by(country) %>% 
-    filter(value == max(value), 
-           country != "Cruise Ship") %>% 
+    filter(value == max(value)) %>%
     distinct(country, value) %>% 
     ungroup() %>%
-    top_n(n = 10, wt = value) %>% 
-    filter(!country %in% c("Total:", "China")) %>% 
     arrange(desc(value)) %>% 
+    slice_head(n = 10, wt = value) %>% 
     pull(country)
 
 }
