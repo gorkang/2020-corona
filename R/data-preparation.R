@@ -69,7 +69,7 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
     distinct(country, value) %>% 
     ungroup() %>%
     arrange(desc(value)) %>% 
-    slice_head(n = 10, wt = value) %>% 
+    slice_head(n = 6, wt = value) %>% 
     pull(country)
 
 }

@@ -76,7 +76,7 @@ ui <-
     
     
     sliderInput("growth", "Daily growth (%):",
-                min = 0, max = 100, value = 30),
+                min = 0, max = 100, value = 20),
     
     shinyWidgets::switchInput(inputId = "log_scale", label = "Log scale", 
                               value = TRUE, size = "mini", width = '100%'),
@@ -236,7 +236,7 @@ server <- function(input, output) {
                     mutate(
                         name_end =
                             case_when(
-                                days_after_100 == max(days_after_100) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
+                                days_after_100 == max(days_after_100) & source == "worldometers" ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
                                 TRUE ~ ""))
                     
                 if (input$highlight != "None") {
@@ -285,13 +285,18 @@ server <- function(input, output) {
                 DF_plot = final_df()
             }
             
+            # Define span
+            VALUE_span = DF_plot %>% count(country) %>% pull(n) %>% min() - 1
+            if (VALUE_span > 4) VALUE_span = 4
+            # message(VALUE_span)
+
             
             # Draw plot
-            p_temp = ggplot(data = DF_plot, aes(x = days_after_100, y = value, group = country, color = highlight)) +
+            p_temp = ggplot(data = DF_plot, 
+                            aes(x = days_after_100, y = value, group = as.factor(country), color = highlight)) +
                 geom_line(data = growth_line(), aes(days_after_100, value), linetype = "dotted", inherit.aes = FALSE) +
-                # geom_line(alpha = .7) +
-                # geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, size = .5, span = 3/4, na.rm = TRUE,) +
-                geom_point(aes(size = as.integer(final_df()$name_end != ""))) +
+
+                geom_point(aes(size = 1 + as.integer(final_df()$name_end != "") - .5), alpha = .7) +
                 ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3, alpha = .7) + 
                 scale_x_continuous(breaks = seq(0, max(final_df()$value), 2)) +
                 labs(
@@ -306,10 +311,13 @@ server <- function(input, output) {
             
             if (input$acumulated_diff == "daily") {
                 p_temp = p_temp +  
-                    geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, size = .5, span = 3/4, na.rm = TRUE)
+                    geom_smooth(method = "lm", formula = y ~ poly(x, VALUE_span - 1), se = FALSE, size = .8, na.rm = TRUE)
             } else {
                 p_temp = p_temp +  
                     geom_line(alpha = .7)
+                    # stat_smooth(method = 'loess', span = 0.3, se = FALSE, size = .3, alpha = .6)
+                    # stat_smooth(aes(group = country),
+                    #             method = "lm", formula = y ~ poly(x, VALUE_span - 1), se = FALSE, size = .8, alpha = .6)
             }
             
             if (input$highlight != "None") {p_temp =  p_temp + scale_color_identity()}
@@ -338,7 +346,7 @@ server <- function(input, output) {
     output$mytable = DT::renderDataTable({
         DT::datatable(final_df() %>%
                           arrange(desc(time), country) %>% 
-                          select(-name_end, -highlight) %>% 
+                          select(-name_end, -highlight) %>%
                           rename_(.dots=setNames("days_after_100", paste0("days_after_", VAR_min_n()))),
                           filter = 'top',
                       rownames = FALSE, 
