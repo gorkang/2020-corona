@@ -74,12 +74,15 @@ ui <-
     sliderInput('min_n_deaths', paste0("# of deaths"), min = 1, max = 200, value = 10),
     
     
-    
     sliderInput("growth", "Daily growth (%):",
                 min = 0, max = 100, value = 20),
     
-    shinyWidgets::switchInput(inputId = "log_scale", label = "Log scale", 
-                              value = TRUE, size = "mini", width = '100%'),
+    div(style="display:inline-block",
+        shinyWidgets::switchInput(inputId = "log_scale", label = "Log", value = TRUE, size = "mini", width = '100%')
+        ), HTML("&nbsp;&nbsp;"),
+    div(style="display:inline-block",
+        shinyWidgets::switchInput(inputId = "smooth", label = "Smooth?", value = FALSE, size = "mini", width = '100%')
+        ),
     
     hr(),
     bookmarkButton(label = "Get URL"),
@@ -285,10 +288,9 @@ server <- function(input, output) {
                 DF_plot = final_df()
             }
             
-            # Define span
-            VALUE_span = DF_plot %>% count(country) %>% pull(n) %>% min() - 1
-            if (VALUE_span > 4) VALUE_span = 4
-            # message(VALUE_span)
+            # Define which countries get a smooth (have enough points)
+            VALUE_span = 3
+            counts_filter = DF_plot %>% count(country) %>% filter(n > VALUE_span)
 
             
             # Draw plot
@@ -309,17 +311,14 @@ server <- function(input, output) {
                 theme_minimal(base_size = 14) +
                 theme(legend.position = "none")
             
-            if (input$acumulated_diff == "daily") {
-                p_temp = p_temp +  
-                    geom_smooth(method = "lm", formula = y ~ poly(x, VALUE_span - 1), se = FALSE, size = .8, na.rm = TRUE)
+            if(input$smooth == FALSE) {
+                p_temp = p_temp + geom_line(alpha = .7)
             } else {
                 p_temp = p_temp +  
-                    geom_line(alpha = .7)
-                    # stat_smooth(method = 'loess', span = 0.3, se = FALSE, size = .3, alpha = .6)
-                    # stat_smooth(aes(group = country),
-                    #             method = "lm", formula = y ~ poly(x, VALUE_span - 1), se = FALSE, size = .8, alpha = .6)
+                    geom_smooth(data = DF_plot %>% filter(country %in% counts_filter$country),
+                                method = "lm", formula = y ~ poly(x, VALUE_span - 1), se = FALSE, size = .8, alpha = .6, na.rm = TRUE)
             }
-            
+
             if (input$highlight != "None") {p_temp =  p_temp + scale_color_identity()}
             
             if (input$log_scale == TRUE) {
