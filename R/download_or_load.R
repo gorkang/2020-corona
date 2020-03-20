@@ -2,7 +2,7 @@ download_or_load <-
   
   purrr::safely(
     
-    function(URL, file_name, hours_threshold = 1, maxTimes = 10) {
+    function(URL, file_name, hours_threshold = .5, maxTimes = 10) {
     
       # DEBUG
       # library(dplyr)
