@@ -191,13 +191,19 @@ server <- function(input, output) {
     })
     
     VAR_min_n = reactive({
-    # observeEvent(c(input$min_n_cases,input$min_n_deaths),{
         if (input$cases_deaths == "cases") {
-            # v$value <- 
                 input$min_n_cases
         }else{
-            # v$value <- 
                 input$min_n_deaths
+        }
+    })
+    
+    VAR_highlight = reactive({
+        
+        if (is.null(input$highlight)) {
+            "None"
+        } else {
+            input$highlight
         }
     })
 
@@ -206,8 +212,16 @@ server <- function(input, output) {
     # Dinamically set highlight choices bases on input$countries_plot
     outVar = reactive({ c("None", input$countries_plot %>% sort()) })
     output$highlight2 = renderUI({
-        selectInput('highlight', 'Highlight country', choices = outVar(),
+        selectInput(inputId = 'highlight', 
+                    label = 'Highlight countries',
+                    choices = outVar(),
+                    multiple = TRUE, 
+                    selectize = TRUE, 
+                    width = "100%", 
                     selected = "None")
+        # 
+        # selectInput('highlight', 'Highlight country', choices = outVar(),
+        #             selected = "None")
     })
     
     
@@ -218,7 +232,8 @@ server <- function(input, output) {
 
         withProgress(message = 'Preparing data', value = 0, {
             
-            req(input$highlight)
+            # req(input$highlight)
+            req(VAR_highlight())
             req(VAR_min_n())
             req(input$cases_deaths)
             req(input$countries_plot)
@@ -257,11 +272,12 @@ server <- function(input, output) {
                                 days_after_100 == max(days_after_100) & source == "worldometers" ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
                                 TRUE ~ ""))
                     
-                if (input$highlight != "None") {
+                # if (VAR_highlight() != "None") {
+                 if (any('None' != VAR_highlight())) {
                     dta_temp %>% 
                         mutate(highlight = 
                                    case_when(
-                                       country == input$highlight ~ "darkred",
+                                       country %in% VAR_highlight() ~ "darkred",
                                        TRUE ~ "grey"
                                    ))
                 } else {
@@ -347,7 +363,8 @@ server <- function(input, output) {
             #         ggrepel::geom_label_repel(aes(x = days_after_100, y = deaths_sum, label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3, alpha = .7)
             # } 
 
-            if (input$highlight != "None") {p_temp =  p_temp + scale_color_identity()}
+            # if (VAR_highlight() != "None") {p_temp =  p_temp + scale_color_identity()}
+            if (any('None' != VAR_highlight())) { p_temp =  p_temp + scale_color_identity() }
             
             # Scale, log or not
             if (input$log_scale == TRUE) {
