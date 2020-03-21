@@ -77,11 +77,11 @@ ui <-
     HTML("<BR>"),
     
     div(style="display:inline-block;width;45%;text-align: center;",
-        shinyWidgets::switchInput(inputId = "log_scale", label = "Log", value = TRUE, size = "small", labelWidth = "20%")
+        shinyWidgets::switchInput(inputId = "log_scale", label = "Log", value = TRUE, size = "mini", labelWidth = "40%")
         ), 
     HTML("&nbsp;&nbsp;"),
     div(style="display:inline-block;45%;text-align: center;",
-        shinyWidgets::switchInput(inputId = "smooth", label = "Smooth", value = FALSE, size = "mini", labelWidth = "20%")
+        shinyWidgets::switchInput(inputId = "smooth", label = "Smooth", value = FALSE, size = "mini", labelWidth = "40%")
         ),
     
     HTML("<BR><BR>"),
