@@ -69,7 +69,7 @@ ui <-
                  choices = c("acumulated", "daily"), inline = TRUE),
     
     # Dynamically change with cases_deaths
-    sliderInput('min_n_cases', paste0("# of cases"), min = 1, max = 200, value = 100), 
+    sliderInput('min_n_cases', paste0("Day 0 after ___ cases"), min = 1, max = 200, value = 100), 
     sliderInput('min_n_deaths', paste0("# of deaths"), min = 1, max = 200, value = 10),
     
     
@@ -78,19 +78,31 @@ ui <-
     
     HTML("<BR>"),
     
-    div(style="display:inline-block",
-        shinyWidgets::switchInput(inputId = "log_scale", label = "Log", value = TRUE, size = "mini", labelWidth = "40%")
-        ), HTML("&nbsp;&nbsp;"),
-    div(style="display:inline-block",
-        shinyWidgets::switchInput(inputId = "smooth", label = "Smooth", value = FALSE, size = "mini", labelWidth = "40%")
+    div(style="display:inline-block;width;45%;text-align: center;",
+        shinyWidgets::switchInput(inputId = "log_scale", label = "Log", value = TRUE, size = "small", labelWidth = "20%")
+        ), 
+    HTML("&nbsp;&nbsp;"),
+    div(style="display:inline-block;45%;text-align: center;",
+        shinyWidgets::switchInput(inputId = "smooth", label = "Smooth", value = FALSE, size = "mini", labelWidth = "20%")
         ),
     
     HTML("<BR><BR>"),
     # shinyWidgets::switchInput(inputId = "show_both", label = "Show deaths alongside", labelWidth = "80%", value = FALSE, size = "mini", width = '100%'),
     
-    # hr(),
-    div(style="display:inline-block;width:80%;text-align: center;",
-    bookmarkButton(label = "Get URL")),
+    div( HTML("&nbsp;&nbsp;"), style="display:inline-block;65%;text-align: center;",
+        bookmarkButton(label = "URL")
+    ), 
+    HTML("&nbsp;&nbsp;"),
+    div(style="display:inline-block;30%;text-align: center;",
+        downloadButton('downloadPlot', 'Save')
+    ),
+    
+    HTML("<BR><BR>"),
+    
+    span(
+        h6("REMEMBER: Number of cases are not directly comparable between countries (different countries employ different testing strategies)."),
+        style="color:darkred"),
+    
     hr(),
     
     HTML(paste0("Simple visualization using the ", a(" @JHUSystems Coronavirus", href="https://github.com/CSSEGISandData/COVID-19", target = "_blank"), 
@@ -102,12 +114,9 @@ ui <-
                 a("@jburnmurdoch", href="https://twitter.com/jburnmurdoch", target = "_blank"), " and ", a(" @sdbernard", href="https://twitter.com/sdbernard", target = "_blank"))),
     
 
-    HTML("<BR><BR>"),
-    span(
-        h6("REMEMBER: Different countries employ different testing strategies so number of cases are not directly comparable between countries."),
-        style="color:darkred"),
+
     
-    HTML("<BR>"),
+    HTML("<BR><BR>"),
     HTML(paste0("By ", a(" @gorkang", href="https://twitter.com/gorkang", target = "_blank")))
     
     ), 
@@ -117,11 +126,11 @@ ui <-
         mainPanel(
             p(HTML(
                 paste0(
+                    "Github repo: ", a(" github.com/gorkang/2020-corona ", href="https://github.com/gorkang/2020-corona", target = "_blank"), hr(),
                     a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19", target = "_blank"), " updated on: ", as.character(last_commit_time), " GMT",
-                    "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), ": ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT")
+                    "<BR>", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), " (last point) updated on: ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT")
                 )
               ),
-            HTML(paste0("Github repo: ", a(" github.com/gorkang/2020-corona ", href="https://github.com/gorkang/2020-corona", target = "_blank"))),
             hr(),
            plotOutput("distPlot", height = "700px", width = "100%"),
            
@@ -131,10 +140,13 @@ ui <-
                paste(
                    h3("Data shown in plot"),
                    
-                   a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19"), 
-                        " updated on: ", as.character(last_commit_time), " GMT",
-                   "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries"), ": ", 
-                        as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT"
+                   a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19", target = "_blank"), " updated on: ", as.character(last_commit_time), " GMT",
+                   "<BR>", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), " (last point) updated on: ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT"
+               
+                   # a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19"), 
+                   #      " updated on: ", as.character(last_commit_time), " GMT",
+                   # "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries"), ": ", 
+                   #      as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT"
                    )
            ),
            hr(),
@@ -313,11 +325,11 @@ server <- function(input, output) {
                 
                 scale_x_continuous(breaks = seq(0, max(final_df()$value), 2)) +
                 labs(
-                    title = paste0("Confirmed ", input$cases_deaths ,""),
+                    title = paste0("Coronavirus confirmed ", input$cases_deaths ,""),
                     subtitle = paste0("Arranged by number of days since ",  VAR_min_n() ," or more ", input$cases_deaths),
                     x = paste0("Days after ",  VAR_min_n() ," confirmed ", input$cases_deaths),
                     y = paste0("Confirmed ", input$acumulated_diff, " ", input$cases_deaths, " (log scale)"), 
-                    caption = paste0("Source: Johns Hopkins CSSE\nFinal big point: worldometers.info")
+                    caption = paste0("Sources: Johns Hopkins CSSE and worldometers.info\n gorkang.shinyapps.io/2020-corona/")
                 ) +
                 theme_minimal(base_size = 14) +
                 theme(legend.position = "none")
@@ -350,15 +362,16 @@ server <- function(input, output) {
             }
             
             # Annotation trend line
-            p_temp + 
+            p_final <<- p_temp + 
                 annotate(geom = "text",
                          x = max(growth_line()$days_after_100) - .5, 
                          y = max(growth_line()$value), 
                          vjust = 1, 
                          hjust = 1, 
                          label = paste0(input$growth, "% growth"))
-                # scale_color_brewer(colours = rainbow(5))
-                # viridis::scale_color_viridis(option = "D", discrete = TRUE)
+                
+            p_final
+            
         })
     })
 
@@ -375,6 +388,12 @@ server <- function(input, output) {
                                      dom = 'ltipr',
                                      autoWidth = FALSE))
     })
+    
+    
+    output$downloadPlot <- downloadHandler(
+        filename = function() { paste(Sys.Date(), "_corona.png", sep = "") },
+        content = function(file) { ggsave(file, plot = p_final, device = "png", width = 14, height = 10) }
+    )
     
 }
 
