@@ -70,11 +70,9 @@ ui <-
     
     # Dynamically change with cases_deaths
     sliderInput('min_n_cases', paste0("Day 0 after ___ cases"), min = 1, max = 200, value = 100), 
-    sliderInput('min_n_deaths', paste0("# of deaths"), min = 1, max = 200, value = 10),
+    sliderInput('min_n_deaths', paste0("Day 0 after ___ deaths"), min = 1, max = 200, value = 10),
     
-    
-    sliderInput("growth", "Daily growth (%):",
-                min = 0, max = 100, value = 20),
+    sliderInput("growth", "Daily growth (%):", min = 0, max = 100, value = 20),
     
     HTML("<BR>"),
     
@@ -381,6 +379,8 @@ server <- function(input, output) {
         DT::datatable(final_df() %>%
                           arrange(desc(time), country) %>% 
                           select(-name_end, -highlight) %>%
+                          rename_(.dots=setNames("value", ifelse(input$cases_deaths == "cases", "cases_sum", "deaths_sum"))) %>% 
+                          rename_(.dots=setNames("diff", ifelse(input$cases_deaths == "cases", "cases_diff", "deaths_diff"))) %>% 
                           rename_(.dots=setNames("days_after_100", paste0("days_after_", VAR_min_n()))),
                           filter = 'top',
                       rownames = FALSE, 
