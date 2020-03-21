@@ -64,19 +64,22 @@ data_download <- function(cases_deaths = "cases") {
         TRUE ~ country
       )) %>% 
     
-    # calculate new infections
-    arrange(time) %>%
-    group_by(country) %>%
-    mutate(cases_diff = cases_sum - lag(cases_sum),
-           deaths_diff = deaths_sum - lag(deaths_sum)) %>%
-    ungroup() %>%
-    filter(!is.na(cases_diff)) %>%
-    arrange(country, time) %>% 
     mutate(source = "JHU") %>% 
     
     # Join worldometers
     bind_rows(table_countries %>% 
-                mutate(source = "worldometers")) %>% 
+                mutate(source = "worldometers")) %>%
+    
+    # calculate new infections
+    arrange(time) %>%
+    group_by(country) %>%
+    mutate(cases_diff = cases_sum - lag(cases_sum),
+           deaths_diff = deaths_sum - lag(deaths_sum)) %>% 
+    ungroup() %>%
+    filter(!is.na(cases_diff)) %>%
+    arrange(country, time) %>%
+    select(country, time, cases_sum, cases_diff,  deaths_sum, deaths_diff, source) %>% 
+
     # replace_na(0)
     
     # write_data

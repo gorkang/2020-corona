@@ -8,13 +8,15 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
                          country = col_character(),
                          time = col_date(format = ""),
                          cases_sum = col_double(),
-                         deaths_sum = col_double(),
                          cases_diff = col_double(),
+                         deaths_sum = col_double(),
                          deaths_diff = col_double(),
                          source = col_character()
                        ))
   
-  dta <<- dta_raw %>%
+  dta <<-
+    dta_raw %>%
+
     # rename
     rename(value = paste0(cases_deaths, "_sum")) %>% 
     rename(diff = paste0(cases_deaths, "_diff")) %>% 
@@ -49,7 +51,8 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
         case_when(
           days_after_100 == max(days_after_100) & source == "worldometers" ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
           TRUE ~ "")) %>% 
-    mutate(highlight = country)
+    mutate(highlight = country) %>% 
+    select(country, time, value, diff, everything())
   
   
 
