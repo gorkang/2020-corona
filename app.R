@@ -14,7 +14,6 @@ library(shiny)
 library(shinythemes)
 library(shinyWidgets)
 library(shinyjs)
-# library(tabulizer)
 
 
 
@@ -58,7 +57,7 @@ ui <-
                 choices = V1_alternatives,
                 multiple = TRUE, 
                 selectize = TRUE, 
-                width = 200, 
+                width = "100%", 
                 selected = c(top_countries, "United Kingdom", "Denmark", "Chile")),
     
     uiOutput('highlight2'),
@@ -77,15 +76,21 @@ ui <-
     sliderInput("growth", "Daily growth (%):",
                 min = 0, max = 100, value = 20),
     
+    HTML("<BR>"),
+    
     div(style="display:inline-block",
-        shinyWidgets::switchInput(inputId = "log_scale", label = "Log", value = TRUE, size = "mini", width = '100%')
+        shinyWidgets::switchInput(inputId = "log_scale", label = "Log", value = TRUE, size = "mini", labelWidth = "40%")
         ), HTML("&nbsp;&nbsp;"),
     div(style="display:inline-block",
-        shinyWidgets::switchInput(inputId = "smooth", label = "Smooth?", value = FALSE, size = "mini", width = '100%')
+        shinyWidgets::switchInput(inputId = "smooth", label = "Smooth", value = FALSE, size = "mini", labelWidth = "40%")
         ),
     
-    hr(),
-    bookmarkButton(label = "Get URL"),
+    HTML("<BR><BR>"),
+    # shinyWidgets::switchInput(inputId = "show_both", label = "Show deaths alongside", labelWidth = "80%", value = FALSE, size = "mini", width = '100%'),
+    
+    # hr(),
+    div(style="display:inline-block;width:80%;text-align: center;",
+    bookmarkButton(label = "Get URL")),
     hr(),
     
     HTML(paste0("Simple visualization using the ", a(" @JHUSystems Coronavirus", href="https://github.com/CSSEGISandData/COVID-19", target = "_blank"), 
@@ -246,7 +251,7 @@ server <- function(input, output) {
                     dta_temp %>% 
                         mutate(highlight = 
                                    case_when(
-                                       country == input$highlight ~ "red",
+                                       country == input$highlight ~ "darkred",
                                        TRUE ~ "grey"
                                    ))
                 } else {
@@ -296,10 +301,16 @@ server <- function(input, output) {
             # Draw plot
             p_temp = ggplot(data = DF_plot, 
                             aes(x = days_after_100, y = value, group = as.factor(country), color = highlight)) +
+                scale_color_hue(l = 50) +
+                # Trend line
                 geom_line(data = growth_line(), aes(days_after_100, value), linetype = "dotted", inherit.aes = FALSE) +
 
+                # Country points (last one bigger)
                 geom_point(aes(size = 1 + as.integer(final_df()$name_end != "") - .5), alpha = .7) +
+                
+                # Country label
                 ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3, alpha = .7) + 
+                
                 scale_x_continuous(breaks = seq(0, max(final_df()$value), 2)) +
                 labs(
                     title = paste0("Confirmed ", input$cases_deaths ,""),
@@ -311,16 +322,24 @@ server <- function(input, output) {
                 theme_minimal(base_size = 14) +
                 theme(legend.position = "none")
             
+            # Smooth or not
             if(input$smooth == FALSE) {
-                p_temp = p_temp + geom_line(alpha = .7)
+                p_temp = p_temp + geom_line(alpha = .7) 
             } else {
                 p_temp = p_temp +  
                     geom_smooth(data = DF_plot %>% filter(country %in% counts_filter$country),
                                 method = "lm", formula = y ~ poly(x, VALUE_span - 1), se = FALSE, size = .8, alpha = .6, na.rm = TRUE)
             }
+            
+            # # show both cases and deaths simultaneously
+            # if (input$show_both == TRUE) {
+            #     p_temp = p_temp + geom_line(aes(x = days_after_100, y = deaths_sum), linetype = "dashed", alpha = .7) +
+            #         ggrepel::geom_label_repel(aes(x = days_after_100, y = deaths_sum, label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3, alpha = .7)
+            # } 
 
             if (input$highlight != "None") {p_temp =  p_temp + scale_color_identity()}
             
+            # Scale, log or not
             if (input$log_scale == TRUE) {
                 p_temp = p_temp +
                     scale_y_log10(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) 
@@ -330,6 +349,7 @@ server <- function(input, output) {
                     labs(y = paste0("Confirmed ", input$acumulated_diff, " ", input$cases_deaths))
             }
             
+            # Annotation trend line
             p_temp + 
                 annotate(geom = "text",
                          x = max(growth_line()$days_after_100) - .5, 
@@ -337,6 +357,8 @@ server <- function(input, output) {
                          vjust = 1, 
                          hjust = 1, 
                          label = paste0(input$growth, "% growth"))
+                # scale_color_brewer(colours = rainbow(5))
+                # viridis::scale_color_viridis(option = "D", discrete = TRUE)
         })
     })
 
