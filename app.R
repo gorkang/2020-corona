@@ -65,14 +65,17 @@ ui <-
     selectInput(inputId = "cases_deaths", label = "Cases or deaths", selected = "cases", 
                  choices = c("cases", "deaths")),
 
-    radioButtons(inputId = "acumulated_daily", label = "Accumulated or daily", selected = "acumulated", 
-                 choices = c("acumulated", "daily"), inline = TRUE),
+    radioButtons(inputId = "accumulated_daily_pct", label = "Accumulated or daily", selected = "accumulated", 
+                 choices = c("accumulated", "daily", "%"), inline = TRUE),
     
     # Dynamically change with cases_deaths
     sliderInput('min_n_cases', paste0("Day 0 after ___ cases"), min = 1, max = 200, value = 100), 
     sliderInput('min_n_deaths', paste0("Day 0 after ___ deaths"), min = 1, max = 200, value = 10),
     
-    sliderInput("growth", "Daily growth (%):", min = 0, max = 100, value = 30),
+    # Dynamically change with accumulated_daily_pct
+    sliderInput("growth_accumulated", "Daily growth (%):", min = 0, max = 100, value = 30),
+    sliderInput("growth_daily", "Daily growth (%):", min = 0, max = 100, value = 20),
+    sliderInput("growth_pct", "Daily growth (%):", min = -50, max = 0, value = -10),
     
     HTML("<BR>"),
     
@@ -170,7 +173,6 @@ server <- function(input, output, session) {
     
     
     observeEvent(input$cases_deaths,{
-        
         if (input$cases_deaths == "cases") {
             hide("min_n_deaths")
             show("min_n_cases")
@@ -183,15 +185,44 @@ server <- function(input, output, session) {
     VAR_min_n = reactive({
         if (input$cases_deaths == "cases") {
                 input$min_n_cases
-        }else{
+        } else {
                 input$min_n_deaths
+        }
+    })
+    
+    
+    observeEvent(input$accumulated_daily_pct,{
+        if (input$accumulated_daily_pct == "accumulated") {
+            hide("growth_daily")
+            hide("growth_pct")
+            show("growth_accumulated")
+        } else if (input$accumulated_daily_pct == "daily") {
+            hide("growth_accumulated")
+            hide("growth_pct")
+            show("growth_daily")
+        } else {
+            hide("growth_daily")
+            hide("growth_accumulated")
+            show("growth_pct")
+        }
+    })
+    
+    
+    VAR_growth = reactive({
+        if (input$accumulated_daily_pct == "accumulated") {
+            input$growth_accumulated
+            
+        } else if (input$accumulated_daily_pct == "daily") {
+            input$growth_daily
+        } else {
+            input$growth_pct
         }
     })
     
     VAR_highlight = reactive({
         
         if (is.null(input$highlight)) {
-            "None"
+            " "
         } else {
             input$highlight
         }
@@ -201,7 +232,7 @@ server <- function(input, output, session) {
     # Dynamic menus -----------------------------------------------------------
     
     # Dinamically set highlight choices bases on input$countries_plot
-    outVar = reactive({ c("None", input$countries_plot %>% sort()) })
+    outVar = reactive({ c(" ", input$countries_plot %>% sort()) })
     output$highlight2 = renderUI({
         selectInput(inputId = 'highlight', 
                     label = 'Highlight countries',
@@ -209,8 +240,8 @@ server <- function(input, output, session) {
                     multiple = TRUE, 
                     selectize = TRUE, 
                     width = "100%", 
-                    selected = "None")
-        # selectInput('highlight', 'Highlight country', choices = outVar(), selected = "None")
+                    selected = " ")
+        # selectInput('highlight', 'Highlight country', choices = outVar(), selected = " ")
     })
     
     
@@ -264,7 +295,7 @@ server <- function(input, output, session) {
 
                 
                 # Highlight
-                 if (any('None' != VAR_highlight())) {
+                 if (any(' ' != VAR_highlight())) {
                      
                      # Create colors diccionary
                      DF_colors_temp =
@@ -308,7 +339,7 @@ server <- function(input, output, session) {
     growth_line = reactive({
         # We use 1.1 * to avoid overlaping
         tibble(
-            value = cumprod(c(VAR_min_n(), rep((100 + input$growth) / 100, 1.1 * max(final_df()$days_after_100, na.rm = TRUE)))),
+            value = cumprod(c(VAR_min_n(), rep((100 + VAR_growth()) / 100, 1.1 * max(final_df()$days_after_100, na.rm = TRUE)))),
             days_after_100 = 0:(1.1 * max(final_df()$days_after_100, na.rm = TRUE))
         )
     })
@@ -319,10 +350,14 @@ server <- function(input, output, session) {
         
         withProgress(message = 'Loading plot', value = 0, {
             
-            # Show acumulated or daily plot
-            if (input$acumulated_daily == "daily") {
+            # Show accumulated or daily plot
+            if (input$accumulated_daily_pct == "daily") {
                 DF_plot = final_df() %>% rename(value_temp = value,
                                                 value = diff)
+            } else if (input$accumulated_daily_pct == "%") {
+                DF_plot = final_df() %>% rename(value_temp = value,
+                                                value = diff_pct) %>% 
+                    mutate(value = value * 100)
             } else {
                 DF_plot = final_df()
             }
@@ -351,7 +386,7 @@ server <- function(input, output, session) {
                     title = paste0("Coronavirus confirmed ", input$cases_deaths ,""),
                     subtitle = paste0("Arranged by number of days since ",  VAR_min_n() ," or more ", input$cases_deaths),
                     x = paste0("Days after ",  VAR_min_n() ," confirmed ", input$cases_deaths),
-                    y = paste0("Confirmed ", input$acumulated_daily, " ", input$cases_deaths, " (log scale)"), 
+                    y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths, " (log scale)"), 
                     caption = paste0("Sources: Johns Hopkins CSSE and worldometers.info\n gorkang.shinyapps.io/2020-corona/")
                 ) +
                 theme_minimal(base_size = 14) +
@@ -363,7 +398,8 @@ server <- function(input, output, session) {
             } else {
                 p_temp = p_temp +  
                     geom_smooth(data = DF_plot %>% filter(country %in% counts_filter$country),
-                                method = "lm", formula = y ~ poly(x, VALUE_span - 1), se = FALSE, size = .8, alpha = .6, na.rm = TRUE)
+                                # method = "lm", formula = y ~ poly(x, VALUE_span - 1), se = FALSE, size = .8, alpha = .6, na.rm = TRUE)
+                                method = "loess", span = 1, se = FALSE, size = .8, alpha = .6, na.rm = TRUE)
             }
             
             # # show both cases and deaths simultaneously
@@ -372,27 +408,33 @@ server <- function(input, output, session) {
             #         ggrepel::geom_label_repel(aes(x = days_after_100, y = deaths_sum, label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3, alpha = .7)
             # } 
 
-            # if (VAR_highlight() != "None") {p_temp =  p_temp + scale_color_identity()}
-            if (any('None' != VAR_highlight())) { p_temp =  p_temp + scale_color_identity() }
+            # if (VAR_highlight() != " ") {p_temp =  p_temp + scale_color_identity()}
+            if (any(' ' != VAR_highlight())) { p_temp =  p_temp + scale_color_identity() }
             
             # Scale, log or not
             if (input$log_scale == TRUE) {
                 p_temp = p_temp +
-                    scale_y_log10(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) 
+                    scale_y_log10(labels = function(x) format(x, big.mark = ",", scientific = FALSE))
             } else {
                 p_temp = p_temp +
                     scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
-                    labs(y = paste0("Confirmed ", input$acumulated_daily, " ", input$cases_deaths))
+                    labs(y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths))
             }
             
             # Annotation trend line
+            if (input$accumulated_daily_pct == "%") {
+                y_axis = min(growth_line()$value) 
+            } else {
+                y_axis = max(growth_line()$value) 
+            }
+
             p_final <<- p_temp + 
                 annotate(geom = "text",
                          x = max(growth_line()$days_after_100) - .5, 
-                         y = max(growth_line()$value), 
+                         y = y_axis, 
                          vjust = 1, 
                          hjust = 1, 
-                         label = paste0(input$growth, "% growth"))
+                         label = paste0(VAR_growth(), "% growth"))
                 
             p_final
             
@@ -423,7 +465,7 @@ server <- function(input, output, session) {
     
     # # Change growth values depending on conditions
     # observe({
-    #     if (input$acumulated_daily == "daily") { 
+    #     if (input$accumulated_daily_pct == "daily") { 
     #         val = 20
     #     } else { 
     #         val = 30 

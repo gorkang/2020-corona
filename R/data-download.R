@@ -74,7 +74,9 @@ data_download <- function(cases_deaths = "cases") {
     arrange(time) %>%
     group_by(country) %>%
     mutate(cases_diff = cases_sum - lag(cases_sum),
-           deaths_diff = deaths_sum - lag(deaths_sum)) %>% 
+           deaths_diff = deaths_sum - lag(deaths_sum),
+           cases_diff_pct = cases_diff / lag(cases_sum),
+           deaths_diff_pct = deaths_diff / lag(deaths_sum)) %>% 
     ungroup() %>%
     filter(!is.na(cases_diff)) %>%
     arrange(country, time) %>%

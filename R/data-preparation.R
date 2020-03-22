@@ -40,6 +40,7 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
                is.na(days_after_100) ~ as.integer(lag(days_after_100) + 1),
                TRUE ~ days_after_100),
            diff = value - lag(value),
+           diff_pct = diff / lag(value),
            name_end = 
              case_when(
                is.na(name_end) ~ "",
