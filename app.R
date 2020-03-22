@@ -65,7 +65,7 @@ ui <-
     selectInput(inputId = "cases_deaths", label = "Cases or deaths", selected = "cases", 
                  choices = c("cases", "deaths")),
 
-    radioButtons(inputId = "accumulated_daily_pct", label = "Accumulated or daily", selected = "accumulated", 
+    radioButtons(inputId = "accumulated_daily_pct", label = "Accumulated, daily or %", selected = "accumulated", 
                  choices = c("accumulated", "daily", "%"), inline = TRUE),
     
     # Dynamically change with cases_deaths
