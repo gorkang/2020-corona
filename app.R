@@ -267,12 +267,20 @@ server <- function(input, output, session) {
                  if (any('None' != VAR_highlight())) {
                      
                      # Create colors diccionary
-                     DF_colors =
+                     DF_colors_temp =
                          dta_temp %>% 
                          filter(country %in% VAR_highlight()) %>% 
-                         distinct(country) %>% 
-                         group_by(country) %>% 
-                         bind_cols(highlight = hue_pal(l = 50)(nrow(.)))
+                         distinct(country)
+                         
+                     # If the selected country does not have observations over the threshold
+                     if (nrow(DF_colors_temp) > 0) { 
+                         DF_colors = DF_colors_temp %>% 
+                             bind_cols(highlight = hue_pal(l = 50)(nrow(.)))
+                     } else {
+                         DF_colors = DF_colors_temp %>% 
+                             mutate(highlight = "")
+                     }
+                     
                      
                     dta_temp %>% 
                          left_join(DF_colors) %>% 
