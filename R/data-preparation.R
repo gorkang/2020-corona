@@ -51,7 +51,6 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
         case_when(
           days_after_100 == max(days_after_100) & source == "worldometers" ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
           TRUE ~ "")) %>% 
-    mutate(highlight = country) %>% 
     select(country, time, value, diff, everything())
   
   

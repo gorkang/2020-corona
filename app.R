@@ -65,14 +65,14 @@ ui <-
     selectInput(inputId = "cases_deaths", label = "Cases or deaths", selected = "cases", 
                  choices = c("cases", "deaths")),
 
-    radioButtons(inputId = "acumulated_diff", label = "Accumulated or daily", selected = "acumulated", 
+    radioButtons(inputId = "acumulated_daily", label = "Accumulated or daily", selected = "acumulated", 
                  choices = c("acumulated", "daily"), inline = TRUE),
     
     # Dynamically change with cases_deaths
     sliderInput('min_n_cases', paste0("Day 0 after ___ cases"), min = 1, max = 200, value = 100), 
     sliderInput('min_n_deaths', paste0("Day 0 after ___ deaths"), min = 1, max = 200, value = 10),
     
-    sliderInput("growth", "Daily growth (%):", min = 0, max = 100, value = 20),
+    sliderInput("growth", "Daily growth (%):", min = 0, max = 100, value = 30),
     
     HTML("<BR>"),
     
@@ -140,11 +140,6 @@ ui <-
                    
                    a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19", target = "_blank"), " updated on: ", as.character(last_commit_time), " GMT",
                    "<BR>", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), " (last point) updated on: ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT"
-               
-                   # a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19"), 
-                   #      " updated on: ", as.character(last_commit_time), " GMT",
-                   # "<BR>Final big point from ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries"), ": ", 
-                   #      as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT"
                    )
            ),
            hr(),
@@ -159,11 +154,10 @@ ui <-
 )
 }
 
-# v <- reactiveValues()
 
 # Server ------------------------------------------------------------------
 
-server <- function(input, output) {
+server <- function(input, output, session) {
 
     setBookmarkExclude(
         c('mytable_rows_current',
@@ -180,13 +174,9 @@ server <- function(input, output) {
         if (input$cases_deaths == "cases") {
             hide("min_n_deaths")
             show("min_n_cases")
-            # VAR_min_n() <<- input$min_n_cases
-            # message(VAR_min_n())
-        }else{
+        } else {
             hide("min_n_cases")
             show("min_n_deaths")
-            # VAR_min_n() <<- input$min_n_deaths
-            # message(VAR_min_n())
         }
     })
     
@@ -207,6 +197,7 @@ server <- function(input, output) {
         }
     })
 
+    
     # Dynamic menus -----------------------------------------------------------
     
     # Dinamically set highlight choices bases on input$countries_plot
@@ -219,9 +210,7 @@ server <- function(input, output) {
                     selectize = TRUE, 
                     width = "100%", 
                     selected = "None")
-        # 
-        # selectInput('highlight', 'Highlight country', choices = outVar(),
-        #             selected = "None")
+        # selectInput('highlight', 'Highlight country', choices = outVar(), selected = "None")
     })
     
     
@@ -244,6 +233,7 @@ server <- function(input, output) {
             if (!is.null(input$countries_plot)) {
                 
                 dta_temp = dta %>%
+                    
                     # selection
                     filter(country %in% input$countries_plot) %>% 
                     
@@ -271,19 +261,29 @@ server <- function(input, output) {
                             case_when(
                                 days_after_100 == max(days_after_100) & source == "worldometers" ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
                                 TRUE ~ ""))
-                    
-                # if (VAR_highlight() != "None") {
+
+                
+                # Highlight
                  if (any('None' != VAR_highlight())) {
+                     
+                     # Create colors diccionary
+                     DF_colors =
+                         dta_temp %>% 
+                         filter(country %in% VAR_highlight()) %>% 
+                         distinct(country) %>% 
+                         group_by(country) %>% 
+                         bind_cols(highlight = hue_pal(l = 50)(nrow(.)))
+                     
                     dta_temp %>% 
-                        mutate(highlight = 
-                                   case_when(
-                                       country %in% VAR_highlight() ~ "darkred",
-                                       TRUE ~ "grey"
-                                   ))
+                         left_join(DF_colors) %>% 
+                         mutate(highlight = 
+                                case_when(
+                                    is.na(highlight) ~ "grey",
+                                    TRUE ~ highlight
+                                ))
                 } else {
                     dta_temp %>% mutate(highlight = country)
                 }
-                
                 
             } else {
                 tibble(value = 0, 
@@ -312,7 +312,7 @@ server <- function(input, output) {
         withProgress(message = 'Loading plot', value = 0, {
             
             # Show acumulated or daily plot
-            if (input$acumulated_diff == "daily") {
+            if (input$acumulated_daily == "daily") {
                 DF_plot = final_df() %>% rename(value_temp = value,
                                                 value = diff)
             } else {
@@ -328,6 +328,7 @@ server <- function(input, output) {
             p_temp = ggplot(data = DF_plot, 
                             aes(x = days_after_100, y = value, group = as.factor(country), color = highlight)) +
                 scale_color_hue(l = 50) +
+                
                 # Trend line
                 geom_line(data = growth_line(), aes(days_after_100, value), linetype = "dotted", inherit.aes = FALSE) +
 
@@ -342,7 +343,7 @@ server <- function(input, output) {
                     title = paste0("Coronavirus confirmed ", input$cases_deaths ,""),
                     subtitle = paste0("Arranged by number of days since ",  VAR_min_n() ," or more ", input$cases_deaths),
                     x = paste0("Days after ",  VAR_min_n() ," confirmed ", input$cases_deaths),
-                    y = paste0("Confirmed ", input$acumulated_diff, " ", input$cases_deaths, " (log scale)"), 
+                    y = paste0("Confirmed ", input$acumulated_daily, " ", input$cases_deaths, " (log scale)"), 
                     caption = paste0("Sources: Johns Hopkins CSSE and worldometers.info\n gorkang.shinyapps.io/2020-corona/")
                 ) +
                 theme_minimal(base_size = 14) +
@@ -373,7 +374,7 @@ server <- function(input, output) {
             } else {
                 p_temp = p_temp +
                     scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
-                    labs(y = paste0("Confirmed ", input$acumulated_diff, " ", input$cases_deaths))
+                    labs(y = paste0("Confirmed ", input$acumulated_daily, " ", input$cases_deaths))
             }
             
             # Annotation trend line
@@ -412,6 +413,15 @@ server <- function(input, output) {
         content = function(file) { ggsave(file, plot = p_final, device = "png", width = 14, height = 10) }
     )
     
+    # # Change growth values depending on conditions
+    # observe({
+    #     if (input$acumulated_daily == "daily") { 
+    #         val = 20
+    #     } else { 
+    #         val = 30 
+    #     }
+    #     updateSliderInput(session, "growth", value = val, min = 0, max = 100)
+    # })
 }
 
 # Run the application 
