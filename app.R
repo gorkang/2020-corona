@@ -88,7 +88,6 @@ ui <-
         ),
     
     HTML("<BR><BR>"),
-    # shinyWidgets::switchInput(inputId = "show_both", label = "Show deaths alongside", labelWidth = "80%", value = FALSE, size = "mini", width = '100%'),
     
     div( HTML("&nbsp;&nbsp;"), style="display:inline-block;65%;text-align: center;",
         bookmarkButton(label = "URL")
@@ -173,6 +172,8 @@ server <- function(input, output, session) {
           'mytable_rows_selected'))
     
     
+    # Dynamic menus -----------------------------------------------------------
+    
     observeEvent(input$cases_deaths,{
         if (input$cases_deaths == "cases") {
             hide("min_n_deaths")
@@ -230,8 +231,6 @@ server <- function(input, output, session) {
     })
 
     
-    # Dynamic menus -----------------------------------------------------------
-    
     # Dinamically set highlight choices bases on input$countries_plot
     outVar = reactive({ c(" ", input$countries_plot %>% sort()) })
     output$highlight2 = renderUI({
@@ -242,7 +241,6 @@ server <- function(input, output, session) {
                     selectize = TRUE, 
                     width = "100%", 
                     selected = " ")
-        # selectInput('highlight', 'Highlight country', choices = outVar(), selected = " ")
     })
     
     
@@ -339,10 +337,16 @@ server <- function(input, output, session) {
 
     growth_line = reactive({
         # We use 1.1 * to avoid overlaping
-        tibble(
-            value = cumprod(c(VAR_min_n(), rep((100 + VAR_growth()) / 100, 1.1 * max(final_df()$days_after_100, na.rm = TRUE)))),
-            days_after_100 = 0:(1.1 * max(final_df()$days_after_100, na.rm = TRUE))
-        )
+        if (input$accumulated_daily_pct == "%") {
+            tibble(
+                value = cumprod(c(100, rep((100 + VAR_growth()) / 100, 1.1 * max(final_df()$days_after_100, na.rm = TRUE)))),
+                days_after_100 = 0:(1.1 * max(final_df()$days_after_100, na.rm = TRUE)))
+        } else {
+            tibble(
+                value = cumprod(c(VAR_min_n(), rep((100 + VAR_growth()) / 100, 1.1 * max(final_df()$days_after_100, na.rm = TRUE)))),
+                days_after_100 = 0:(1.1 * max(final_df()$days_after_100, na.rm = TRUE)))
+        }
+        
     })
     
     
@@ -368,7 +372,7 @@ server <- function(input, output, session) {
             counts_filter = DF_plot %>% count(country) %>% filter(n > VALUE_span)
 
             
-            # Draw plot
+            # Draw plot ---------------------------------------------
             p_temp = ggplot(data = DF_plot, 
                             aes(x = days_after_100, y = value, group = as.factor(country), color = highlight)) +
                 scale_color_hue(l = 50) +
@@ -402,15 +406,10 @@ server <- function(input, output, session) {
                                 # method = "lm", formula = y ~ poly(x, VALUE_span - 1), se = FALSE, size = .8, alpha = .6, na.rm = TRUE)
                                 method = "loess", span = 1, se = FALSE, size = .8, alpha = .6, na.rm = TRUE)
             }
-            
-            # # show both cases and deaths simultaneously
-            # if (input$show_both == TRUE) {
-            #     p_temp = p_temp + geom_line(aes(x = days_after_100, y = deaths_sum), linetype = "dashed", alpha = .7) +
-            #         ggrepel::geom_label_repel(aes(x = days_after_100, y = deaths_sum, label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3, alpha = .7)
-            # } 
 
             # if (VAR_highlight() != " ") {p_temp =  p_temp + scale_color_identity()}
             if (any(' ' != VAR_highlight())) { p_temp =  p_temp + scale_color_identity() }
+            
             
             # Scale, log or not
             if (input$log_scale == TRUE) {
@@ -421,6 +420,7 @@ server <- function(input, output, session) {
                     scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
                     labs(y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths))
             }
+            
             
             # Annotation trend line
             if (input$accumulated_daily_pct == "%") {
@@ -463,16 +463,7 @@ server <- function(input, output, session) {
         filename = function() { paste(Sys.Date(), "_corona.png", sep = "") },
         content = function(file) { ggsave(file, plot = p_final, device = "png", width = 14, height = 10) }
     )
-    
-    # # Change growth values depending on conditions
-    # observe({
-    #     if (input$accumulated_daily_pct == "daily") { 
-    #         val = 20
-    #     } else { 
-    #         val = 30 
-    #     }
-    #     updateSliderInput(session, "growth", value = val, min = 0, max = 100)
-    # })
+
 }
 
 # Run the application 
