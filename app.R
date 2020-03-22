@@ -112,9 +112,10 @@ ui <-
                 a(" @JonMinton", href="https://github.com/JonMinton/COVID-19", target = "_blank"), ", ", 
                 a(" @christoph_sax", href="https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b", target = "_blank"), ", ",
                 a(" @nicebread303", href="https://github.com/nicebread/corona", target = "_blank"), ", ",
+                a("@rubenivangaalen", href="https://twitter.com/rubenivangaalen", target = "_blank"), ", ",
                 a("@jburnmurdoch", href="https://twitter.com/jburnmurdoch", target = "_blank"), " and ", a(" @sdbernard", href="https://twitter.com/sdbernard", target = "_blank"))),
     
-
+    
 
     
     HTML("<BR><BR>"),
