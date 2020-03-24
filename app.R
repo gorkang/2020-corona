@@ -41,6 +41,7 @@ last_commit_time = fetch_last_update_date()$result
 ui <- 
     function(request) {
         fluidPage(
+            tags$head(includeHTML(("google-analytics.html"))),
             useShinyjs(),
             
 
@@ -404,7 +405,7 @@ server <- function(input, output, session) {
                 p_temp = p_temp +  
                     geom_smooth(data = DF_plot %>% filter(country %in% counts_filter$country),
                                 # method = "lm", formula = y ~ poly(x, VALUE_span - 1), se = FALSE, size = .8, alpha = .6, na.rm = TRUE)
-                                method = "loess", span = 1, se = FALSE, size = .8, alpha = .6, na.rm = TRUE)
+                                method = "loess", span = 1.5, se = FALSE, size = .8, alpha = .6, na.rm = TRUE)
             }
 
             # if (VAR_highlight() != " ") {p_temp =  p_temp + scale_color_identity()}
@@ -455,7 +456,8 @@ server <- function(input, output, session) {
                       rownames = FALSE, 
                       options = list(pageLength = 10, 
                                      dom = 'ltipr',
-                                     autoWidth = FALSE))
+                                     autoWidth = FALSE)) %>% 
+            DT::formatPercentage(c("diff_pct"), 2)
     })
     
     
