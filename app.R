@@ -95,7 +95,7 @@ ui <-
     ), 
     HTML("&nbsp;&nbsp;"),
     div(style="display:inline-block;30%;text-align: center;",
-        downloadButton('downloadPlot', 'Save')
+        downloadButton('downloadPlot', 'Plot')
     ),
     
     HTML("<BR><BR>"),
@@ -128,7 +128,10 @@ ui <-
         mainPanel(
             p(HTML(
                 paste0(
-                    "Github repo: ", a(" github.com/gorkang/2020-corona ", href="https://github.com/gorkang/2020-corona", target = "_blank"), hr(),
+                    a(img(src = "github_small.png", title = "Github repo"), href="https://github.com/gorkang/2020-corona", target = "_blank"),
+                    "&nbsp;",
+                    a("[Issues]", href="https://github.com/gorkang/2020-corona/issues", target = "_blank"),
+                    hr(),
                     a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19", target = "_blank"), " updated on: ", as.character(last_commit_time), " GMT",
                     "<BR>", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), " (last point) updated on: ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT")
                 )
@@ -140,10 +143,7 @@ ui <-
            
            HTML(
                paste(
-                   h3("Data shown in plot"),
-                   
-                   a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19", target = "_blank"), " updated on: ", as.character(last_commit_time), " GMT",
-                   "<BR>", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), " (last point) updated on: ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT"
+                   h3(paste("Data shown in plot"), downloadButton('downloadData', ''))
                    )
            ),
            hr(),
@@ -466,6 +466,19 @@ server <- function(input, output, session) {
         content = function(file) { ggsave(file, plot = p_final, device = "png", width = 14, height = 10) }
     )
 
+    output$downloadData <- downloadHandler(
+        filename = function() { 
+            paste("dataset-", Sys.Date(), ".csv", sep="")
+        },
+        content = function(file) {
+            write.csv(final_df() %>%
+                          arrange(desc(time), country) %>% 
+                          select(-name_end, -highlight) %>%
+                          rename_(.dots=setNames("value", ifelse(input$cases_deaths == "cases", "cases_sum", "deaths_sum"))) %>% 
+                          rename_(.dots=setNames("diff", ifelse(input$cases_deaths == "cases", "cases_diff", "deaths_diff"))) %>% 
+                          rename_(.dots=setNames("days_after_100", paste0("days_after_", VAR_min_n()))), file)
+        })
+    
 }
 
 # Run the application 
