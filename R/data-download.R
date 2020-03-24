@@ -2,6 +2,7 @@ data_download <- function(cases_deaths = "cases") {
 
   # DEBUG
   # source(here::here("R/fetch_worldometers_safely.R"), local = TRUE)
+  # source(here::here("R/download_or_load.R"))
   
   
   # Data preparation --------------------------------------------------------
@@ -33,6 +34,7 @@ data_download <- function(cases_deaths = "cases") {
     pivot_longer(c(-country), "time") %>%
     mutate(time = as.Date(time, "%m/%d/%y")) %>% 
     rename(cases = value) %>% 
+    drop_na(cases) %>% 
     # ignore provinces
     group_by(country, time) %>%
     summarize(cases_sum = sum(cases)) %>%
@@ -45,6 +47,7 @@ data_download <- function(cases_deaths = "cases") {
     pivot_longer(c(-country), "time") %>%
     mutate(time = as.Date(time, "%m/%d/%y")) %>% 
     rename(deaths = value) %>% 
+    drop_na(deaths) %>% 
     # ignore provinces
     group_by(country, time) %>%
     summarize(deaths_sum = sum(deaths)) %>%
@@ -61,6 +64,7 @@ data_download <- function(cases_deaths = "cases") {
       country = case_when(
         country == "Korea, South" ~ "South Korea",
         country == "Taiwan*" ~ "Taiwan",
+        country == "US" ~ "USA",
         TRUE ~ country
       )) %>% 
     

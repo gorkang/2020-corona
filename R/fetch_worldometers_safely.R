@@ -33,7 +33,7 @@ fetch_worldometers_safely <-
             case_when(
               country == "S. Korea" ~ "South Korea",
               country == "Taiwan*" ~ "Taiwan",
-              country == "USA" ~ "US",
+              # country == "USA" ~ "US",
               country == "UK" ~ "United Kingdom",
               TRUE ~ country)) %>% 
         write_csv("outputs/raw_data_worldometers.csv")
