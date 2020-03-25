@@ -1,8 +1,8 @@
 
 # Libraries ---------------------------------------------------------------
 
-# library(curl)
 library(dplyr)
+library(DT)
 library(ggplot2)
 library(ggrepel)
 library(httr)
@@ -352,17 +352,20 @@ server <- function(input, output, session) {
     
     
     # Show plot
-    output$distPlot <- renderPlot({
-        
+    # output$distPlot <- renderPlot({
+    output$distPlot <- renderCachedPlot({
+            
         withProgress(message = 'Loading plot', value = 0, {
             
             # Show accumulated or daily plot
             if (input$accumulated_daily_pct == "daily") {
-                DF_plot = final_df() %>% rename(value_temp = value,
-                                                value = diff)
+                DF_plot = final_df() %>% 
+                    rename(value_temp = value,
+                    value = diff)
             } else if (input$accumulated_daily_pct == "%") {
-                DF_plot = final_df() %>% rename(value_temp = value,
-                                                value = diff_pct) %>% 
+                DF_plot = final_df() %>% 
+                    rename(value_temp = value,
+                           value = diff_pct) %>% 
                     mutate(value = value * 100)
             } else {
                 DF_plot = final_df()
@@ -441,7 +444,7 @@ server <- function(input, output, session) {
             p_final
             
         })
-    })
+    }, cacheKeyExpr = list(final_df(), growth_line(), VAR_highlight(), VAR_min_n(), input$accumulated_daily_pct, input$cases_deaths, input$log_scale, input$smooth))
 
         
     # Show table

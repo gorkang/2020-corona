@@ -58,7 +58,7 @@ data_download <- function(cases_deaths = "cases") {
   
   
   
-  dta_raw %>%
+  DF_write = dta_raw %>%
     # rename some countries
     mutate(
       country = case_when(
@@ -84,11 +84,12 @@ data_download <- function(cases_deaths = "cases") {
     ungroup() %>%
     filter(!is.na(cases_diff)) %>%
     arrange(country, time) %>%
-    select(country, time, cases_sum, cases_diff,  deaths_sum, deaths_diff, source) %>% 
+    select(country, time, cases_sum, cases_diff,  deaths_sum, deaths_diff, source)
 
     # replace_na(0)
     
     # write_data
-    write_csv("outputs/raw_data.csv")
+    DF_write %>% 
+      write_csv("outputs/raw_data.csv")
 
 }
