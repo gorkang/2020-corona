@@ -1,6 +1,5 @@
 data_download <- function(cases_deaths = "cases") {
 
-  
   # Data preparation --------------------------------------------------------
 
   # Download worldometers
@@ -19,7 +18,7 @@ data_download <- function(cases_deaths = "cases") {
   # JHU API ------------------------------------------------------------------
 
   download_or_load_JH_API(file_name = "outputs/raw_JH.csv")
-  
+
   DF_JHU_raw = read_csv(here::here("outputs/raw_JH.csv"), 
                              col_types = 
                                cols(
@@ -32,6 +31,7 @@ data_download <- function(cases_deaths = "cases") {
                                  Status = col_character()
                                ))
   
+
   DF_JHU_clean = DF_JHU_raw %>% 
     as_tibble() %>% 
     select(-Lat, -Lon) %>% 
@@ -58,8 +58,7 @@ data_download <- function(cases_deaths = "cases") {
               deaths_sum = sum(deaths),
               recovered_sum = sum(recovered)) %>%
     ungroup()
-  
-  
+
   DF_write = DF_JHU_clean %>%
     # rename some countries
     mutate(
