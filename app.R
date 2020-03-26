@@ -293,6 +293,7 @@ server <- function(input, output, session) {
                         name_end =
                             case_when(
                                 days_after_100 == max(days_after_100) & source == "worldometers" ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
+                                what == "lockdown" ~ "LD",
                                 TRUE ~ ""))
 
                 
@@ -387,7 +388,7 @@ server <- function(input, output, session) {
                 geom_line(data = growth_line(), aes(days_after_100, value), linetype = "dotted", inherit.aes = FALSE) +
 
                 # Country points (last one bigger)
-                geom_point(aes(size = 1 + as.integer(final_df()$name_end != "") - .5), alpha = .7) +
+                geom_point(aes(size = 1 + as.integer(final_df()$name_end != "" & final_df()$name_end != "LD") - .5), alpha = .7) +
                 
                 # Country label
                 ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3, alpha = .7) + 
@@ -398,7 +399,7 @@ server <- function(input, output, session) {
                     subtitle = paste0("Arranged by number of days since ",  VAR_min_n() ," or more ", input$cases_deaths),
                     x = paste0("Days after ",  VAR_min_n() ," confirmed ", input$cases_deaths),
                     y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths, " (log scale)"), 
-                    caption = paste0("Sources: Johns Hopkins CSSE and worldometers.info\n gorkang.shinyapps.io/2020-corona/")
+                    caption = paste0("[LD]: Lockdown\nSources: Johns Hopkins CSSE and worldometers.info\n gorkang.shinyapps.io/2020-corona/")
                 ) +
                 theme_minimal(base_size = 14) +
                 theme(legend.position = "none")
@@ -453,7 +454,7 @@ server <- function(input, output, session) {
     output$mytable = DT::renderDataTable({
         DT::datatable(final_df() %>%
                           arrange(desc(time), country) %>% 
-                          select(-name_end, -highlight) %>%
+                          select( -highlight, -name_end) %>%
                           rename_(.dots=setNames("value", ifelse(input$cases_deaths == "cases", "cases_sum", "deaths_sum"))) %>% 
                           rename_(.dots=setNames("diff", ifelse(input$cases_deaths == "cases", "cases_diff", "deaths_diff"))) %>% 
                           rename_(.dots=setNames("days_after_100", paste0("days_after_", VAR_min_n()))),
