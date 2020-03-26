@@ -43,6 +43,14 @@ data_download <- function(cases_deaths = "cases") {
              case_when(
                country == "Iran (Islamic Republic of)" ~ "Iran",
                country == "Mainland China" ~ "China",
+               country == "UK" ~ "United Kingdom",
+               country == "Bahamas, The" ~ "Bahamas",
+               country == "Gambia, The" ~ "Gambia",
+               country == "Hong Kong SAR" ~ "Hong Kong",
+               country == "Iran (Islamic Republic of)" ~ "Iran",
+               country == "Korea, South" ~ "South Korea",
+               country == "Russian Federation" ~ "Russia",
+               country == "occupied Palestinian territory" ~ "Palestine",
                TRUE ~ country
              )) %>% 
     filter(!(time == "2020-03-11")) %>% 
