@@ -3,18 +3,7 @@ download_or_load_JH_API <-
   purrr::safely(
     
     function(URL = "https://api.covid19api.com/all", file_name, hours_threshold = 12, maxTimes = 10) {
-      
-      # DEBUG
-      # library(dplyr)
-      # library(httr)
-      # library(readr)
-      # library(rvest)
-      # library(tidyr)
-      # file_name = "temp_worldometers.html"
-      # hours_threshold = 1
-      # maxTimes = 10
-      # URL = "https://www.worldometers.info/coronavirus/#countries"
-      
+
       file_info = file.info(file_name)$mtime
       
       # If file does not exist, should_download
@@ -52,10 +41,3 @@ download_or_load_JH_API <-
       }
     }
   )
-
-# download_or_load_JH_API(file_name = "outputs/raw_JH.csv")
-# download_or_load("temp_worldometers.html", URL = "https://www.worldometers.info/coronavirus/#countries")
-
-# url_cases <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
-# download_or_load("outputs/url_cases.csv", URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv")
-

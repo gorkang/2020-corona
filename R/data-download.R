@@ -1,11 +1,5 @@
 data_download <- function(cases_deaths = "cases") {
 
-  # DEBUG
-  # source(here::here("R/fetch_worldometers_safely.R"), local = TRUE)
-  # source(here::here("R/download_or_load.R"))
-  source(here::here("R/download_or_load_JH_API.R"))
-  
-  
   # Data preparation --------------------------------------------------------
 
   # Download worldometers
@@ -21,13 +15,10 @@ data_download <- function(cases_deaths = "cases") {
                ))
     
   
-  
-  
-
-# JHU API ------------------------------------------------------------------
+  # JHU API ------------------------------------------------------------------
 
   download_or_load_JH_API(file_name = "outputs/raw_JH.csv")
-  
+
   DF_JHU_raw = read_csv(here::here("outputs/raw_JH.csv"), 
                              col_types = 
                                cols(
@@ -40,6 +31,7 @@ data_download <- function(cases_deaths = "cases") {
                                  Status = col_character()
                                ))
   
+
   DF_JHU_clean = DF_JHU_raw %>% 
     as_tibble() %>% 
     select(-Lat, -Lon) %>% 
@@ -66,25 +58,7 @@ data_download <- function(cases_deaths = "cases") {
               deaths_sum = sum(deaths),
               recovered_sum = sum(recovered)) %>%
     ungroup()
-  # 
-  # dta_raw_deaths <- read_csv("outputs/url_deaths.csv", col_types = cols()) %>% 
-  #   select(-Lat, -Long, -`Province/State`) %>% 
-  #   rename(country = `Country/Region`) %>% 
-  #   # tidy data
-  #   pivot_longer(c(-country), "time") %>%
-  #   mutate(time = as.Date(time, "%m/%d/%y")) %>% 
-  #   rename(deaths = value) %>% 
-  #   drop_na(deaths) %>% 
-  #   # ignore provinces
-  #   group_by(country, time) %>%
-  #   summarize(deaths_sum = sum(deaths)) %>%
-  #   ungroup()
-  # 
-  # dta_raw = dta_raw_cases %>% 
-  #   full_join(dta_raw_deaths, by = c("country", "time"))
-  
-  
-  
+
   DF_write = DF_JHU_clean %>%
     # rename some countries
     mutate(

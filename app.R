@@ -12,6 +12,7 @@ library(DT)
 library(ggplot2)
 library(ggrepel)
 library(httr)
+library(jsonlite)
 library(readr)
 library(rvest)
 library(tidyr)
@@ -28,6 +29,8 @@ library(shinyjs)
 cases_deaths = "cases" #cases deaths
 
 source(here::here("R/download_or_load.R"))
+source(here::here("R/download_or_load_JH_API.R"))
+
 source(here::here("R/fetch_worldometers_safely.R"))
 source(here::here("R/data-download.R"))
 source(here::here("R/data-preparation.R"))
