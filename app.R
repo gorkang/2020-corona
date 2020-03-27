@@ -38,7 +38,7 @@ data_preparation()
 last_commit_time = fetch_last_update_date()$result
 
 # Launch data_download 
-minutes_to_check_downloads = 12 # Every 12 minutes
+minutes_to_check_downloads = 30 # Every 12 minutes
 auto_invalide <- reactiveTimer(minutes_to_check_downloads * 60 * 1000) 
 
 
