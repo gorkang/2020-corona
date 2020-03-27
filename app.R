@@ -51,6 +51,7 @@ ui <-
             useShinyjs(),
             
         titlePanel(
+            windowTitle = "Coronavirus Tracker - Facultad de Psicología - UAI",
             fluidRow(
                 column(9, HTML("<a href=\"https://gorkang.shinyapps.io/2020-corona/\">Coronavirus tracker</a>")), 
                 column(1, HTML("<a href=\"http://psicologia.uai.cl/\"><img src=\"UAI_mini.png\", alt =\ 'Universidad Adolfo Ibáñez'></a>"))
