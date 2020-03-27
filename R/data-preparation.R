@@ -1,7 +1,17 @@
 data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
 
+  
   # Data preparation --------------------------------------------------------
-  DF_lockdowns = read_csv("data/lockdown_countries.csv") %>% select(time, country, what)
+  DF_lockdowns = read_csv("data/lockdown_countries.csv", 
+                          col_types = 
+                            cols(
+                              time = col_date(format = ""),
+                              what = col_character(),
+                              country = col_character(),
+                              source = col_character(),
+                              NOTES = col_character()
+                            )) %>% 
+    select(time, country, what)
   
   dta_raw = read_csv(here::here("outputs/raw_data.csv"), 
                      col_types = 
@@ -49,7 +59,7 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
     ungroup() %>%   # Create labels for last instance for each country
     group_by(country) %>% 
     
-    left_join(DF_lockdowns) %>% 
+    left_join(DF_lockdowns, by = c("country", "time")) %>% 
     mutate(
       name_end = 
         case_when(
