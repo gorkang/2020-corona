@@ -24,6 +24,10 @@ Please always check oficial sources (e.g. [WHO](https://www.who.int/emergencies/
 
 ## Featured in
 
-* https://magnet.xataka.com/en-diez-minutos/mejor-forma-seguir-evolucion-coronavirus-tiempo-real-todos-paises-mundo
-* https://noticias.uai.cl/coronavirus-tracker/
-* https://www.adprensa.cl/cronica/academico-gorka-navarrete-crea-coronavirus-tracker/
+* Xataka: https://magnet.xataka.com/en-diez-minutos/mejor-forma-seguir-evolucion-coronavirus-tiempo-real-todos-paises-mundo
+* UAI: https://noticias.uai.cl/coronavirus-tracker/
+* Adprensa: https://www.adprensa.cl/cronica/academico-gorka-navarrete-crea-coronavirus-tracker/
+* El Libero: https://ellibero.cl/actualidad/experto-de-la-uai-sobre-cuarentena-el-efecto-de-esta-medida-se-vera-en-un-mes-mas/
+* Radio Infinita: https://twitter.com/InfinitaFM/status/1243199315042074624
+* LUN: http://www.lun.com/Pages/NewsDetail.aspx?dt=2020-03-27&NewsID=448341&BodyID=0&PaginaId=12
+* Cooler: https://cooleruai.com/2020/03/26/zoom-de-datos/
