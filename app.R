@@ -37,6 +37,10 @@ data_preparation()
 # Time last commit of source file
 last_commit_time = fetch_last_update_date()$result
 
+# Launch data_download 
+minutes_to_check_downloads = 12 # Every 12 minutes
+auto_invalide <- reactiveTimer(minutes_to_check_downloads * 60 * 1000) 
+
 
 # UI ----------------------------------------------------------------------
 
@@ -183,6 +187,14 @@ server <- function(input, output, session) {
           'mytable_cell_clicked',
           'mytable_rows_selected'))
     
+
+    # Launch data downloading -------------------------------------------------
+
+    observe({
+        auto_invalide()
+        message("\n\n* CHECKING IF WE HAVE TO DOWNLOAD DATA ---------------------- \n")
+        data_download()
+    })    
     
     # Dynamic menus -----------------------------------------------------------
     
@@ -326,7 +338,7 @@ server <- function(input, output, session) {
                      
                      
                     dta_temp %>% 
-                         left_join(DF_colors) %>% 
+                         left_join(DF_colors, by = "country") %>% 
                          mutate(highlight = 
                                 case_when(
                                     is.na(highlight) ~ "grey",
