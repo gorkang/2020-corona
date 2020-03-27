@@ -46,14 +46,28 @@ ui <-
             tags$head(includeHTML(("google-analytics.html"))),
             useShinyjs(),
             
-
-    titlePanel(windowTitle = "Coronavirus tracker",
-               title = HTML("<a href=\"https://gorkang.shinyapps.io/2020-corona/\">Coronavirus tracker</a>")),
+        titlePanel(
+            fluidRow(
+                column(9, HTML("<a href=\"https://gorkang.shinyapps.io/2020-corona/\">Coronavirus tracker</a>")), 
+                column(1, HTML("<a href=\"http://psicologia.uai.cl/\"><img src=\"UAI_mini.png\", alt =\ 'Universidad Adolfo Ibáñez'></a>"))
+            )
+        ),
     theme = shinytheme("flatly"),
     
     sidebarLayout(
         sidebarPanel(
             width = 2,
+
+            div(
+             
+            HTML(paste0(
+                a(img(src = "github_small.png", title = "Github repository"), href="https://github.com/gorkang/2020-corona", target = "_blank"), "&nbsp;&nbsp;",
+                a(img(src = "issue_small.png", title = "Report an issue!"), href="https://github.com/gorkang/2020-corona/issues", target = "_blank"), "&nbsp;&nbsp;",
+                a(img(src = "twitter_small.png", title = "@gorkang"), href="https://twitter.com/gorkang", target = "_blank"), "&nbsp;&nbsp;", 
+                a(img(src = "https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg", title = "Buy me a coffee", height = "26px"), href="https://www.buymeacoffee.com/I0rkAbM", target = "_blank"), "&nbsp;", 
+                "<BR><BR>")),
+            align = "center"
+            ),
 
     selectInput(inputId = 'countries_plot', 
                 label = 'Country',
@@ -102,26 +116,17 @@ ui <-
     
     HTML("<BR><BR>"),
     
-    span(
-        h6("REMEMBER: Number of cases are not directly comparable between countries (different countries employ different testing strategies)."),
-        style="color:darkred"),
-    
+    span(h6("REMEMBER: Number of cases are not directly comparable (countries employ different testing strategies)."),
+         style = "color:darkred"),
+
     hr(),
     
-    HTML(paste0("Simple visualization using the ", a(" @JHUSystems Coronavirus", href="https://github.com/CSSEGISandData/COVID-19", target = "_blank"), 
-                " and ", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), " data.",
-                "<BR><BR>Using code and ideas from ",  
-                a(" @JonMinton", href="https://github.com/JonMinton/COVID-19", target = "_blank"), ", ", 
-                a(" @christoph_sax", href="https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b", target = "_blank"), ", ",
-                a(" @nicebread303", href="https://github.com/nicebread/corona", target = "_blank"), ", ",
-                a("@rubenivangaalen", href="https://twitter.com/rubenivangaalen", target = "_blank"), ", ",
-                a("@jburnmurdoch", href="https://twitter.com/jburnmurdoch", target = "_blank"), " and ", a(" @sdbernard", href="https://twitter.com/sdbernard", target = "_blank"))),
-    
-    
-
-    
-    HTML("<BR><BR>"),
-    HTML(paste0("By ", a(" @gorkang", href="https://twitter.com/gorkang", target = "_blank")))
+    HTML(paste0("Using code and ideas from ",  
+            a("@JonMinton", href="https://github.com/JonMinton/COVID-19", target = "_blank"), ", ", 
+            a("@christoph_sax", href="https://gist.github.com/christophsax/dec0a57bcbc9d7517b852dd44eb8b20b", target = "_blank"), ", ",
+            a("@nicebread303", href="https://github.com/nicebread/corona", target = "_blank"), ", ",
+            a("@rubenivangaalen", href="https://twitter.com/rubenivangaalen", target = "_blank"), ", ",
+            a("@jburnmurdoch", href="https://twitter.com/jburnmurdoch", target = "_blank"), " and ", a(" @sdbernard", href="https://twitter.com/sdbernard", target = "_blank"))),
     
     ), 
 
@@ -130,34 +135,38 @@ ui <-
         mainPanel(
             p(HTML(
                 paste0(
-                    a(img(src = "github_small.png", title = "Github repo"), href="https://github.com/gorkang/2020-corona", target = "_blank"),
-                    "&nbsp;",
-                    a("[Issues]", href="https://github.com/gorkang/2020-corona/issues", target = "_blank"),
-                    hr(),
-                    a("Johns Hopkins Data", href="https://github.com/CSSEGISandData/COVID-19", target = "_blank"), " updated on: ", as.character(last_commit_time), " GMT",
-                    "<BR>", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), " (last point) updated on: ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT")
+                    a("Johns Hopkins Data", href="https://covid19api.com/", target = "_blank"), " updated on: ", as.character(last_commit_time), " GMT",
+                    "<BR>", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), " (last point) updated on: ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT"
+                    )
                 )
               ),
+            
             hr(),
-           plotOutput("distPlot", height = "700px", width = "100%"),
+            
+            plotOutput("distPlot", height = "700px", width = "100%"),
+            
+            hr(),
            
-           hr(),
-           
-           HTML(
-               paste(
-                   h3(paste("Data shown in plot"), downloadButton('downloadData', ''))
-                   )
-           ),
-           hr(),
-           
-           div(
-               DT::dataTableOutput("mytable", width = "100%"), 
-               align = "center"
-           )
-           
+            h3("Data shown in plot ", downloadButton('downloadData', '')),
+            
+            hr(),
+            
+            div(
+                DT::dataTableOutput("mytable", width = "100%"), 
+                align = "center"
+                ),
+            
+            hr(),
+            span(
+                div(
+                    HTML(paste0("Please always check oficial sources (e.g. ", a("WHO", href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019", target = "_blank"), "), and be careful when using this or other information to create predictive models. ",
+                                 "By ", a("@gorkang", href="https://twitter.com/gorkang", target = "_blank"))),
+                    align = "center", 
+                    style = "color:darkgrey")),
+            hr()
+            )
         )
     )
-)
 }
 
 
