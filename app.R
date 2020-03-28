@@ -315,7 +315,7 @@ server <- function(input, output, session) {
                         name_end =
                             case_when(
                                 days_after_100 == max(days_after_100) & source == "worldometers" ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
-                                what == "lockdown" ~ "LD",
+                                what == "lockdown" ~ "*",
                                 TRUE ~ ""))
 
                 
@@ -370,15 +370,16 @@ server <- function(input, output, session) {
             max_finaldf_days_after_100 = max(final_df()$days_after_100, na.rm = TRUE)
         }
         
-        # We use 1.1 * to avoid overlaping
+        # If we use 1.1 * to avoid overlaping y axis goes up a lot
+        line_factor = 1
         if (input$accumulated_daily_pct == "%") {
             tibble(
-                value = cumprod(c(100, rep((100 + VAR_growth()) / 100, 1.1 * max_finaldf_days_after_100))),
-                days_after_100 = 0:(1.1 * max_finaldf_days_after_100))
+                value = cumprod(c(100, rep((100 + VAR_growth()) / 100, line_factor * max_finaldf_days_after_100))),
+                days_after_100 = 0:(line_factor * max_finaldf_days_after_100))
         } else {
             tibble(
-                value = cumprod(c(VAR_min_n(), rep((100 + VAR_growth()) / 100, 1.1 * max_finaldf_days_after_100))),
-                days_after_100 = 0:(1.1 * max_finaldf_days_after_100))
+                value = cumprod(c(VAR_min_n(), rep((100 + VAR_growth()) / 100, line_factor * max_finaldf_days_after_100))),
+                days_after_100 = 0:(line_factor * max_finaldf_days_after_100))
         }
         
     })
@@ -417,7 +418,7 @@ server <- function(input, output, session) {
                 geom_line(data = growth_line(), aes(days_after_100, value), linetype = "dotted", inherit.aes = FALSE) +
 
                 # Country points (last one bigger)
-                geom_point(aes(size = 1 + as.integer(final_df()$name_end != "" & final_df()$name_end != "LD") - .5), alpha = .7) +
+                geom_point(aes(size = 1 + as.integer(final_df()$name_end != "" & final_df()$name_end != "*") - .5), alpha = .7) +
                 
                 # Country label
                 ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3, alpha = .7) + 
@@ -428,7 +429,7 @@ server <- function(input, output, session) {
                     subtitle = paste0("Arranged by number of days since ",  VAR_min_n() ," or more ", input$cases_deaths),
                     x = paste0("Days after ",  VAR_min_n() ," confirmed ", input$cases_deaths),
                     y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths, " (log scale)"), 
-                    caption = paste0("[LD]: Lockdown\nSources: Johns Hopkins CSSE and worldometers.info\n gorkang.shinyapps.io/2020-corona/")
+                    caption = paste0("[*]: Lockdown\nSources: Johns Hopkins CSSE and worldometers.info\n gorkang.shinyapps.io/2020-corona/")
                 ) +
                 theme_minimal(base_size = 14) +
                 theme(legend.position = "none")
@@ -450,10 +451,10 @@ server <- function(input, output, session) {
             # Scale, log or not
             if (input$log_scale == TRUE) {
                 p_temp = p_temp +
-                    scale_y_log10(labels = function(x) format(x, big.mark = ",", scientific = FALSE))
+                    scale_y_log10(breaks = scales::log_breaks(n = 10), labels = function(x) format(x, big.mark = ",", scientific = FALSE))
             } else {
                 p_temp = p_temp +
-                    scale_y_continuous(labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
+                    scale_y_continuous(breaks = scales::pretty_breaks(n = 10), labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
                     labs(y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths))
             }
             
