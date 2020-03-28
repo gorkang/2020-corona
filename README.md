@@ -31,3 +31,4 @@ Please always check oficial sources (e.g. [WHO](https://www.who.int/emergencies/
 * Radio Infinita: https://twitter.com/InfinitaFM/status/1243199315042074624
 * LUN: http://www.lun.com/Pages/NewsDetail.aspx?dt=2020-03-27&NewsID=448341&BodyID=0&PaginaId=12
 * Cooler: https://cooleruai.com/2020/03/26/zoom-de-datos/
+* ADN radio: https://www.litoralpress.cl/deposito/audios/2020/03/27/8931201.mp3
