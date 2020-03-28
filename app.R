@@ -233,7 +233,7 @@ server <- function(input, output, session) {
             show("growth_pct")
         }
     })
-    
+
     
     VAR_growth = reactive({
         if (input$accumulated_daily_pct == "accumulated") {
@@ -359,18 +359,26 @@ server <- function(input, output, session) {
             }
         })
     }) 
-    
+
 
     growth_line = reactive({
+        
+        # To avoid error
+        if (is.infinite(max(final_df()$days_after_100, na.rm = TRUE))) {
+            max_finaldf_days_after_100 = 10 
+        } else {
+            max_finaldf_days_after_100 = max(final_df()$days_after_100, na.rm = TRUE)
+        }
+        
         # We use 1.1 * to avoid overlaping
         if (input$accumulated_daily_pct == "%") {
             tibble(
-                value = cumprod(c(100, rep((100 + VAR_growth()) / 100, 1.1 * max(final_df()$days_after_100, na.rm = TRUE)))),
-                days_after_100 = 0:(1.1 * max(final_df()$days_after_100, na.rm = TRUE)))
+                value = cumprod(c(100, rep((100 + VAR_growth()) / 100, 1.1 * max_finaldf_days_after_100))),
+                days_after_100 = 0:(1.1 * max_finaldf_days_after_100))
         } else {
             tibble(
-                value = cumprod(c(VAR_min_n(), rep((100 + VAR_growth()) / 100, 1.1 * max(final_df()$days_after_100, na.rm = TRUE)))),
-                days_after_100 = 0:(1.1 * max(final_df()$days_after_100, na.rm = TRUE)))
+                value = cumprod(c(VAR_min_n(), rep((100 + VAR_growth()) / 100, 1.1 * max_finaldf_days_after_100))),
+                days_after_100 = 0:(1.1 * max_finaldf_days_after_100))
         }
         
     })
@@ -400,7 +408,6 @@ server <- function(input, output, session) {
             VALUE_span = 3
             counts_filter = DF_plot %>% count(country) %>% filter(n > VALUE_span)
 
-            
             # Draw plot ---------------------------------------------
             p_temp = ggplot(data = DF_plot, 
                             aes(x = days_after_100, y = value, group = as.factor(country), color = highlight)) +
