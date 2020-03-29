@@ -1,4 +1,4 @@
-data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
+data_preparation <- function(data_source = "JHU", cases_deaths = "cases", countries_plot = "", min_n = 1) {
 
   
   # Data preparation --------------------------------------------------------
@@ -23,15 +23,47 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
                          deaths_sum = col_double(),
                          deaths_diff = col_double(),
                          source = col_character()
-                       ))
-  
-  dta <<-
-    dta_raw %>%
+                       )) %>% 
+    mutate(CFR_sum = round((deaths_sum/cases_sum) * 100, 2),
+           CFR_diff = round((deaths_diff/cases_diff) * 100, 2))
 
-    # rename
-    rename(value = paste0(cases_deaths, "_sum")) %>% 
-    rename(diff = paste0(cases_deaths, "_diff")) %>% 
+  
+  # If there are countries, FILTER DF by countries, min_n...
+  if (!is.null(countries_plot)) {
     
+    # CFR is a special case. We need to filter by deaths to avoid 0's
+    if (cases_deaths == "CFR") {
+      
+      dta_raw_filtered =
+        dta_raw %>% 
+        
+        # filter min num
+        filter(deaths_sum >= min_n) %>% 
+        # rename
+        rename(value = paste0(cases_deaths, "_sum")) %>% 
+        rename(diff = paste0(cases_deaths, "_diff")) %>% 
+        # selection
+        filter(country %in% countries_plot)
+      
+    } else {
+      
+      dta_raw_filtered =
+        dta_raw %>% 
+        # rename
+        rename(value = paste0(cases_deaths, "_sum")) %>% 
+        rename(diff = paste0(cases_deaths, "_diff")) %>% 
+        
+        # selection
+        filter(country %in% countries_plot) %>%
+        
+        # filter min num
+        filter(value >= min_n)
+    }
+
+
+
+dta <<-
+  dta_raw_filtered %>%
     group_by(country) %>%
     mutate(days_after_100 = 0:(length(country)-1)) %>%
 
@@ -50,7 +82,7 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
              case_when(
                is.na(days_after_100) ~ as.integer(lag(days_after_100) + 1),
                TRUE ~ days_after_100),
-           diff = value - lag(value),
+           diff = round(value - lag(value), 2),
            diff_pct = diff / lag(value),
            name_end = 
              case_when(
@@ -67,26 +99,6 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases") {
           what == "lockdown" ~ "*",
           TRUE ~ "")) %>% 
     select(country, time, value, diff, everything())
-  
-  
 
-  # Menu vars ---------------------------------------------------------------
-  
-  V1_alternatives <<- dta %>%
-    # filter(value > 1) %>% 
-    filter(!country %in% c("Total:", "Diamond Princess")) %>% 
-    arrange(desc(value)) %>% 
-    distinct(country) %>% 
-    pull(country)
-  
-  top_countries <<- dta %>%
-    filter(!country %in% c("Total:", "Cruise Ship", "China", "Diamond Princess")) %>% 
-    group_by(country) %>% 
-    filter(value == max(value)) %>%
-    distinct(country, value) %>% 
-    ungroup() %>%
-    arrange(desc(value)) %>% 
-    slice_head(n = 6, wt = value) %>% 
-    pull(country)
-
+  }
 }
