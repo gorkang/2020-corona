@@ -12,8 +12,8 @@ data_download <- function(cases_deaths = "cases") {
                  time = col_date(format = ""),
                  cases_sum = col_double(),
                  deaths_sum = col_double()
-               ))
-    
+               )) %>% as_tibble()
+
   
   # JHU API ------------------------------------------------------------------
 
@@ -57,14 +57,13 @@ data_download <- function(cases_deaths = "cases") {
     distinct(country, Province, time, Cases, Status) %>%
     group_by(country, Province, time, Status) %>% 
     summarise(Cases = sum(Cases)) %>% 
-    # tidy data
     pivot_wider(names_from = Status, values_from = Cases) %>% 
     mutate(time = as.Date(time, "%m/%d/%y")) %>% 
     ungroup() %>% 
     group_by(country, time) %>%
     summarize(cases_sum = sum(confirmed),
-              deaths_sum = sum(deaths),
-              recovered_sum = sum(recovered)) %>%
+              deaths_sum = sum(deaths)) %>% 
+              # recovered_sum = sum(recovered)) %>%
     ungroup()
 
   DF_write = DF_JHU_clean %>%
@@ -95,8 +94,6 @@ data_download <- function(cases_deaths = "cases") {
     arrange(country, time) %>%
     select(country, time, cases_sum, cases_diff,  deaths_sum, deaths_diff, source)
 
-    # replace_na(0)
-    
     # write_data
     DF_write %>% 
       write_csv("outputs/raw_data.csv")
