@@ -28,11 +28,11 @@ source(here::here("R/fetch_worldometers_safely.R"))
 source(here::here("R/data-download.R"))
 source(here::here("R/data-preparation.R"))
 
+source(here::here("R/data-preparation-menu.R"))
+
 source(here::here("R/fetch_last_update_date.R"))
 
-
 data_download()
-data_preparation()
 
 # Time last commit of source file
 last_commit_time = fetch_last_update_date()$result
@@ -85,7 +85,7 @@ ui <-
     uiOutput('highlight2'),
     
     selectInput(inputId = "cases_deaths", label = "Cases or deaths", selected = "cases", 
-                 choices = c("cases", "deaths")),
+                 choices = c("cases", "deaths", "CFR")),
 
     radioButtons(inputId = "accumulated_daily_pct", label = "Accumulated, daily or %", selected = "accumulated", 
                  choices = c("accumulated", "daily", "%"), inline = TRUE),
@@ -93,6 +93,7 @@ ui <-
     # Dynamically change with cases_deaths
     sliderInput('min_n_cases', paste0("Day 0 after ___ cases"), min = 1, max = 200, value = 100), 
     sliderInput('min_n_deaths', paste0("Day 0 after ___ deaths"), min = 1, max = 200, value = 10),
+    sliderInput('min_n_CFR', paste0("Day 0 after ___ deaths"), min = 1, max = 200, value = 10),
     
     # Dynamically change with accumulated_daily_pct
     sliderInput("growth_accumulated", "Daily growth (%):", min = 0, max = 100, value = 30),
@@ -201,19 +202,27 @@ server <- function(input, output, session) {
     
     observeEvent(input$cases_deaths,{
         if (input$cases_deaths == "cases") {
+            hide("min_n_CFR")
             hide("min_n_deaths")
             show("min_n_cases")
-        } else {
+        } else if (input$cases_deaths == "deaths") {
             hide("min_n_cases")
+            hide("min_n_CFR")
             show("min_n_deaths")
+        } else if (input$cases_deaths == "CFR") {
+            hide("min_n_cases")
+            show("min_n_CFR")
+            hide("min_n_deaths")
         }
     })
     
     VAR_min_n = reactive({
         if (input$cases_deaths == "cases") {
-                input$min_n_cases
-        } else {
-                input$min_n_deaths
+            input$min_n_cases
+        } else if (input$cases_deaths == "deaths") {
+            input$min_n_deaths
+        } else if (input$cases_deaths == "CFR") {
+            input$min_n_CFR
         }
     })
     
@@ -238,7 +247,6 @@ server <- function(input, output, session) {
     VAR_growth = reactive({
         if (input$accumulated_daily_pct == "accumulated") {
             input$growth_accumulated
-            
         } else if (input$accumulated_daily_pct == "daily") {
             input$growth_daily
         } else {
@@ -282,24 +290,24 @@ server <- function(input, output, session) {
             req(input$cases_deaths)
             req(input$countries_plot)
             
+            # VARS
+            INPUT_highlight = VAR_highlight()
+            INPUT_min_n = VAR_min_n()
+            INPUT_cases_deaths = input$cases_deaths
+            INPUT_countries_plot = input$countries_plot
+            
+            
             # Launch data preparation
-            data_preparation(cases_deaths = input$cases_deaths)
+            data_preparation(cases_deaths = INPUT_cases_deaths, countries_plot = INPUT_countries_plot, min_n = INPUT_min_n)
 
-            if (!is.null(input$countries_plot)) {
+            if (!is.null(INPUT_countries_plot)) {
                 
                 dta_temp = dta %>%
-                    
-                    # selection
-                    filter(country %in% input$countries_plot) %>% 
-                    
-                    # filter
-                    filter(value >= VAR_min_n()) %>% 
                     
                     # If repeated values the same day, keep higher
                     group_by(country, time) %>% 
                     distinct(KEY = paste0(country, time, value), .keep_all = TRUE) %>% 
                     select(-KEY) %>% 
-                    # top_n(n = 1, wt = value) %>% 
                     ungroup() %>% 
                 
                     # re-adjust after filtering
@@ -386,9 +394,8 @@ server <- function(input, output, session) {
     
     
     # Show plot
-    # output$distPlot <- renderPlot({
     output$distPlot <- renderCachedPlot({
-            
+
         withProgress(message = 'Loading plot', value = 0, {
             
             # Show accumulated or daily plot
@@ -409,7 +416,9 @@ server <- function(input, output, session) {
             VALUE_span = 3
             counts_filter = DF_plot %>% count(country) %>% filter(n > VALUE_span)
 
+            
             # Draw plot ---------------------------------------------
+            
             p_temp = ggplot(data = DF_plot, 
                             aes(x = days_after_100, y = value, group = as.factor(country), color = highlight)) +
                 scale_color_hue(l = 50) +
@@ -423,14 +432,13 @@ server <- function(input, output, session) {
                 # Country label
                 ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3, alpha = .7) + 
                 
-                scale_x_continuous(breaks = seq(0, max(final_df()$value), 2)) +
+                scale_x_continuous(breaks = seq(0, max(final_df()$days_after_100), 2)) +
                 labs(
                     title = paste0("Coronavirus confirmed ", input$cases_deaths ,""),
                     subtitle = paste0("Arranged by number of days since ",  VAR_min_n() ," or more ", input$cases_deaths),
                     x = paste0("Days after ",  VAR_min_n() ," confirmed ", input$cases_deaths),
                     y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths, " (log scale)"), 
-                    caption = paste0("[*]: Lockdown\nSources: Johns Hopkins CSSE and worldometers.info\n gorkang.shinyapps.io/2020-corona/")
-                ) +
+                    caption = paste0("[*]: Lockdown\nSources: Johns Hopkins CSSE and worldometers.info\n gorkang.shinyapps.io/2020-corona/")) +
                 theme_minimal(base_size = 14) +
                 theme(legend.position = "none")
             
@@ -444,7 +452,7 @@ server <- function(input, output, session) {
                                 method = "loess", span = 1.5, se = FALSE, size = .8, alpha = .6, na.rm = TRUE)
             }
 
-            # if (VAR_highlight() != " ") {p_temp =  p_temp + scale_color_identity()}
+            # If any value is not " ", scale_color_identity()
             if (any(' ' != VAR_highlight())) { p_temp =  p_temp + scale_color_identity() }
             
             
@@ -457,15 +465,38 @@ server <- function(input, output, session) {
                     scale_y_continuous(breaks = scales::pretty_breaks(n = 10), labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
                     labs(y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths))
             }
-            
-            
+
+                        
             # Annotation trend line
             if (input$accumulated_daily_pct == "%") {
-                y_axis = min(growth_line()$value) 
+                y_axis = min(growth_line()$value) # MIN
             } else {
-                y_axis = max(growth_line()$value) 
+                y_axis = max(growth_line()$value) # MAX
             }
-
+            
+            
+            # CFR: Explicit y axis limits and add y label. If not, growth line distorts plot
+            if (input$cases_deaths == "CFR") {
+                
+                if (input$accumulated_daily_pct == "daily") {
+                    
+                    MAX_CFR = max(final_df()$diff, na.rm = TRUE)
+                    MIN_CFR = min(final_df()$diff, na.rm = TRUE)
+                    
+                } else {
+                    
+                    MAX_CFR = max(final_df()$value, na.rm = TRUE)
+                    MIN_CFR = min(final_df()$value, na.rm = TRUE)
+                    
+                }
+                    
+                p_temp = p_temp +
+                    ylim(MIN_CFR, MAX_CFR) +
+                    labs(y = paste0(input$accumulated_daily_pct, " ", input$cases_deaths, " (deaths / cases)"))
+                
+            } 
+            
+            
             p_final <<- p_temp + 
                 annotate(geom = "text",
                          x = max(growth_line()$days_after_100) - .5, 
@@ -485,8 +516,8 @@ server <- function(input, output, session) {
         DT::datatable(final_df() %>%
                           arrange(desc(time), country) %>% 
                           select( -highlight, -name_end) %>%
-                          rename_(.dots=setNames("value", ifelse(input$cases_deaths == "cases", "cases_sum", "deaths_sum"))) %>% 
-                          rename_(.dots=setNames("diff", ifelse(input$cases_deaths == "cases", "cases_diff", "deaths_diff"))) %>% 
+                          rename_(.dots=setNames("value", paste0(input$cases_deaths, "_sum"))) %>% 
+                          rename_(.dots=setNames("diff", paste0(input$cases_deaths, "_diff"))) %>% 
                           rename_(.dots=setNames("days_after_100", paste0("days_after_", VAR_min_n()))),
                           filter = 'top',
                       rownames = FALSE, 
