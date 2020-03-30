@@ -103,13 +103,19 @@ ui <-
     HTML("<BR>"),
     
     div(style="display:inline-block;width;45%;text-align: center;",
-        shinyWidgets::switchInput(inputId = "log_scale", label = "Log", value = TRUE, size = "mini", labelWidth = "40%")
+        shinyWidgets::switchInput(inputId = "log_scale", label = "Log", value = TRUE, size = "mini", labelWidth = "45%")
         ), 
     HTML("&nbsp;&nbsp;"),
     div(style="display:inline-block;45%;text-align: center;",
-        shinyWidgets::switchInput(inputId = "smooth", label = "Smooth", value = FALSE, size = "mini", labelWidth = "40%")
+        shinyWidgets::switchInput(inputId = "smooth", label = "Smooth", value = FALSE, size = "mini", labelWidth = "45%")
         ),
     
+    # RELATIVE
+    div(style="display:inline-block;45%;text-align: center;",
+        HTML("&nbsp;&nbsp;"),
+        
+    shinyWidgets::switchInput(inputId = "relative", label = "Relative/million", value = FALSE, size = "mini", labelWidth = "80%")
+    ),
     HTML("<BR><BR>"),
     
     div( HTML("&nbsp;&nbsp;"), style="display:inline-block;65%;text-align: center;",
@@ -295,10 +301,11 @@ server <- function(input, output, session) {
             INPUT_min_n = VAR_min_n()
             INPUT_cases_deaths = input$cases_deaths
             INPUT_countries_plot = input$countries_plot
+            INPUT_relative = input$relative
             
             
             # Launch data preparation
-            data_preparation(cases_deaths = INPUT_cases_deaths, countries_plot = INPUT_countries_plot, min_n = INPUT_min_n)
+            data_preparation(cases_deaths = INPUT_cases_deaths, countries_plot = INPUT_countries_plot, min_n = INPUT_min_n, relative = INPUT_relative)
 
             if (!is.null(INPUT_countries_plot)) {
                 
@@ -432,12 +439,13 @@ server <- function(input, output, session) {
                 # Country label
                 ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3, alpha = .7) + 
                 
+                
                 scale_x_continuous(breaks = seq(0, max(final_df()$days_after_100), 2)) +
                 labs(
-                    title = paste0("Coronavirus confirmed ", input$cases_deaths ,""),
+                    title = paste0("Coronavirus confirmed ", input$cases_deaths , if (input$relative == TRUE) " / million people"),
                     subtitle = paste0("Arranged by number of days since ",  VAR_min_n() ," or more ", input$cases_deaths),
                     x = paste0("Days after ",  VAR_min_n() ," confirmed ", input$cases_deaths),
-                    y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths, " (log scale)"), 
+                    y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths, " (log scale)",  if (input$relative == TRUE) " / million people"), 
                     caption = paste0("[*]: Lockdown\nSources: Johns Hopkins CSSE and worldometers.info\n gorkang.shinyapps.io/2020-corona/")) +
                 theme_minimal(base_size = 14) +
                 theme(legend.position = "none")
