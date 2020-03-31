@@ -487,6 +487,9 @@ server <- function(input, output, session) {
                 MIN_y = min(final_df()$value, na.rm = TRUE, na.rm = TRUE) * 0.95
             }
             
+            if (MIN_y == 0) MIN_y = 0.01
+            message("MIN_y: ", MIN_y, " MAX_y: ", MAX_y)
+            
             # Scale, log or not
             if (input$log_scale == TRUE) {
                 p_temp = p_temp +
