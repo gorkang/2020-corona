@@ -155,7 +155,7 @@ ui <-
             
             hr(),
             
-            plotOutput("distPlot", height = "700px", width = "100%"),
+            plotOutput("distPlot", height = "800px", width = "100%"),
             
             hr(),
            
@@ -329,7 +329,7 @@ server <- function(input, output, session) {
                     mutate(
                         name_end =
                             case_when(
-                                days_after_100 == max(days_after_100) & source == "worldometers" ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
+                                days_after_100 == max(days_after_100, na.rm = TRUE) & source == "worldometers" ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
                                 what == "lockdown" ~ "*",
                                 TRUE ~ ""))
 
@@ -378,6 +378,15 @@ server <- function(input, output, session) {
 
     growth_line = reactive({
         
+        # LIMITS of DATA
+        if (input$accumulated_daily_pct == "daily") {
+            MAX_y = max(final_df()$diff, na.rm = TRUE) * 1.1
+        } else if (input$accumulated_daily_pct == "%") {
+            MAX_y = max(final_df()$diff_pct, na.rm = TRUE) * 100
+        } else {
+            MAX_y = max(final_df()$value, na.rm = TRUE) * 1.1
+        }
+        
         # To avoid error
         if (is.infinite(max(final_df()$days_after_100, na.rm = TRUE))) {
             max_finaldf_days_after_100 = 10 
@@ -390,21 +399,23 @@ server <- function(input, output, session) {
         if (input$accumulated_daily_pct == "%") {
             tibble(
                 value = cumprod(c(100, rep((100 + VAR_growth()) / 100, line_factor * max_finaldf_days_after_100))),
-                days_after_100 = 0:(line_factor * max_finaldf_days_after_100))
+                days_after_100 = 0:(line_factor * max_finaldf_days_after_100)) %>% 
+                filter(value <= MAX_y)
         } else {
             tibble(
                 value = cumprod(c(VAR_min_n(), rep((100 + VAR_growth()) / 100, line_factor * max_finaldf_days_after_100))),
-                days_after_100 = 0:(line_factor * max_finaldf_days_after_100))
+                days_after_100 = 0:(line_factor * max_finaldf_days_after_100)) %>% 
+                filter(value <= MAX_y)
         }
         
     })
     
-    
+
     # Show plot
     output$distPlot <- renderCachedPlot({
 
         withProgress(message = 'Loading plot', value = 0, {
-            
+
             # Show accumulated or daily plot
             if (input$accumulated_daily_pct == "daily") {
                 DF_plot = final_df() %>% 
@@ -440,7 +451,7 @@ server <- function(input, output, session) {
                 ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3, alpha = .7) + 
                 
                 
-                scale_x_continuous(breaks = seq(0, max(final_df()$days_after_100), 2)) +
+                scale_x_continuous(breaks = seq(0, max(final_df()$days_after_100, na.rm = TRUE), 2)) +
                 labs(
                     title = paste0("Coronavirus confirmed ", input$cases_deaths , if (input$relative == TRUE) " / million people"),
                     subtitle = paste0("Arranged by number of days since ",  VAR_min_n() ," or more ", input$cases_deaths),
@@ -464,53 +475,44 @@ server <- function(input, output, session) {
             if (any(' ' != VAR_highlight())) { p_temp =  p_temp + scale_color_identity() }
             
             
+            # LIMITS
+            if (input$accumulated_daily_pct == "daily") {
+                MAX_y = max(final_df()$diff, na.rm = TRUE, na.rm = TRUE) * 1.1
+                MIN_y = min(final_df()$diff, na.rm = TRUE, na.rm = TRUE) * 0.1 # In Log scale can't use 0
+            } else if (input$accumulated_daily_pct == "%") {
+                MAX_y = max(final_df()$diff_pct, na.rm = TRUE, na.rm = TRUE) * 100
+                MIN_y = min(final_df()$diff_pct, na.rm = TRUE, na.rm = TRUE) * 1 # In Log scale can't use 0
+            } else {
+                MAX_y = max(final_df()$value, na.rm = TRUE, na.rm = TRUE) * 1.1
+                MIN_y = min(final_df()$value, na.rm = TRUE, na.rm = TRUE) * 0.95
+            }
+            
             # Scale, log or not
             if (input$log_scale == TRUE) {
                 p_temp = p_temp +
-                    scale_y_log10(breaks = scales::log_breaks(n = 10), labels = function(x) format(x, big.mark = ",", scientific = FALSE))
+                    scale_y_log10(breaks = scales::log_breaks(n = 10), labels = function(x) format(x, big.mark = ",", scientific = FALSE), limits = c(MIN_y, MAX_y)) 
             } else {
                 p_temp = p_temp +
-                    scale_y_continuous(breaks = scales::pretty_breaks(n = 10), labels = function(x) format(x, big.mark = ",", scientific = FALSE)) +
+                    scale_y_continuous(breaks = scales::pretty_breaks(n = 10), labels = function(x) format(x, big.mark = ",", scientific = FALSE), limits = c(MIN_y, MAX_y)) +
                     labs(y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths))
             }
 
-                        
+                     
             # Annotation trend line
             if (input$accumulated_daily_pct == "%") {
-                y_axis = min(growth_line()$value) # MIN
+                x_axis = max(growth_line()$days_after_100, na.rm = TRUE) - .5
+                y_axis = min(growth_line()$value, na.rm = TRUE) # MIN
             } else {
-                y_axis = max(growth_line()$value) # MAX
+                x_axis = max(growth_line()$days_after_100, na.rm = TRUE) + .85
+                y_axis = max(growth_line()$value, na.rm = TRUE) # MAX 
+                message("X: ", x_axis, " Y: ", y_axis)
             }
-            
-            
-            # CFR: Explicit y axis limits and add y label. If not, growth line distorts plot
-            if (input$cases_deaths == "CFR") {
-                
-                if (input$accumulated_daily_pct == "daily") {
-                    
-                    MAX_CFR = max(final_df()$diff, na.rm = TRUE)
-                    MIN_CFR = min(final_df()$diff, na.rm = TRUE)
-                    
-                } else {
-                    
-                    MAX_CFR = max(final_df()$value, na.rm = TRUE)
-                    MIN_CFR = min(final_df()$value, na.rm = TRUE)
-                    
-                }
-                    
-                p_temp = p_temp +
-                    ylim(MIN_CFR, MAX_CFR) +
-                    labs(y = paste0(input$accumulated_daily_pct, " ", input$cases_deaths, " (deaths / cases)"))
-                
-            } 
             
             
             p_final <<- p_temp + 
                 annotate(geom = "text",
-                         x = max(growth_line()$days_after_100) - .5, 
+                         x = x_axis, 
                          y = y_axis, 
-                         vjust = 1, 
-                         hjust = 1, 
                          label = paste0(VAR_growth(), "% growth"))
                 
             p_final
