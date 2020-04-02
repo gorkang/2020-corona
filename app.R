@@ -91,9 +91,9 @@ ui <-
                  choices = c("accumulated", "daily", "%"), inline = TRUE),
     
     # Dynamically change with cases_deaths
-    sliderInput('min_n_cases', paste0("Day 0 after ___ cases"), min = 1, max = 200, value = 100), 
-    sliderInput('min_n_deaths', paste0("Day 0 after ___ deaths"), min = 1, max = 200, value = 10),
-    sliderInput('min_n_CFR', paste0("Day 0 after ___ deaths"), min = 1, max = 200, value = 10),
+    sliderInput('min_n_cases', paste0("Day 0 after ___ cases"), min = 1, max = 1000, value = 100), 
+    sliderInput('min_n_deaths', paste0("Day 0 after ___ deaths"), min = 1, max = 500, value = 10),
+    sliderInput('min_n_CFR', paste0("Day 0 after ___ deaths"), min = 1, max = 500, value = 10),
     
     # Dynamically change with accumulated_daily_pct
     sliderInput("growth_accumulated", "Daily growth (%):", min = 0, max = 100, value = 30),
