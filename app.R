@@ -128,9 +128,11 @@ ui <-
     
     HTML("<BR><BR>"),
     
-    span(h6("REMEMBER: Number of cases are not directly comparable (countries employ different testing strategies)."),
-         style = "color:darkred"),
-
+    # span(h6("REMEMBER: 1) # of cases is not equivalent to # of infections. 2) # of cases are not  directly comparable (countries employ different testing strategies)."),
+    #      style = "color:darkred"),
+    
+    uiOutput("WARNING"),
+    
     hr(),
     
     HTML(paste0("Using code and ideas from ",  
@@ -195,7 +197,19 @@ server <- function(input, output, session) {
           'mytable_cell_clicked',
           'mytable_rows_selected'))
     
+    
+    # WARNING -----------------------------------------------------------------
+    output$WARNING <- renderUI({
+        if (input$cases_deaths == "cases") {
+            span(h6("REMEMBER: 1) # of cases is not equivalent to # of infections. 2) # of cases are not  directly comparable (countries employ different testing strategies)."),
+                 style = "color:darkred")
+        } else if (input$cases_deaths == "deaths") {
+            # span(h6("REMEMBER: 1) # of deaths depends on ."),
+            #      style = "color:darkred")        
+            }
+    })
 
+    
     # Launch data downloading -------------------------------------------------
 
     observe({

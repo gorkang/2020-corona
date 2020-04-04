@@ -21,20 +21,26 @@ data_download <- function(cases_deaths = "cases") {
 
   DF_JHU_raw = read_csv(here::here("outputs/raw_JH.csv"), 
                              col_types = 
-                               cols(
-                                 Country = col_character(),
-                                 Province = col_character(),
-                                 Lat = col_double(),
-                                 Lon = col_double(),
-                                 Date = col_datetime(format = ""),
-                                 Cases = col_double(),
-                                 Status = col_character()
-                               ))
+                          cols(
+                            Country = col_character(),
+                            CountryCode = col_character(),
+                            Lat = col_double(),
+                            Lon = col_double(),
+                            Confirmed = col_double(),
+                            Deaths = col_double(),
+                            Recovered = col_double(),
+                            Active = col_double(),
+                            Date = col_datetime(format = ""),
+                            LocationID = col_character(),
+                            Province = col_character(),
+                            City = col_character(),
+                            CityCode = col_character()
+                          ))
   
 
   DF_JHU_clean = DF_JHU_raw %>% 
     as_tibble() %>% 
-    select(-Lat, -Lon) %>% 
+    select(Country, Province, Confirmed, Deaths, Date) %>% 
     rename(country = Country,
            time = Date) %>% 
     mutate(time = as.Date(time)) %>% 
@@ -42,18 +48,21 @@ data_download <- function(cases_deaths = "cases") {
     mutate(country = 
              case_when(
                country == "Iran (Islamic Republic of)" ~ "Iran",
+               country == "United States of America" ~ "USA",
+               country == "Iran, Islamic Republic of" ~ "Iran",
+               country == "Taiwan, Republic of China" ~ "Taiwan",
                country == "Mainland China" ~ "China",
                country == "UK" ~ "United Kingdom",
                country == "Bahamas, The" ~ "Bahamas",
                country == "Gambia, The" ~ "Gambia",
                country == "Hong Kong SAR" ~ "Hong Kong",
-               country == "Iran (Islamic Republic of)" ~ "Iran",
                country == "Korea, South" ~ "South Korea",
                country == "Russian Federation" ~ "Russia",
                country == "occupied Palestinian territory" ~ "Palestine",
                TRUE ~ country
              )) %>% 
     filter(!(time == "2020-03-11")) %>% 
+    pivot_longer(c("Confirmed", "Deaths"), names_to = "Status", values_to = "Cases") %>% 
     distinct(country, Province, time, Cases, Status) %>%
     group_by(country, Province, time, Status) %>% 
     summarise(Cases = sum(Cases)) %>% 
@@ -61,8 +70,8 @@ data_download <- function(cases_deaths = "cases") {
     mutate(time = as.Date(time, "%m/%d/%y")) %>% 
     ungroup() %>% 
     group_by(country, time) %>%
-    summarize(cases_sum = sum(confirmed),
-              deaths_sum = sum(deaths)) %>% 
+    summarize(cases_sum = sum(Confirmed),
+              deaths_sum = sum(Deaths)) %>% 
               # recovered_sum = sum(recovered)) %>%
     ungroup()
 
