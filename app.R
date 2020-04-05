@@ -19,7 +19,7 @@ library(shinyjs)
 
 # Data preparation --------------------------------------------------------
 
-cases_deaths = "cases" #cases deaths
+cases_deaths = "deaths" #cases deaths
 
 source(here::here("R/download_or_load.R"))
 source(here::here("R/download_or_load_JH_API.R"))
@@ -84,7 +84,7 @@ ui <-
     
     uiOutput('highlight2'),
     
-    selectInput(inputId = "cases_deaths", label = "Cases or deaths", selected = "cases", 
+    selectInput(inputId = "cases_deaths", label = "Cases or deaths", selected = "deaths", 
                  choices = c("cases", "deaths", "CFR")),
 
     radioButtons(inputId = "accumulated_daily_pct", label = "Accumulated, daily or %", selected = "accumulated", 
@@ -127,9 +127,6 @@ ui <-
     ),
     
     HTML("<BR><BR>"),
-    
-    # span(h6("REMEMBER: 1) # of cases is not equivalent to # of infections. 2) # of cases are not  directly comparable (countries employ different testing strategies)."),
-    #      style = "color:darkred"),
     
     uiOutput("WARNING"),
     
@@ -201,12 +198,15 @@ server <- function(input, output, session) {
     # WARNING -----------------------------------------------------------------
     output$WARNING <- renderUI({
         if (input$cases_deaths == "cases") {
-            span(h6("REMEMBER: 1) # of cases is not equivalent to # of infections. 2) # of cases are not  directly comparable (countries employ different testing strategies)."),
+            span(h6("REMEMBER, number os cases is not a trusworthy measure: ", br(), br(), "Number of cases is not equivalent to infections. It is limited by number of tests, and most countries are not testing enough. ", br(), br(), "Number of cases are not directly comparable (countries employ different testing strategies)."),
                  style = "color:darkred")
         } else if (input$cases_deaths == "deaths") {
-            # span(h6("REMEMBER: 1) # of deaths depends on ."),
-            #      style = "color:darkred")        
-            }
+            span(h6("REMEMBER: ", br(), br(), "Countries count deaths in different ways (e.g. Some count deaths at hospitals but not at nursing homes and other count both)."),
+                 style = "color:darkred")
+        } else if (input$cases_deaths == "CFR") {
+            span(h6("REMEMBER: ", br(), br(), "Case Fatality Rate (CFR) = deaths / cases.", br(), br(), "Given the number of cases is not trustworthy (e.g. not enough tests), CFR is generally not a precise measure (usually an overestimation)."),
+                 style = "color:darkred")
+        }
     })
 
     
