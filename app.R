@@ -35,7 +35,7 @@ source(here::here("R/fetch_last_update_date.R"))
 data_download()
 
 # Time last commit of source file
-last_commit_time = fetch_last_update_date()$result
+# last_commit_time = fetch_last_update_date()$result
 
 # Launch data_download 
 minutes_to_check_downloads = 30 # Every 12 minutes
@@ -149,7 +149,7 @@ ui <-
         mainPanel(
             p(HTML(
                 paste0(
-                    a("Johns Hopkins Data", href="https://covid19api.com/", target = "_blank"), " updated on: ", as.character(last_commit_time), " GMT",
+                    a("Johns Hopkins Data", href="https://covid19api.com/", target = "_blank"), " updated on: ", as.character(file_info_JHU), " GMT",
                     "<BR>", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), " (last point) updated on: ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT"
                     )
                 )
