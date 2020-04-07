@@ -19,7 +19,7 @@ data_download <- function(cases_deaths = "cases") {
 
   download_or_load_JH_API(file_name = "outputs/raw_JH.csv")
 
-  DF_JHU_raw = read_csv(here::here("outputs/raw_JH.csv"), 
+  DF_JHU_raw = vroom::vroom(here::here("outputs/raw_JH.csv"), 
                              col_types = 
                           cols(
                             Country = col_character(),

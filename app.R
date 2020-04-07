@@ -14,6 +14,7 @@ library(shiny)
 library(shinythemes)
 library(shinyWidgets)
 library(shinyjs)
+library(vroom)
 
 
 
@@ -501,7 +502,7 @@ server <- function(input, output, session) {
                 MIN_y = min(final_df()$value, na.rm = TRUE, na.rm = TRUE) * 0.95
             }
             
-            if (MIN_y == 0) MIN_y = 0.01
+            if (MIN_y == 0) MIN_y = 1
             message("MIN_y: ", MIN_y, " MAX_y: ", MAX_y)
             
             # Scale, log or not
