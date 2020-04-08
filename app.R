@@ -317,6 +317,7 @@ server <- function(input, output, session) {
             INPUT_cases_deaths = input$cases_deaths
             INPUT_countries_plot = input$countries_plot
             INPUT_relative = input$relative
+            INPUT_accumulated_daily_pct = input$accumulated_daily_pct
             
             
             # Launch data preparation
@@ -341,12 +342,17 @@ server <- function(input, output, session) {
                                    TRUE ~ days_after_100
                                )) %>% 
                     group_by(country) %>%
+                    
+                    # Get rid of the latest data if it either 0 or negative
+                    filter( !(days_after_100 == max(days_after_100, na.rm = TRUE) & diff <= 0)) %>% 
+        
+                    # Create name_end labels
                     mutate(
                         name_end =
                             case_when(
-                                days_after_100 == max(days_after_100, na.rm = TRUE) & source == "worldometers" ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
+                                days_after_100 == max(days_after_100, na.rm = TRUE) & time == max(time, na.rm = TRUE) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
                                 what == "lockdown" ~ "*",
-                                TRUE ~ ""))
+                                TRUE ~ ""))  
 
                 
                 # Highlight
@@ -462,10 +468,6 @@ server <- function(input, output, session) {
                 # Country points (last one bigger)
                 geom_point(aes(size = 1 + as.integer(final_df()$name_end != "" & final_df()$name_end != "*") - .5), alpha = .7) +
                 
-                # Country label
-                ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .3, alpha = .7) + 
-                
-                
                 scale_x_continuous(breaks = seq(0, max(final_df()$days_after_100, na.rm = TRUE), 2)) +
                 labs(
                     title = paste0("Coronavirus confirmed ", input$cases_deaths , if (input$relative == TRUE) " / million people"),
@@ -482,7 +484,6 @@ server <- function(input, output, session) {
             } else {
                 p_temp = p_temp +  
                     geom_smooth(data = DF_plot %>% filter(country %in% counts_filter$country),
-                                # method = "lm", formula = y ~ poly(x, VALUE_span - 1), se = FALSE, size = .8, alpha = .6, na.rm = TRUE)
                                 method = "loess", span = 1.5, se = FALSE, size = .8, alpha = .6, na.rm = TRUE)
             }
 
@@ -503,7 +504,7 @@ server <- function(input, output, session) {
             }
             
             if (MIN_y == 0) MIN_y = 1
-            message("MIN_y: ", MIN_y, " MAX_y: ", MAX_y)
+            # message("MIN_y: ", MIN_y, " MAX_y: ", MAX_y)
             
             # Scale, log or not
             if (input$log_scale == TRUE) {
@@ -523,7 +524,7 @@ server <- function(input, output, session) {
             } else {
                 x_axis = max(growth_line()$days_after_100, na.rm = TRUE) + .85
                 y_axis = max(growth_line()$value, na.rm = TRUE) # MAX 
-                message("X: ", x_axis, " Y: ", y_axis)
+                # message("X: ", x_axis, " Y: ", y_axis)
             }
             
             
@@ -531,7 +532,10 @@ server <- function(input, output, session) {
                 annotate(geom = "text",
                          x = x_axis, 
                          y = y_axis, 
-                         label = paste0(VAR_growth(), "% growth"))
+                         label = paste0(VAR_growth(), "% growth")) +
+                # Country label
+                ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .1, alpha = .75)  
+                
                 
             p_final
             
