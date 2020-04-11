@@ -78,21 +78,10 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases", countr
     }
 
 
-
 dta <<-
   dta_raw_filtered %>%
     group_by(country) %>%
     mutate(days_after_100 = 0:(length(country)-1)) %>%
-
-    # Create labels for last instance for each country
-    # group_by(country) %>%
-    # mutate(
-    #   name_end =
-    #     case_when(
-    #       days_after_100 == max(days_after_100) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
-    #       TRUE ~ "")) %>% 
-  
-
     arrange(time) %>%
     group_by(country) %>%
     mutate(days_after_100 = 
@@ -101,10 +90,6 @@ dta <<-
                TRUE ~ days_after_100),
            diff = round(value - lag(value), 2),
            diff_pct = diff / lag(value)
-           # name_end = 
-           #   case_when(
-           #     is.na(name_end) ~ "",
-           #     TRUE ~ name_end)
            ) %>% 
     ungroup() %>%   # Create labels for last instance for each country
     group_by(country) %>% 
