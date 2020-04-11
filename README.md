@@ -32,3 +32,7 @@ Please always check oficial sources (e.g. [WHO](https://www.who.int/emergencies/
 * LUN: http://www.lun.com/Pages/NewsDetail.aspx?dt=2020-03-27&NewsID=448341&BodyID=0&PaginaId=12
 * Cooler: https://cooleruai.com/2020/03/26/zoom-de-datos/
 * ADN radio: https://www.litoralpress.cl/deposito/audios/2020/03/27/8931201.mp3
+* AFP: https://www.afp.com/es/noticias/838/chile-recurre-propiedades-antibacterianas-del-cobre-para-fabricar-mascarillas-doc-1qh1n21
+* 24 matins: https://www.24matins.es/topnews/america/chile-recurre-a-propiedades-antibacterianas-del-cobre-para-fabricar-mascarillas-203555
+* Gestion: https://gestion.pe/mundo/chile-recurre-a-propiedades-antibacterianas-del-cobre-para-fabricar-mascarillas-noticia/
+
