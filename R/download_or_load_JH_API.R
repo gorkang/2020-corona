@@ -17,7 +17,7 @@ download_or_load_JH_API <-
         
         time_downloaded = round(difftime(Sys.time(), file_info_JHU, units='hours'), 2)
         should_download = time_downloaded > hours_threshold
-        message("File ", file_name, " exists since ", time_downloaded, " hours ago, will ", "NOT"[!should_download], " download again")
+        message("File ", file_name, " downloded ", time_downloaded, " hours ago, will ", "NOT"[!should_download], " download again")
         
       }
       

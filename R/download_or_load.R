@@ -28,7 +28,7 @@ download_or_load <-
         
         time_downloaded = round(difftime(Sys.time(), file_info, units='hours'), 2)
         should_download = time_downloaded > hours_threshold
-        message("File ", file_name, " exists since ", time_downloaded, " hours ago, will ", "NOT"[!should_download], " download again")
+        message("File ", file_name, " downloaded ", time_downloaded, " hours ago, will ", "NOT"[!should_download], " download again")
         
       }
       
