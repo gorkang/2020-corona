@@ -35,4 +35,6 @@ Please always check oficial sources (e.g. [WHO](https://www.who.int/emergencies/
 * AFP: https://www.afp.com/es/noticias/838/chile-recurre-propiedades-antibacterianas-del-cobre-para-fabricar-mascarillas-doc-1qh1n21
 * 24 matins: https://www.24matins.es/topnews/america/chile-recurre-a-propiedades-antibacterianas-del-cobre-para-fabricar-mascarillas-203555
 * Gestion: https://gestion.pe/mundo/chile-recurre-a-propiedades-antibacterianas-del-cobre-para-fabricar-mascarillas-noticia/
-
+* La Razon: https://www.la-razon.com/marcas/2020/04/08/chile-recurre-a-propiedades-antibacterianas-del-cobre-para-fabricar-mascarillas/
+* Flanlate: https://www.flanlate.com/2020/03/curvas-de-contagio-comparacion-de-los.html
+* Reportes365: http://www.reportes365.com/internacionales/chile-recurre-a-propiedades-antibacterianas-del-cobre-para-fabricar-mascarillas/
