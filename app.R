@@ -33,7 +33,7 @@ source(here::here("R/data-preparation-menu.R"))
 
 source(here::here("R/fetch_last_update_date.R"))
 
-data_download()
+# data_download()
 
 # Time last commit of source file
 # last_commit_time = fetch_last_update_date()$result
@@ -41,6 +41,10 @@ data_download()
 # Launch data_download 
 minutes_to_check_downloads = 30 # Every 12 minutes
 auto_invalide <- reactiveTimer(minutes_to_check_downloads * 60 * 1000) 
+
+file_info_JHU <- file.info("outputs/raw_JH.csv")$mtime
+time_worldometer <<- stringr::str_extract(string = html_text(read_html(here::here("outputs/temp_worldometers.html"))),
+                                          pattern = '\\w+\\s\\d+(st)?(nd)?(rd)?(th)?,\\s+\\d+, \\d+:\\d+ GMT')
 
 
 # UI ----------------------------------------------------------------------
@@ -92,9 +96,9 @@ ui <-
                  choices = c("accumulated", "daily", "%"), inline = TRUE),
     
     # Dynamically change with cases_deaths
-    sliderInput('min_n_cases', paste0("Day 0 after ___ cases"), min = 1, max = 1000, value = 100), 
-    sliderInput('min_n_deaths', paste0("Day 0 after ___ deaths"), min = 1, max = 500, value = 10),
-    sliderInput('min_n_CFR', paste0("Day 0 after ___ deaths"), min = 1, max = 500, value = 10),
+    sliderInput('min_n_cases', paste0("Day 0 after ___ accumulated cases"), min = 1, max = 1000, value = 100), 
+    sliderInput('min_n_deaths', paste0("Day 0 after ___ accumulated deaths"), min = 1, max = 500, value = 10),
+    sliderInput('min_n_CFR', paste0("Day 0 after ___ accumulated deaths"), min = 1, max = 500, value = 10),
     
     # Dynamically change with accumulated_daily_pct
     sliderInput("growth_accumulated", "Daily growth (%):", min = 0, max = 100, value = 30),
@@ -195,6 +199,10 @@ server <- function(input, output, session) {
           'mytable_cell_clicked',
           'mytable_rows_selected'))
     
+    
+    withProgress(message = 'Downloading data', value = 1, min = 0, max = 3, {
+        data_download()
+    })
     
     # WARNING -----------------------------------------------------------------
     output$WARNING <- renderUI({
@@ -303,7 +311,7 @@ server <- function(input, output, session) {
     
     final_df = reactive({ 
 
-        withProgress(message = 'Preparing data', value = 0, {
+        withProgress(message = 'Preparing data', value = 2, min = 0, max = 3, {
             
             # req(input$highlight)
             req(VAR_highlight())
@@ -319,6 +327,7 @@ server <- function(input, output, session) {
             INPUT_relative = input$relative
             INPUT_accumulated_daily_pct = input$accumulated_daily_pct
             
+            message("INPUT_highlight = ", INPUT_highlight, "\nINPUT_min_n = ", INPUT_min_n, "\nINPUT_cases_deaths = ", INPUT_cases_deaths, "\nINPUT_countries_plot = ", INPUT_countries_plot, "\nINPUT_relative = ", INPUT_relative, "\nINPUT_accumulated_daily_pct = ", INPUT_accumulated_daily_pct)
             
             # Launch data preparation
             data_preparation(cases_deaths = INPUT_cases_deaths, countries_plot = INPUT_countries_plot, min_n = INPUT_min_n, relative = INPUT_relative)
@@ -435,8 +444,9 @@ server <- function(input, output, session) {
     # Show plot
     output$distPlot <- renderCachedPlot({
 
-        withProgress(message = 'Loading plot', value = 0, {
-
+        withProgress(message = 'Loading plot', value = 3, min = 0, max = 3, {
+                
+            
             # Show accumulated or daily plot
             if (input$accumulated_daily_pct == "daily") {
                 DF_plot = final_df() %>% 
@@ -472,7 +482,7 @@ server <- function(input, output, session) {
                 labs(
                     title = paste0("Coronavirus confirmed ", input$cases_deaths , if (input$relative == TRUE) " / million people"),
                     subtitle = paste0("Arranged by number of days since ",  VAR_min_n() ," or more ", input$cases_deaths),
-                    x = paste0("Days after ",  VAR_min_n() ," confirmed ", input$cases_deaths),
+                    x = paste0("Days after ",  VAR_min_n() ," accumulated ", input$cases_deaths),
                     y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths, " (log scale)",  if (input$relative == TRUE) " / million people"), 
                     caption = paste0("[*]: Lockdown\nSources: Johns Hopkins CSSE and worldometers.info\n gorkang.shinyapps.io/2020-corona/")) +
                 theme_minimal(base_size = 14) +
@@ -522,17 +532,17 @@ server <- function(input, output, session) {
                 x_axis = max(growth_line()$days_after_100, na.rm = TRUE) - .5
                 y_axis = min(growth_line()$value, na.rm = TRUE) # MIN
             } else {
-                x_axis = max(growth_line()$days_after_100, na.rm = TRUE) + .85
-                y_axis = max(growth_line()$value, na.rm = TRUE) # MAX 
+                x_axis = max(growth_line()$days_after_100, na.rm = TRUE) - 1.5
+                y_axis = max(growth_line()$value, na.rm = TRUE) + 1 # MAX 
                 # message("X: ", x_axis, " Y: ", y_axis)
             }
-            
             
             p_final <<- p_temp + 
                 annotate(geom = "text",
                          x = x_axis, 
-                         y = y_axis, 
+                         y = y_axis,
                          label = paste0(VAR_growth(), "% growth")) +
+                
                 # Country label
                 ggrepel::geom_label_repel(aes(label = name_end), show.legend = FALSE, segment.color = "grey", segment.size  = .1, alpha = .75)  
                 
