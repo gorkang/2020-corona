@@ -200,7 +200,7 @@ server <- function(input, output, session) {
           'mytable_rows_selected'))
     
     
-    withProgress(message = 'Downloading data', value = 1, min = 0, max = 3, {
+    withProgress(message = 'Downloading data', value = 1, min = 0, max = 4, {
         data_download()
     })
     
@@ -311,7 +311,7 @@ server <- function(input, output, session) {
     
     final_df = reactive({ 
 
-        withProgress(message = 'Preparing data', value = 2, min = 0, max = 3, {
+        withProgress(message = 'Preparing data', value = 2, min = 0, max = 4, {
             
             # req(input$highlight)
             req(VAR_highlight())
@@ -327,7 +327,7 @@ server <- function(input, output, session) {
             INPUT_relative = input$relative
             INPUT_accumulated_daily_pct = input$accumulated_daily_pct
             
-            message("INPUT_highlight = ", INPUT_highlight, "\nINPUT_min_n = ", INPUT_min_n, "\nINPUT_cases_deaths = ", INPUT_cases_deaths, "\nINPUT_countries_plot = ", INPUT_countries_plot, "\nINPUT_relative = ", INPUT_relative, "\nINPUT_accumulated_daily_pct = ", INPUT_accumulated_daily_pct)
+            # message("INPUT_highlight = ", INPUT_highlight, "\nINPUT_min_n = ", INPUT_min_n, "\nINPUT_cases_deaths = ", INPUT_cases_deaths, "\nINPUT_countries_plot = ", INPUT_countries_plot, "\nINPUT_relative = ", INPUT_relative, "\nINPUT_accumulated_daily_pct = ", INPUT_accumulated_daily_pct, "\n")
             
             # Launch data preparation
             data_preparation(cases_deaths = INPUT_cases_deaths, countries_plot = INPUT_countries_plot, min_n = INPUT_min_n, relative = INPUT_relative)
@@ -441,10 +441,10 @@ server <- function(input, output, session) {
     })
     
 
-    # Show plot
-    output$distPlot <- renderCachedPlot({
+    # Prepare plot
+    final_plot <- reactive({
 
-        withProgress(message = 'Loading plot', value = 3, min = 0, max = 3, {
+        withProgress(message = 'Preparing plot', value = 3, min = 0, max = 4, {
                 
             
             # Show accumulated or daily plot
@@ -537,7 +537,7 @@ server <- function(input, output, session) {
                 # message("X: ", x_axis, " Y: ", y_axis)
             }
             
-            p_final <<- p_temp + 
+            p_final <- p_temp + 
                 annotate(geom = "text",
                          x = x_axis, 
                          y = y_axis,
@@ -550,8 +550,18 @@ server <- function(input, output, session) {
             p_final
             
         })
+    })
+    
+    # Show plot
+    output$distPlot <- renderCachedPlot({
+        
+        withProgress(message = 'Showing plot', value = 4, min = 0, max = 4, {
+            
+            final_plot()
+            
+        })
     }, cacheKeyExpr = list(final_df(), growth_line(), VAR_highlight(), VAR_min_n(), input$accumulated_daily_pct, input$cases_deaths, input$log_scale, input$smooth))
-
+    
         
     # Show table
     output$mytable = DT::renderDataTable({
@@ -572,7 +582,7 @@ server <- function(input, output, session) {
     
     output$downloadPlot <- downloadHandler(
         filename = function() { paste(Sys.Date(), "_corona.png", sep = "") },
-        content = function(file) { ggsave(file, plot = p_final, device = "png", width = 14, height = 10) }
+        content = function(file) { ggsave(file, plot = final_plot(), device = "png", width = 14, height = 10) }
     )
 
     output$downloadData <- downloadHandler(
@@ -591,4 +601,4 @@ server <- function(input, output, session) {
 }
 
 # Run the application 
-shinyApp(ui = ui, server = server, enableBookmarking = "url", options = "test.mode")
+shinyApp(ui = ui, server = server, enableBookmarking = "url") #, options = "test.mode"
