@@ -38,3 +38,5 @@ Please always check oficial sources (e.g. [WHO](https://www.who.int/emergencies/
 * La Razon: https://www.la-razon.com/marcas/2020/04/08/chile-recurre-a-propiedades-antibacterianas-del-cobre-para-fabricar-mascarillas/
 * Flanlate: https://www.flanlate.com/2020/03/curvas-de-contagio-comparacion-de-los.html
 * Reportes365: http://www.reportes365.com/internacionales/chile-recurre-a-propiedades-antibacterianas-del-cobre-para-fabricar-mascarillas/
+* De peru: https://www.deperu.com/noticias/chile-recurre-a-propiedades-antibacterianas-del-cobre-para-fabricar-mascarillas-102041.html
+* El Libero: https://ellibero.cl/actualidad/la-disminucion-de-nuevos-casos-que-saco-a-ocho-comunas-de-la-cuarentena-2/
