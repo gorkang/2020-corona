@@ -33,10 +33,6 @@ source(here::here("R/data-preparation-menu.R"))
 
 source(here::here("R/fetch_last_update_date.R"))
 
-# data_download()
-
-# Time last commit of source file
-# last_commit_time = fetch_last_update_date()$result
 
 # Launch data_download 
 minutes_to_check_downloads = 30 # Every 12 minutes
@@ -59,7 +55,7 @@ ui <-
             windowTitle = "Coronavirus Tracker - Facultad de Psicología - UAI",
             fluidRow(
                 column(9, HTML("<a href=\"https://gorkang.shinyapps.io/2020-corona/\">Coronavirus tracker</a>")), 
-                column(1, HTML("<a href=\"http://psicologia.uai.cl/\"><img src=\"UAI_mini.png\", alt =\ 'Universidad Adolfo Ibáñez'></a>"))
+                column(1, HTML("<a href=\"http://psicologia.uai.cl/\", target = \"_blank\"><img src=\"UAI_mini.png\", alt ='Universidad Adolfo Ibáñez'></a>"))
             )
         ),
     theme = shinytheme("flatly"),
@@ -200,10 +196,7 @@ server <- function(input, output, session) {
           'mytable_rows_selected'))
     
     
-    withProgress(message = 'Downloading data', value = 1, min = 0, max = 4, {
-        data_download()
-    })
-    
+
     # WARNING -----------------------------------------------------------------
     output$WARNING <- renderUI({
         if (input$cases_deaths == "cases") {
@@ -222,10 +215,14 @@ server <- function(input, output, session) {
     # Launch data downloading -------------------------------------------------
 
     observe({
+        withProgress(message = 'Downloding or loading data', value = 1, min = 0, max = 4, {
+            
         auto_invalide()
         message("\n\n* CHECKING IF WE HAVE TO DOWNLOAD DATA ---------------------- \n")
         data_download()
-    })    
+        
+        })
+    })
     
     # Dynamic menus -----------------------------------------------------------
     
