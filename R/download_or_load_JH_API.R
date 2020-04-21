@@ -24,7 +24,7 @@ download_or_load_JH_API <-
       # If should_download, try to download maxTimes times
       if (should_download == TRUE) {
         
-        DF_all = jsonlite::fromJSON("https://api.covid19api.com/all") %>% as.data.frame %>% 
+        DF_all = jsonlite::fromJSON(URL) %>% as.data.frame %>% 
           write_csv(paste0(file_name))
         
         

@@ -8,7 +8,12 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases", countr
                                        cols(
                                          country = col_character(),
                                          population = col_double()
-                                       ))
+                                       )) %>% 
+    mutate(country = 
+             case_when(
+               country == "Korea, South" ~ "Korea (South)",
+               TRUE ~ country
+             ))
 
   
   DF_lockdowns = read_csv("data/lockdown_countries.csv", 
@@ -101,7 +106,8 @@ dta <<-
           days_after_100 == max(days_after_100) & source == "worldometers" ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
           what == "lockdown" ~ "*",
           TRUE ~ "")) %>% 
-    select(country, time, value, diff, everything())
+    select(country, time, value, diff, everything()) #%>% left_join(DF_population_countries, by = "country") 
+  
 
   }
 }
