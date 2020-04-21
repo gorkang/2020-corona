@@ -22,19 +22,14 @@ data_download <- function(cases_deaths = "cases") {
   DF_JHU_raw = vroom::vroom(here::here("outputs/raw_JH.csv"), 
                              col_types = 
                           cols(
-                            Country = col_character(),
-                            CountryCode = col_character(),
+                            .default = col_character(),
                             Lat = col_double(),
                             Lon = col_double(),
                             Confirmed = col_double(),
                             Deaths = col_double(),
                             Recovered = col_double(),
                             Active = col_double(),
-                            Date = col_datetime(format = ""),
-                            LocationID = col_character(),
-                            Province = col_character(),
-                            City = col_character(),
-                            CityCode = col_character()
+                            Date = col_datetime(format = "")
                           ))
   
 
