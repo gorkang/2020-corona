@@ -83,7 +83,12 @@ ui <-
                 width = "100%", 
                 selected = c(top_countries, "United Kingdom", "Denmark", "Chile")),
     
-    uiOutput('highlight2'),
+    selectInput(inputId = 'highlight', 
+                label = 'Highlight countries',
+                choices = c(top_countries, "United Kingdom", "Denmark", "Chile"),
+                multiple = TRUE, 
+                selectize = TRUE, 
+                width = "100%"),
     
     selectInput(inputId = "cases_deaths", label = "Cases or deaths", selected = "deaths", 
                  choices = c("cases", "deaths", "CFR")),
@@ -224,6 +229,18 @@ server <- function(input, output, session) {
         })
     })
     
+    
+
+    # Debounce critical vars --------------------------------------------------
+
+    INPUT_countries_plot = reactive({ input$countries_plot })
+    INPUT_countries_plot_debounced <- debounce(INPUT_countries_plot, 500)
+
+    INPUT_highlight = reactive({ input$highlight })
+    INPUT_highlight_debounced <- debounce(INPUT_highlight, 500)
+    
+    
+    
     # Dynamic menus -----------------------------------------------------------
     
     observeEvent(input$cases_deaths,{
@@ -280,27 +297,28 @@ server <- function(input, output, session) {
         }
     })
     
-    VAR_highlight = reactive({
-        
-        if (is.null(input$highlight)) {
-            " "
-        } else {
-            input$highlight
-        }
-    })
-
     
-    # Dinamically set highlight choices bases on input$countries_plot
-    outVar = reactive({ c(" ", input$countries_plot %>% sort()) })
-    output$highlight2 = renderUI({
-        selectInput(inputId = 'highlight', 
-                    label = 'Highlight countries',
-                    choices = outVar(),
-                    multiple = TRUE, 
-                    selectize = TRUE, 
-                    width = "100%", 
-                    selected = " ")
-    })
+
+    # Dynamic selection in highlight ------------------------------------------
+
+    observeEvent(
+        list(INPUT_countries_plot_debounced()), {
+        
+        # If set of highlights NOT the initial one
+        if (! is.null(INPUT_highlight_debounced())) {
+
+            updateSelectInput(session = session, 
+                              inputId = "highlight", 
+                              choices = c(INPUT_countries_plot_debounced()),
+                              selected = myReactives$highlight)
+        }
+        
+        })
+    
+    myReactives <- reactiveValues()  
+    observe(
+        myReactives$highlight <- INPUT_highlight_debounced()
+    )
     
     
 
@@ -310,17 +328,15 @@ server <- function(input, output, session) {
 
         withProgress(message = 'Preparing data', value = 2, min = 0, max = 4, {
             
-            # req(input$highlight)
-            req(VAR_highlight())
             req(VAR_min_n())
             req(input$cases_deaths)
-            req(input$countries_plot)
+            req(INPUT_countries_plot_debounced())
             
             # VARS
-            INPUT_highlight = VAR_highlight()
+            INPUT_highlight = myReactives$highlight 
             INPUT_min_n = VAR_min_n()
             INPUT_cases_deaths = input$cases_deaths
-            INPUT_countries_plot = input$countries_plot
+            INPUT_countries_plot = INPUT_countries_plot_debounced()
             INPUT_relative = input$relative
             INPUT_accumulated_daily_pct = input$accumulated_daily_pct
             
@@ -362,12 +378,12 @@ server <- function(input, output, session) {
 
                 
                 # Highlight
-                 if (any(' ' != VAR_highlight())) {
+                 if (any(' ' != myReactives$highlight )) {
                      
                      # Create colors diccionary
                      DF_colors_temp =
                          dta_temp %>% 
-                         filter(country %in% VAR_highlight()) %>% 
+                         filter(country %in% myReactives$highlight ) %>% 
                          distinct(country)
                          
                      # If the selected country does not have observations over the threshold
@@ -495,7 +511,7 @@ server <- function(input, output, session) {
             }
 
             # If any value is not " ", scale_color_identity()
-            if (any(' ' != VAR_highlight())) { p_temp =  p_temp + scale_color_identity() }
+            if (any(' ' != myReactives$highlight )) { p_temp =  p_temp + scale_color_identity() }
             
             
             # LIMITS
@@ -557,7 +573,7 @@ server <- function(input, output, session) {
             final_plot()
             
         })
-    }, cacheKeyExpr = list(final_df(), growth_line(), VAR_highlight(), VAR_min_n(), input$accumulated_daily_pct, input$cases_deaths, input$log_scale, input$smooth))
+    }, cacheKeyExpr = list(final_df(), growth_line(), myReactives$highlight , VAR_min_n(), input$accumulated_daily_pct, input$cases_deaths, input$log_scale, input$smooth))
     
         
     # Show table
