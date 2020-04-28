@@ -1,3 +1,5 @@
+# options(shiny.reactlog = TRUE) 
+
 # Libraries ---------------------------------------------------------------
 
 library(dplyr)
@@ -35,7 +37,7 @@ source(here::here("R/fetch_last_update_date.R"))
 
 
 # Launch data_download 
-minutes_to_check_downloads = 30 # Every 12 minutes
+minutes_to_check_downloads = 30 # Every x minutes
 auto_invalide <- reactiveTimer(minutes_to_check_downloads * 60 * 1000) 
 
 file_info_JHU <- file.info("outputs/raw_JH.csv")$mtime
@@ -305,13 +307,13 @@ server <- function(input, output, session) {
         list(INPUT_countries_plot_debounced()), {
         
         # If set of highlights NOT the initial one
-        if (! is.null(INPUT_highlight_debounced())) {
+        # if (! is.null(INPUT_highlight_debounced())) {
 
             updateSelectInput(session = session, 
                               inputId = "highlight", 
                               choices = c(INPUT_countries_plot_debounced()),
                               selected = myReactives$highlight)
-        }
+        # }
         
         })
     
@@ -536,7 +538,8 @@ server <- function(input, output, session) {
             } else {
                 p_temp = p_temp +
                     scale_y_continuous(breaks = scales::pretty_breaks(n = 10), labels = function(x) format(x, big.mark = ",", scientific = FALSE), limits = c(MIN_y, MAX_y)) +
-                    labs(y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths))
+                    labs(y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths,  if (input$relative == TRUE) " / million people"))
+                    # labs(y = paste0("Confirmed ", input$accumulated_daily_pct, " ", input$cases_deaths))
             }
 
                      
