@@ -1,4 +1,7 @@
 
+raw_data_exists = file.info(here::here("outputs/raw_data.csv"))$mtime
+if (is.na(raw_data_exists)) data_download()
+
 dta_raw = read_csv(here::here("outputs/raw_data.csv"), 
                    col_types = 
                      cols(
