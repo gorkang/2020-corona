@@ -352,31 +352,31 @@ server <- function(input, output, session) {
                 dta_temp = dta %>%
                     
                     # If repeated values the same day, keep higher
-                    group_by(country, time) %>% 
-                    distinct(KEY = paste0(country, time, value), .keep_all = TRUE) %>% 
-                    select(-KEY) %>% 
-                    ungroup() %>% 
-                
+                    group_by(country, time) %>%
+                    distinct(KEY = paste0(country, time, value), .keep_all = TRUE) %>%
+                    select(-KEY) %>%
+                    ungroup() %>%
+
                     # re-adjust after filtering
                     group_by(country) %>%
                     mutate(days_after_100 = as.numeric(0:(length(country) - 1)),
-                           days_after_100 = 
+                           days_after_100 =
                                case_when(
                                    source == "worldometers" ~ lag(days_after_100) + round(as.POSIXlt(as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"))$hour/24, 2), #.1
                                    TRUE ~ days_after_100
-                               )) %>% 
+                               )) %>%
                     group_by(country) %>%
-                    
+
                     # Get rid of the latest data if it either 0 or negative
                     filter( !(days_after_100 == max(days_after_100, na.rm = TRUE) & diff <= 0)) %>% 
-        
+                    # 
                     # Create name_end labels
                     mutate(
                         name_end =
                             case_when(
                                 days_after_100 == max(days_after_100, na.rm = TRUE) & time == max(time, na.rm = TRUE) ~ paste0(as.character(country), ": ", format(value, big.mark=","), " - ", days_after_100, " days"),
                                 what == "lockdown" ~ "*",
-                                TRUE ~ ""))  
+                                TRUE ~ ""))
 
                 
                 # Highlight
@@ -424,13 +424,16 @@ server <- function(input, output, session) {
     growth_line = reactive({
         
         # LIMITS of DATA
-        if (input$accumulated_daily_pct == "daily") {
-            MAX_y = max(final_df()$diff, na.rm = TRUE) * 1.1
-        } else if (input$accumulated_daily_pct == "%") {
-            MAX_y = max(final_df()$diff_pct, na.rm = TRUE) * 100
-        } else {
+        # if (input$accumulated_daily_pct == "daily") {
+        #     MIN_y = min(final_df()$diff, na.rm = TRUE)
+        #     MAX_y = max(final_df()$diff, na.rm = TRUE) * 1.1
+        # } else if (input$accumulated_daily_pct == "%") {
+        #     MIN_y = min(final_df()$diff_pct, na.rm = TRUE) * 100
+        #     MAX_y = max(final_df()$diff_pct, na.rm = TRUE) * 100
+        # } else {
+            MIN_y = min(final_df()$value, na.rm = TRUE)
             MAX_y = max(final_df()$value, na.rm = TRUE) * 1.1
-        }
+        # }
         
         # To avoid error
         if (is.infinite(max(final_df()$days_after_100, na.rm = TRUE))) {
@@ -448,7 +451,7 @@ server <- function(input, output, session) {
                 filter(value <= MAX_y)
         } else {
             tibble(
-                value = cumprod(c(VAR_min_n(), rep((100 + VAR_growth()) / 100, line_factor * max_finaldf_days_after_100))),
+                value = cumprod(c(MIN_y, rep((100 + VAR_growth()) / 100, line_factor * max_finaldf_days_after_100))),
                 days_after_100 = 0:(line_factor * max_finaldf_days_after_100)) %>% 
                 filter(value <= MAX_y)
         }
