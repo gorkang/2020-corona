@@ -35,6 +35,8 @@ data_download <- function(cases_deaths = "cases") {
 
   DF_JHU_clean = DF_JHU_raw %>% 
     as_tibble() %>% 
+    filter(is.na(City)) %>%
+    
     select(Country, Province, Confirmed, Deaths, Date) %>% 
     rename(country = Country,
            time = Date) %>% 
