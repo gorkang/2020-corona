@@ -11,8 +11,10 @@ fetch_worldometers_safely <-
       raw_web = read_html(here::here("outputs/temp_worldometers.html"))  
       table_countries_raw = html_table(raw_web)[[1]]
       
-      time_worldometer <<- stringr::str_extract(string = html_text(raw_web),
-                                                pattern = '\\w+\\s\\d+(st)?(nd)?(rd)?(th)?,\\s+\\d+, \\d+:\\d+ GMT')
+      time_worldometer_raw <- stringr::str_extract(string = html_text(raw_web),
+                                                pattern = '\\w+\\s\\d+(st)?(nd)?(rd)?(th)?,\\s+\\d+') #, \\d+:\\d+ GMT
+      
+      time_worldometer <<- lubridate::as_date(lubridate::parse_date_time(time_worldometer_raw, orders = c("ymd", "dmy", "mdy")))
       
       # Select variable to use
       # variable_to_use = "TotalCases"
@@ -24,7 +26,7 @@ fetch_worldometers_safely <-
         rename(country = `Country,Other`,
                cases_sum = TotalCases,
                deaths_sum = TotalDeaths) %>% 
-        mutate(time = as.Date(time_worldometer, "%b %d, %Y"),
+        mutate(time = as.Date(as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT")),
                cases_sum = as.numeric(gsub(",", "", cases_sum)),
                deaths_sum = as.numeric(gsub(",", "", deaths_sum))) %>% 
         select(country, time, cases_sum, deaths_sum) %>%

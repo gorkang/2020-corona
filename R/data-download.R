@@ -5,7 +5,7 @@ data_download <- function(cases_deaths = "cases") {
   # Download worldometers
   fetch_worldometers_safely()
   
-  table_countries = read_csv(here::here("outputs/raw_data_worldometers.csv"), 
+  table_countries = readr::read_csv(here::here("outputs/raw_data_worldometers.csv"), 
            col_types = 
                cols(
                  country = col_character(),
@@ -17,62 +17,104 @@ data_download <- function(cases_deaths = "cases") {
   
   # JHU API ------------------------------------------------------------------
 
-  download_or_load_JH_API(file_name = "outputs/raw_JH.csv")
-
-  DF_JHU_raw = vroom::vroom(here::here("outputs/raw_JH.csv"), 
-                             col_types = 
-                          cols(
-                            .default = col_character(),
-                            Lat = col_double(),
-                            Lon = col_double(),
-                            Confirmed = col_double(),
-                            Deaths = col_double(),
-                            Recovered = col_double(),
-                            Active = col_double(),
-                            Date = col_datetime(format = "")
-                          ))
+  # download_or_load_JH_API(file_name = "outputs/raw_JH.csv")
+  download_or_load_OWID(file_name = "outputs/raw_OWID.csv")
   
-
-  DF_JHU_clean = DF_JHU_raw %>% 
-    as_tibble() %>% 
-    filter(is.na(City)) %>%
+  # DF_JHU_raw = vroom::vroom(here::here("outputs/raw_JH.csv"), 
+  #                            col_types = 
+  #                         cols(
+  #                           .default = col_character(),
+  #                           Lat = col_double(),
+  #                           Lon = col_double(),
+  #                           Confirmed = col_double(),
+  #                           Deaths = col_double(),
+  #                           Recovered = col_double(),
+  #                           Active = col_double(),
+  #                           Date = col_datetime(format = "")
+  #                         ))
+  
+  DF_OWID_RAW = vroom::vroom(here::here("outputs/raw_OWID.csv"),
+                             col_types = 
+                               
+                               cols(
+                                 .default = col_double(),
+                                 iso_code = col_character(),
+                                 continent = col_character(),
+                                 location = col_character(),
+                                 date = col_date(format = ""),
+                                 tests_units = col_character()
+                               ))
+  
+  
+  # url = "https://covid.ourworldindata.org/data/owid-covid-data.csv"
+  # DF_OWID_RAW <- read_csv(url, 
+  #                           # guess_max = 10000,
+  #                           col_types = 
+  #                             
+  #                             cols(
+  #                               .default = col_double(),
+  #                               iso_code = col_character(),
+  #                               continent = col_character(),
+  #                               location = col_character(),
+  #                               date = col_date(format = ""),
+  #                               tests_units = col_character()
+  #                             ))
+  # 
+  # # write_csv(DF_OWID_RAW, "outputs/raw_OWID.csv")
+  DF_OWID = 
+    DF_OWID_RAW %>% 
+    rename(country = location, 
+           Confirmed = total_cases,
+           Deaths = total_deaths,
+           time = date) %>% 
     
-    select(Country, Province, Confirmed, Deaths, Date) %>% 
-    rename(country = Country,
-           time = Date) %>% 
-    mutate(time = as.Date(time)) %>% 
-    filter(country != "") %>% 
-    mutate(country = 
-             case_when(
-               country == "Iran (Islamic Republic of)" ~ "Iran",
-               country == "United States of America" ~ "USA",
-               country == "Iran, Islamic Republic of" ~ "Iran",
-               country == "Taiwan, Republic of China" ~ "Taiwan",
-               country == "Mainland China" ~ "China",
-               country == "UK" ~ "United Kingdom",
-               country == "Bahamas, The" ~ "Bahamas",
-               country == "Gambia, The" ~ "Gambia",
-               country == "Hong Kong SAR" ~ "Hong Kong",
-               country == "Korea, South" ~ "South Korea",
-               country == "Russian Federation" ~ "Russia",
-               country == "occupied Palestinian territory" ~ "Palestine",
-               TRUE ~ country
-             )) %>% 
-    filter(!(time == "2020-03-11")) %>% 
-    pivot_longer(c("Confirmed", "Deaths"), names_to = "Status", values_to = "Cases") %>% 
-    distinct(country, Province, time, Cases, Status) %>%
-    group_by(country, Province, time, Status) %>% 
-    summarise(Cases = sum(Cases)) %>% 
-    pivot_wider(names_from = Status, values_from = Cases) %>% 
-    mutate(time = as.Date(time, "%m/%d/%y")) %>% 
-    ungroup() %>% 
+    select(country, time, Confirmed, Deaths) %>% 
     group_by(country, time) %>%
     summarize(cases_sum = sum(Confirmed),
-              deaths_sum = sum(Deaths)) %>% 
-              # recovered_sum = sum(recovered)) %>%
-    ungroup()
+              deaths_sum = sum(Deaths),
+              .groups = "drop")
+  
 
-  DF_write = DF_JHU_clean %>%
+  # DF_JHU_clean = DF_JHU_raw %>% 
+  #   as_tibble() %>% 
+  #   filter(is.na(City)) %>%
+  #   
+  #   select(Country, Province, Confirmed, Deaths, Date) %>% 
+  #   rename(country = Country,
+  #          time = Date) %>% 
+  #   mutate(time = as.Date(time)) %>% 
+  #   filter(country != "") %>% 
+  #   mutate(country = 
+  #            case_when(
+  #              country == "Iran (Islamic Republic of)" ~ "Iran",
+  #              country == "United States of America" ~ "USA",
+  #              country == "Iran, Islamic Republic of" ~ "Iran",
+  #              country == "Taiwan, Republic of China" ~ "Taiwan",
+  #              country == "Mainland China" ~ "China",
+  #              country == "UK" ~ "United Kingdom",
+  #              country == "Bahamas, The" ~ "Bahamas",
+  #              country == "Gambia, The" ~ "Gambia",
+  #              country == "Hong Kong SAR" ~ "Hong Kong",
+  #              country == "Korea, South" ~ "South Korea",
+  #              country == "Russian Federation" ~ "Russia",
+  #              country == "occupied Palestinian territory" ~ "Palestine",
+  #              TRUE ~ country
+  #            )) %>% 
+  #   filter(!(time == "2020-03-11")) %>% 
+  #   pivot_longer(c("Confirmed", "Deaths"), names_to = "Status", values_to = "Cases") %>% 
+  #   distinct(country, Province, time, Cases, Status) %>%
+  #   group_by(country, Province, time, Status) %>% 
+  #   summarise(Cases = sum(Cases)) %>% 
+  #   pivot_wider(names_from = Status, values_from = Cases) %>% 
+  #   mutate(time = as.Date(time, "%m/%d/%y")) %>% 
+  #   ungroup() %>% 
+  #   group_by(country, time) %>%
+  #   summarize(cases_sum = sum(Confirmed),
+  #             deaths_sum = sum(Deaths)) %>% 
+  #             # recovered_sum = sum(recovered)) %>%
+  #   ungroup()
+
+  DF_write = DF_OWID %>%
     # rename some countries
     mutate(
       country = case_when(
@@ -82,7 +124,8 @@ data_download <- function(cases_deaths = "cases") {
         TRUE ~ country
       )) %>% 
     
-    mutate(source = "JHU") %>% 
+    # mutate(source = "JHU") %>% 
+    mutate(source = "OWID") %>% 
     
     # Join worldometers
     bind_rows(table_countries %>% 

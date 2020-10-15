@@ -1,3 +1,5 @@
+library(readr)
+library(dplyr)
 
 raw_data_exists = file.info(here::here("outputs/raw_data.csv"))$mtime
 if (is.na(raw_data_exists)) data_download()
@@ -26,5 +28,5 @@ dta_raw = read_csv(here::here("outputs/raw_data.csv"),
 
 top_countries <<- DF_menu %>% 
   filter(!country %in% c("Total:", "Cruise Ship", "China", "Diamond Princess")) %>% 
-  slice_head(n = 6, wt = value) %>% 
+  slice_head(n = 6) %>% #, wt = value) %>% 
   pull(country)

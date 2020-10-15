@@ -1,22 +1,55 @@
-data_preparation <- function(data_source = "JHU", cases_deaths = "cases", countries_plot = "", min_n = 1, relative = FALSE) {
+data_preparation <- function(data_source = "OWID", cases_deaths = "cases", countries_plot = "", min_n = 1, relative = FALSE) {
 
   
   # Data preparation --------------------------------------------------------
   
-  DF_population_countries = read_csv("data/population_countries.csv",
+  DF_population_countries = readr::read_csv("data/population_countries.csv",
                                      col_types = 
                                        cols(
                                          country = col_character(),
                                          population = col_double()
                                        )) %>% 
+    # mutate(country = 
+    #          case_when(
+    #            country == "Korea, South" ~ "Korea (South)",
+    #            TRUE ~ country
+    #          ))
     mutate(country = 
              case_when(
-               country == "Korea, South" ~ "Korea (South)",
+               
+               # country == "American Samoa" ~ , 
+               # country == "Solomon Islands" ~ , 
+               country == "Brunei Darussalam" ~ "Brunei", 
+               country == "Faroe Islands" ~ "Faeroe Islands", 
+               country == "Palestinian Territory" ~ "Palestine", 
+               # country == "Kiribati" ~ , 
+               # country == "Korea, North" ~ , 
+               country == "Korea (South)" ~ "South Korea", 
+               country == "Kyrgyz Republic" ~ "Kyrgyzstan", 
+               # country == "Lao People's Democratic Republic ~ ",
+               # country == "Libyan Arab Jamahiriya" ~ , 
+               # country == "Macao" ~ , 
+               # country == "Nauru" ~ , 
+               country == "Curaçao" ~ "Curacao", 
+               country == "Sint Maarten (Netherlands)" ~ "Sint Maarten (Dutch part)", 
+               # country == "Vanuatu" ~ , 
+               # country == "Micronesia" ~ , 
+               # country == "Marshall Islands" ~ , 
+               # country == "Palau" ~ , 
+               country == "Timor-Leste" ~ "Timor",
+               # country == "Saint Martin" ~ "",
+               country == "Slovakia (Slovak Republic)" ~ "Slovakia", 
+               country == "Syrian Arab Republic" ~ "Syria", 
+               # country == "Tonga" ~ , 
+               # country == "Turkmenistan" ~ , 
+               # country == "Tuvalu" ~ , 
+               country == "USA" ~ "United States",
+               # country == "Samoa" ~ , 
                TRUE ~ country
+               
              ))
-
   
-  DF_lockdowns = read_csv("data/lockdown_countries.csv", 
+  DF_lockdowns = readr::read_csv("data/lockdown_countries.csv", 
                           col_types = 
                             cols(
                               time = col_date(format = ""),
@@ -26,7 +59,7 @@ data_preparation <- function(data_source = "JHU", cases_deaths = "cases", countr
                               )) %>% 
     select(time, country, what)
   
-  dta_raw = read_csv(here::here("outputs/raw_data.csv"), 
+  dta_raw = readr::read_csv(here::here("outputs/raw_data.csv"), 
                      col_types = 
                        cols(
                          country = col_character(),

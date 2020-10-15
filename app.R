@@ -8,6 +8,7 @@ library(ggplot2)
 library(ggrepel)
 library(httr)
 library(jsonlite)
+library(lubridate)
 library(readr)
 library(rvest)
 library(tidyr)
@@ -25,7 +26,8 @@ library(vroom)
 cases_deaths = "deaths" #cases deaths
 
 source(here::here("R/download_or_load.R"))
-source(here::here("R/download_or_load_JH_API.R"))
+source(here::here("R/download_or_load_OWID.R"))
+# source(here::here("R/download_or_load_JH_API.R"))
 
 source(here::here("R/fetch_worldometers_safely.R"))
 source(here::here("R/data-download.R"))
@@ -40,7 +42,8 @@ source(here::here("R/fetch_last_update_date.R"))
 minutes_to_check_downloads = 30 # Every x minutes
 auto_invalide <- reactiveTimer(minutes_to_check_downloads * 60 * 1000) 
 
-file_info_JHU <- file.info("outputs/raw_JH.csv")$mtime
+# file_info_JHU <- file.info("outputs/raw_JH.csv")$mtime
+file_info_OWID <- file.info("outputs/raw_OWID.csv")$mtime
 time_worldometer <<- stringr::str_extract(string = html_text(read_html(here::here("outputs/temp_worldometers.html"))),
                                           pattern = '\\w+\\s\\d+(st)?(nd)?(rd)?(th)?,\\s+\\d+, \\d+:\\d+ GMT')
 
@@ -99,13 +102,13 @@ ui <-
                  choices = c("accumulated", "daily", "%"), inline = TRUE),
     
     # Dynamically change with cases_deaths
-    sliderInput('min_n_cases', paste0("Day 0 after ___ accumulated cases"), min = 1, max = 1000, value = 100), 
-    sliderInput('min_n_deaths', paste0("Day 0 after ___ accumulated deaths"), min = 1, max = 500, value = 10),
+    sliderInput('min_n_cases', paste0("Day 0 after ___ accumulated cases"), min = 1, max = 100000, value = 100, step = 10), 
+    sliderInput('min_n_deaths', paste0("Day 0 after ___ accumulated deaths"), min = 1, max = 100000, value = 100, step = 10),
     sliderInput('min_n_CFR', paste0("Day 0 after ___ accumulated deaths"), min = 1, max = 500, value = 10),
     
     # Dynamically change with accumulated_daily_pct
-    sliderInput("growth_accumulated", "Daily growth (%):", min = 0, max = 100, value = 30),
-    sliderInput("growth_daily", "Daily growth (%):", min = 0, max = 100, value = 20),
+    sliderInput("growth_accumulated", "Daily growth (%):", min = 0, max = 100, value = 5),
+    sliderInput("growth_daily", "Daily growth (%):", min = 0, max = 100, value = 5),
     sliderInput("growth_pct", "Daily growth (%):", min = -50, max = 0, value = -10),
     
     HTML("<BR>"),
@@ -154,8 +157,11 @@ ui <-
         mainPanel(
             p(HTML(
                 paste0(
-                    a("Johns Hopkins Data", href="https://covid19api.com/", target = "_blank"), " updated on: ", as.character(file_info_JHU), " GMT",
-                    "<BR>", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), " (last point) updated on: ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT"
+                    a("Our World in Data", href="https://ourworldindata.org/coronavirus-data", target = "_blank"), " updated on: ", as.character(file_info_OWID), " GMT",
+                    # a("Johns Hopkins Data", href="https://covid19api.com/", target = "_blank"), " updated on: ", as.character(file_info_JHU), " GMT",
+                    "<BR>", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), " (last point) updated on: ", time_worldometer
+                    # "<BR>", a("worldometers.info", href="https://www.worldometers.info/coronavirus/#countries", target = "_blank"), " (last point) updated on: ", as.POSIXct(time_worldometer, format = "%B %d, %Y, %H:%M", tz = "GMT"), "GMT"
+                    
                     )
                 )
               ),
@@ -496,7 +502,11 @@ server <- function(input, output, session) {
                 # Country points (last one bigger)
                 geom_point(aes(size = 1 + as.integer(final_df()$name_end != "" & final_df()$name_end != "*") - .5), alpha = .7) +
                 
-                scale_x_continuous(breaks = seq(0, max(final_df()$days_after_100, na.rm = TRUE), 2)) +
+                scale_x_continuous(
+                    # n.breaks = 50, 
+                    # limits = c(0, max(final_df()$days_after_100))
+                    breaks = seq(0, max(final_df()$days_after_100, na.rm = TRUE), 5)
+                    ) +
                 labs(
                     title = paste0("Coronavirus confirmed ", input$cases_deaths , if (input$relative == TRUE) " / million people"),
                     subtitle = paste0("Arranged by number of days since ",  VAR_min_n() ," or more ", input$cases_deaths),
