@@ -1,6 +1,6 @@
 # Coronavirus tracker
 
-Repository with R code for a Shiny app to interactively compare cases and deaths by country using the @JHUSystems + worldometers.info Coronavirus data.  
+Repository with R code for a Shiny app to interactively compare cases and deaths by country using the @OurWorldInData + worldometers.info Coronavirus data.  
 
 Please always check oficial sources (e.g. [WHO](https://www.who.int/emergencies/diseases/novel-coronavirus-2019)), and be careful when using this or other information to create predictive models.   
 
@@ -9,7 +9,7 @@ Please always check oficial sources (e.g. [WHO](https://www.who.int/emergencies/
 
 ## Data sources
 
-* Johns Hopkins Data: https://github.com/CSSEGISandData/COVID-19
+* Our World in Data: https://ourworldindata.org/coronavirus-data
 * worldometers.info: https://www.worldometers.info/coronavirus/#countries
 
 

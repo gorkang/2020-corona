@@ -19,7 +19,7 @@ dta_raw = read_csv(here::here("outputs/raw_data.csv"),
 
  DF_menu <- dta_raw %>%
   # filter(value > 1) %>% 
-  filter(!country %in% c("Total:", "Diamond Princess")) %>% 
+  filter(!country %in% c("Total:", "Diamond Princess", "World")) %>% 
   arrange(desc(cases_sum)) %>% 
   distinct(country)
 
