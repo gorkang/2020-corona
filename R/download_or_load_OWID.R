@@ -33,7 +33,7 @@ download_or_load_OWID <-
         # DF_all = jsonlite::fromJSON(URL) %>% as.data.frame %>% 
         #   write_csv(paste0(file_name))
         
-        DF_OWID_RAW <- read_csv(url,
+        DF_OWID_RAW <- read_csv(URL,
                                 # guess_max = 10000,
                                 col_types =
 
